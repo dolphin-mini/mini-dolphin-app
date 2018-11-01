@@ -12,8 +12,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
-	"appid": "wxb38ad0dd44a844c1",
-	"projectname": "dolphin",
+	"appid": "wx44ed18796ecd4b91",
+	"projectname": "mini-dolphin-app",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
