@@ -2,7 +2,7 @@
 /* header style */
 .header {
   display: flex;
-  height: 310rpx;
+  height: 230rpx;
 }
 .logo-wrap {
   flex: 1;
@@ -142,7 +142,9 @@
   text-align: center;  
   font-size: 40rpx;
 }
-
+.content {
+  margin-top: 30rpx;
+}
 .modal-content{
   padding: 0 20rpx;
   border-radius: 10rpx;

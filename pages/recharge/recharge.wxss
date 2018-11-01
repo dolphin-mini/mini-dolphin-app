@@ -1,30 +1,53 @@
 /* pages/recharge/recharge.wxss */
+page {
+  background: #F2F3F5;
+}
 .card {
   margin: 30rpx;
-  padding: 24rpx;
-  border: 1px solid #c1c1c1;
-  border-radius: 5px;
+  
+  height: 669rpx;
+  background:#fff;
+  box-shadow:0rpx 10rpx 19rpx 2rpx rgba(204,204,204,0.47);
+  border-radius:10rpx;
 }
 .logoWrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: transparent;
+  padding: 23rpx 0;
+  background:rgba(193,193,193,0.1);
 }
 .logo {
   width: 120rpx;
   height: 120rpx;
 }
 .logoText {
+  margin-top: 14rpx;
+  line-height: 32rpx;
+  font-size: 32rpx;
   color: #257CE1;
-  font-family: "Dolphin"
+}
+.content {
+  margin-top: 30rpx;
+  padding: 0rpx 18rpx 0 19rpx;
 }
 .title {
+  line-height: 32rpx;
   font-size: 32rpx;
   color: #666;
 }
 .payWrap {
   display: flex;
+  position: relative;
+  margin-top: -14rpx;
+}
+.payWrap::after {
+  content: "";
+  position: absolute;
+  bottom: 24rpx;
+  border-bottom: 1px solid #ccc;
+  height: 0;
+  width: 100%;
 }
 .moneySymbol {
   display: flex;
@@ -33,8 +56,6 @@
 }
 .money, .moneySymbol {
   font-size: 60rpx;
-  margin-bottom: 50rpx;
-  border-bottom: 1px solid #ccc;
 }
 .money {
   width: 100%;
@@ -45,6 +66,7 @@
 }
 .btnWrap {
   margin-top: 40rpx;
+  padding: 0rpx 18rpx 0 19rpx;
 }
 .btn {
   background: linear-gradient(to right, #4D9BFD , #496AF2);

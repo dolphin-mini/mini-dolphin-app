@@ -14,7 +14,7 @@
       <navigator url="../rechargeCard/rechargeCard" class="weui-agree__link cards">储蓄卡充值</navigator>
     </view>
     <view class="btnWrap">
-      <button class="btn" type="primary" bindtap="openModal">立即充值</button>
+      <button class="dolphin-button-default" type="primary" bindtap="openModal">立即充值</button>
     </view>
   </view>
   <!-- 弹层 -->
