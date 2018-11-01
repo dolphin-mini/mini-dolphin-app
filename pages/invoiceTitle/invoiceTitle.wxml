@@ -1,0 +1,93 @@
+<!--pages/invoiceTitle/invoiceTitle.wxml-->
+<view class="page">
+  <view class="header">
+    <view wx:if="{{true}}" class="header-wrap">
+      <view class="header-wrap-left" bindtap='openModal'>
+        <i class="icon-add icon-size"></i>
+        <text class="add-tips">添加发票抬头</text>
+      </view>
+      <view class="header-wrap-right" bindtap="openScanCode">
+        <i class="icon-scan icon-size"></i>
+      </view>
+    </view>
+    <view wx:else class="header-list-wrap">
+      <view class="header-list-item">
+        <view class='header-list-item-image'>
+          <i class="icon-add icon-size"></i>
+        </view>
+        <view class='header-list-item-content'>
+          <text class="item-title">山东洗车机下次y偶限公司</text>
+          <text class="item-text">税号：23094803284</text>
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <view class="content">
+    <!-- 新增发票抬头 -->
+    <view wx:if="{{hidden}}" class="add-new-invoice-wrap">
+      <view class="invoice-wrap-left" bindtap='openModal'>
+        <i class="icon-add icon-size"></i>
+        <!-- <image class="add-icon" src="../../images/invoiceTitle/add.png"></image> -->
+        <text class="add-tips">新增发票抬头</text>
+      </view>
+      <view class="invoice-wrap-right" bindtap="openScanCode">
+        <i class="icon-scan icon-size"></i>
+        <!-- <image class="add-icon" src="../../images/invoiceTitle/scan.png"></image> -->
+      </view>
+    </view>
+    <!-- 订单列表 -->
+    <view class="order-item-wrap">
+      <view class="order-item-title">
+        <label>订单编号：</label>
+        <text>293840238490</text>
+      </view>
+      <view class="order-item-content">
+        <view class="order-image">
+          <image class="order-image-check" src="../../images/invoiceTitle/check_order.png"></image>
+        </view>
+        <view class="order-detail">
+          <text class="oil-type">98#油品</text>
+          <text class="oil-gun">2号枪</text>
+          <view class="oil-text-wrap">
+            <text class="oil-L">加油量：335L</text><text class="oil-price">￥200</text>
+          </view>
+        </view>
+      </view>
+      <view class="order-item-tips">
+        <text>2019-2032-32 12:32:32</text>
+        <text>西城小海豚加油站</text>
+      </view>
+    </view>
+  </view>
+  <view class="footer-wrap">
+    <button wx:if="{{isSelected}}" class="footer-btn" type='primary'>开票请求</button>
+    <button wx:else class="footer-disable-btn" type='primary' disabled>开票请求</button>
+  </view>
+
+  <!-- 弹层 -->
+  <view class="modal-box" hidden="{{isHiddenModal}}">
+    <view class="modal-body">
+      <view class="modal-head">
+        <!-- <icon class="modal-close" type="clear" bindtap="closeModal" /> -->
+        <image class="modal-close" src="../../images/invoiceTitle/close.png" bindtap="closeModal"></image>
+        <view class="modal-title">
+          填写抬头
+        </view>
+      </view>
+      <view class="modal-content">
+        <view class="content-wrap">
+          <text
+            class="{{isActive==='company'?'select-item active':'select-item'}}"
+            data-id="company"
+            bindtap="changeTitle">企业单位</text>
+          <text
+            class="{{isActive==='personal'?'select-item active':'select-item'}}"
+            bindtap="changeTitle"
+            data-id="personal">个人/非企业</text>
+        </view>
+        <button class="footer-btn" type="primary" bindtap="saveModal">保存</button>
+     </view>
+    </view>
+  </view>
+</view>

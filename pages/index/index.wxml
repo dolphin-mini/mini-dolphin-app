@@ -1,0 +1,56 @@
+<!--index.wxml-->
+<view class="page">
+  <view class="userinfo">
+    <!-- 会员信息 -->
+    <view class="userMember">
+      <view class="memberText">
+        会员级别：
+        <text class="memberType">金卡</text>
+        <image class="memberTips" src="../../images/index/question.png"></image>
+      </view>
+    </view>
+    <!-- 用户信息 -->
+    <view class="userWrap">
+      <view class="userAvatar">
+        <image 
+          bindtap="bindViewTap"
+          class="userinfo-avatar"
+          src="{{userInfo.avatarUrl}}"
+          mode="cover" />
+      </view>
+      <view class="detailWrap">
+        <view class="text-wrap">
+          <text>乌云乌云快走开</text>
+          <image class="memberTips" src="../../images/index/fix.png"></image>
+        </view>
+        <view class="text-wrap userPhone">
+          <text>132xxxx2323</text>
+          <view class="text-wrap">
+            <text class="isAuthor">未认证</text>
+            <image class="memberTips" src="../../images/index/vip.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 会员ID -->
+    <view class="cardId">
+      <image class="cardNumber" wx:for="{{memberID}}" src="../../images/index/{{item}}.png" />
+    </view>
+  </view>
+  
+  <view class="results">
+    <view class="resultsWrap">
+      <text class="results-title">累计次数</text>
+      <text class="results-content">nn</text>
+    </view>
+    <view class="resultsWrap">
+      <text class="results-title">积分</text>
+      <text class="results-content">3333</text>
+    </view>
+  </view>
+  <!-- 二维码 -->
+  <view class="memberCode">
+    <image class="member-code-picture" src="../../images/index/code.png"></image>
+    <text class="user-tips">使用时请向加油员出示会员码</text>
+  </view>
+</view>

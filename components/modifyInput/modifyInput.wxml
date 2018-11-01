@@ -1,0 +1,26 @@
+<!--components/modifyInput/modifyInput.wxml-->
+<view class="wrapper">
+  <view class="modify-input-wrap">
+    <view class="modify-input-label-wrap">
+      <span class="modify-input-label">手机号码</span>
+    </view>
+    <view class="modify-input-text-wrap">
+      <input class="modify-input" type="number" disabled value="15128283552" />
+    </view>
+    <view wx:if="{{!isModify}}" class="modify-btn" bindtap="modify">
+      修改手机号
+    </view>
+  </view>
+
+  <view wx:if="{{isModify}}" class="modify-input-wrap">
+    <view class="modify-input-label-wrap">
+      <span class="modify-input-label"></span>
+    </view>
+    <view class="modify-input-text-wrap">
+      <input class="modify-input" type="number" />
+    </view>
+    <view class="modify-btn">
+      获取验证码
+    </view>
+  </view>
+</view>

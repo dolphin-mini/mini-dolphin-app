@@ -1,0 +1,109 @@
+/* pages/recharge/recharge.wxss */
+.card {
+  margin: 30rpx;
+  padding: 24rpx;
+  border: 1px solid #c1c1c1;
+  border-radius: 5px;
+}
+.logoWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+}
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+}
+.logoText {
+  color: #257CE1;
+  font-family: "Dolphin"
+}
+.title {
+  font-size: 32rpx;
+  color: #666;
+}
+.payWrap {
+  display: flex;
+}
+.moneySymbol {
+  display: flex;
+  align-items: center;
+  padding-right: 10rpx;
+}
+.money, .moneySymbol {
+  font-size: 60rpx;
+  margin-bottom: 50rpx;
+  border-bottom: 1px solid #ccc;
+}
+.money {
+  width: 100%;
+}
+.cards {
+  font-size: 32rpx;
+  color: #257CE1;
+}
+.btnWrap {
+  margin-top: 40rpx;
+}
+.btn {
+  background: linear-gradient(to right, #4D9BFD , #496AF2);
+}
+
+/* modal */
+
+.modal-box{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  background:rgba(0,0,0,0.4);
+  overflow: hidden;
+  z-index: 99999999;
+  }
+
+.modal-body{
+  margin: 42rpx;
+  padding: 20rpx;
+  position:relative;
+  background: #fff;
+  border-radius: 30rpx;
+}
+
+.modal-head {
+  padding-bottom: 13rpx;
+  border-bottom: 1px solid #ccc;
+}
+.modal-close {
+  position: absolute;
+}
+.modal-title {
+  text-align: center;  
+  font-size: 40rpx;
+}
+
+.modal-content{
+  margin:38rpx;
+  border-radius: 10rpx;
+}
+
+.modal-content{
+}
+.content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tips {
+  font-size: 30rpx;
+}
+.tipsMoney {
+  margin-top: 34rpx;
+  margin-bottom: 50rpx;
+  font-size: 80rpx;
+  color: #333;
+  font-weight: bold;
+}
+.modal-content .fenxiang{
+  width: 100%;
+}

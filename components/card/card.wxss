@@ -1,0 +1,45 @@
+/* components/card/card.wxss */
+.dolphin-card-wrap {
+  margin: 30rpx;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(153,153,153,0.47);
+}
+/* header */
+.dolphin-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 42rpx;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: #f8f8f8;
+}
+.dolphin-card-wrap .header-logo {
+  margin-bottom: 26rpx;
+  width: 90rpx;
+  height: 90rpx;
+}
+.dolphin-card-wrap .header-title {
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+  color: #257CE1;
+}
+/* content */
+.dolphin-card-content {
+  padding: 30rpx;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.dolphin-card-button-wrap {
+  margin-top: 24rpx;
+}
+.dolphin-card-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #4D9BFD , #496AF2);
+  box-shadow: 1px 5px 15px rgba(37, 124, 255, 0.47);
+  font-size: 30rpx;
+  height: 90rpx;
+}

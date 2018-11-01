@@ -1,0 +1,134 @@
+/* pages/login/login.wxss */
+.loginWrap {
+  
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  margin-top: 93rpx;
+}
+.logoImg {
+  width: 200rpx;
+  height: 220rpx;
+}
+.logoText {
+  width: 310rpx;
+  height: 160rpx;
+}
+.greet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 48rpx;
+}
+.greetText {
+  color: #257CE1;
+  font-size: 36rpx;
+}
+.login {
+  margin-top: 100rpx;
+}
+.loginTitle {
+  margin-left: 30rpx;
+  line-height: 36rpx;
+  font-size: 36rpx;
+  color: #333;
+}
+.loginPhone {
+  display: flex;
+  margin: 30rpx;
+  padding: 16rpx 0 14rpx 2rpx;
+  border: 1px solid #fff;
+  box-shadow:0rpx 10rpx 19rpx 2rpx rgba(153,153,153,0.47);
+  border-radius:10rpx;  
+}
+.country {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 34rpx;
+}
+.countryText {
+  font-size: 30rpx;
+  color: #333;
+}
+.icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+.icon-x {
+  margin: 0 0 0 12rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.phone {
+  flex: 3;
+  display: flex;
+  align-items: center;
+}
+.phoneText, .secorityCodeText {
+  width: 100%;
+  font-size: 30rpx;
+  color: #999;
+}
+.securityCodeWrap {
+  display: flex;
+  margin: 30rpx 30rpx 0 30rpx;
+  padding: 16rpx 0 14rpx 2rpx;
+}
+.securityCode {
+  flex: 3;
+  margin-right: 22rpx;
+  display:flex;
+  align-items: center;
+  box-shadow:0rpx 10rpx 19rpx 2rpx rgba(153,153,153,0.47);
+  border-radius:10rpx;
+}
+.textWrap {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  padding-left: 0rpx;
+}
+
+.secorityCodeIcon {
+  flex: 2;
+  display:flex;
+  align-items: center;
+}
+
+.getSecurityCode {
+  flex: 1;
+}
+.protocol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.isCheckedWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60rpx;
+  height: 60rpx;
+}
+.isChecked {
+  height: 35rpx;
+  width: 35rpx;
+}
+.checkIcon {
+  width: 60rpx;
+  height: 60rpx;
+}
+.protocolText {
+  font-size: 26rpx;
+  color: #666;
+}
+.submitWrap {
+  margin: 100rpx 30rpx 0 30rpx;
+}
+.getBtn {
+  width: 190rpx;
+}

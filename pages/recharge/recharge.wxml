@@ -1,0 +1,40 @@
+<!--pages/recharge/recharge.wxml-->
+<view class="page">
+  <view class="card">
+    <view class="logoWrap">
+      <image class="logo" src="../../images/recharge/recharge_logo.png" />
+      <text class="logoText">小海豚加油站J</text>
+    </view>
+    <view class="content">
+      <text class="title">充值金额</text>
+      <view class="payWrap">
+        <text class="moneySymbol">￥</text>
+        <input class="weui-input money" type="number" placeholder='请输入金额' bindinput="moneyChange" />
+      </view>
+      <navigator url="../rechargeCard/rechargeCard" class="weui-agree__link cards">储蓄卡充值</navigator>
+    </view>
+    <view class="btnWrap">
+      <button class="btn" type="primary" bindtap="openModal">立即充值</button>
+    </view>
+  </view>
+  <!-- 弹层 -->
+  <view class="modal-box" hidden="{{isHidden}}">
+    <view class="modal-body">
+      <view class="modal-head">
+        <!-- <icon class="modal-close" type="clear" bindtap="closeModal" /> -->
+        <text class="modal-close" bindtap="closeModal">x</text>
+        <view class="modal-title">
+          提示
+        </view>
+      </view>
+      <view class="modal-content">
+        <view class="content-wrap">
+          <text class="tips">请您再次确认充值金额</text>
+          <text class="tipsMoney">￥{{money}}</text>
+        </view>
+        <button type="primary" bindtap="closeModal">是</button>
+     </view>
+    </view>
+  </view>
+
+</view>

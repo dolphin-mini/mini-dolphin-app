@@ -1,0 +1,27 @@
+/* pages/rechargeDetail/rechargeDetail.wxss */
+page {
+  background-color:#f2f3f5;
+}
+.content-wrap {
+  margin-bottom: 69rpx;
+}
+.list {
+  margin-bottom: 15rpx;
+  padding: 0 22rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+.list-title {
+  display: inline-block;
+  overflow:hidden;
+  vertical-align:top;
+  text-align: justify;
+  width: 110rpx;
+  height: 35rpx;
+}
+.list-title::after {
+  content: "";
+  display:inline-block;
+  width:100%;
+  height:0;
+}

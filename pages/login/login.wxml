@@ -1,0 +1,73 @@
+<!--pages/login/login.wxml-->
+<view class="page loginWrap">
+  <view class="logo">
+    <image class="logoImg" src="../../images/login/logo.png" />
+    <image class="logoText" src="../../images/login/logotext.png" />
+  </view>
+  <view class="greet">
+    <text class="greetText">欢迎来到小海豚加油站</text>
+  </view>
+
+  <view class="login">
+    <view>
+      <text class="loginTitle">手机验证</text>
+    </view>
+    <!-- 登录信息 -->
+    <view class="loginPhone">
+      <view class="country">
+        <image class="icon" src="../../images/login/phone.png" />
+        <picker bindchange="bindCountryChange" value="{{prefixPhone}}" range="{{countries}}" range-key="key">
+          <text class="countryText">+{{countries[prefixPhone].id}}</text>
+          <image class="icon-x" src="../../images/login/triangle.png" />
+        </picker>
+      </view>
+      <view class="phone">
+        <input class="phoneText" type="number" placeholder="请输入手机号" bindinput="phoneChange"/>
+      </view>
+    </view>
+    <!-- 验证码 -->
+    <view class="securityCodeWrap">
+      <view class="securityCode">
+        <view class="secorityCodeIcon">
+          <image class="icon" src="../../images/login/lock.png" />
+          <text class="countryText">验证码</text>
+        </view>
+        <view class="textWrap">
+          <input
+            class="secorityCodeText"
+            type="number"
+            placeholder="输入验证码"
+            bindinput="phoneChange"
+          />
+        </view>
+      </view>
+      <view class="getSecurityCode">
+        <button
+          class="getBtn {{isGettingCode?'dolphin-button-disabled':'dolphin-button-default'}}"
+          type="primary"
+          size="default"
+          disabled="{{isGettingCode}}"
+          bindtap="getSecurityCode"
+        >{{isGettingCode?times+'秒后重发':'获取'}}</button>
+      </view>
+    </view>
+    <!-- 协议 -->
+    <view class="protocol">
+      <view wx:if="{{!isRead}}" class="isCheckedWrap" bindtap="isReadChange">
+        <image class="isChecked" src="../../images/login/circle.png" />
+      </view>
+      <image wx:else class="checkIcon" src="../../images/login/check.png"  bindtap="isReadChange" />
+      <text class="protocolText">您已阅读并同意《小海豚用户协议》</text>
+    </view>
+
+    <!-- 立即验证 -->
+    <view class="submitWrap">
+       <button
+          class="dolphin-button-default"
+          type="primary"
+          bindtap="login"
+        >立即验证</button>
+    </view>
+
+  </view>
+</view>

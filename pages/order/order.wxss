@@ -1,0 +1,240 @@
+/* pages/order/order.wxss */
+page {
+  background: #F2F3F5;
+}
+.userinfo-wrap {
+  padding: 29rpx 31rpx 0 37rpx;
+  box-sizing: border-box;
+  width: 100%;
+  height: 516rpx;
+  background-position: 0 0;
+  background-size: 100% 100%;
+}
+
+.user-member-wrap {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 24rpx;
+  color: #333;
+}
+.memberText {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+.memberType {
+  color: #F69E29;
+}
+.memberTips {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.userWrap {
+  display: flex;
+  align-items: center;
+}
+.userAvatar {
+  margin-right: 29rpx;
+  width: 96rpx;
+  height: 119rpx;
+  background: #0f0;
+}
+.detailWrap {
+  font-size: 30rpx;
+  color: #000;
+  width: 100%;  
+}
+.text-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.userPhone {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 14rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+.isAuthor {
+  margin-left: 24rpx;
+  font-size: 20rpx;
+  color: #ccc;
+}
+.userinfo-detail {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50rpx;
+}
+.userinfo-detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text-number {
+  font-size: 40rpx;
+  color: #fff;
+}
+.text-describe {
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #ccc;
+}
+/* 导航 */
+.order-nav-wrap {
+  position: relative;
+  top: -80px;
+  margin: 0 30rpx;
+  background: rgba(255,255,255,0.8);
+  height: 160rpx;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.order-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nav-img {
+
+}
+.nav-describe {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #333;
+}
+.order-all {
+  width: 46rpx;
+  height: 56rpx;
+}
+.wait-pay {
+  width: 60rpx;
+  height: 56rpx;
+}
+.completed {
+  width: 60rpx;
+  height: 56rpx;
+}
+.repay {
+  width: 50rpx;
+  height: 56rpx;
+}
+/* 订单信息 */
+.order-list-wrap {
+  position: relative;
+  top: -150rpx;
+  padding: 0 30rpx;
+}
+.order-list-item {
+  position: relative;
+  margin-top: 20rpx;
+  border: 1px solid #ccc;
+  border-radius: 20rpx;
+}
+.order-list-item-header{
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 19rpx 10rpx 17rpx 10rpx;
+}
+.order-list-item-header::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #ccc;
+  color: #e5e5e5;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+}
+.header-text {
+  font-size: 24rpx;
+  color: #333;
+  line-height: 24rpx;
+}
+.order-list-item-content {
+  display: flex;
+}
+.order-list-item-content-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 30rpx;
+}
+.item-image-wrap {
+  width: 150rpx;
+  height: 150rpx;
+  border: 1rpx solid #ccc;
+}
+.order-list-item-content-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(100% - 210rpx);
+}
+.list-item-right-top {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 32rpx;
+  margin-top: 18rpx;
+}
+.list-item-right-center {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 32rpx;
+}
+.oil-type {
+  font-size: 30rpx;
+  color: #257CE1;
+}
+.oil-price {
+  font-size: 28rpx;
+  color: #257CE1;
+}
+.oil-gun {
+  font-size: 24rpx;
+  color: #666;
+}
+.oil-integral {
+  font-size: 22rpx;
+  color: #666;
+}
+.list-item-right-bottom {
+  margin-bottom: 16rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.order-list-item-footer  {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18rpx 30rpx 14rpx 10rpx;
+}
+.order-list-item-footer::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #ccc;
+  color: #e5e5e5;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+}
+.footer-time {
+  line-height: 24rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+.footer-pay {
+  line-height: 28rpx;
+  font-size: 28rpx;
+}

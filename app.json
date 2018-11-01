@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/myCenter/myCenter",
+    "pages/login/login",
+    "pages/index/index",
+    "pages/order/order",
+    "pages/invoiceTitle/invoiceTitle",
+    "pages/invioceDetail/invioceDetail",
+    "pages/recharge/recharge",
+    "pages/start/start",
+    "pages/rechargeDetail/rechargeDetail",
+    "pages/logs/logs",
+    "pages/rechargeCard/rechargeCard"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#c1c1c1"
+  },
+  "debug": true
+}

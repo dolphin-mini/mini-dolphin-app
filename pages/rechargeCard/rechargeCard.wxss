@@ -1,0 +1,51 @@
+/* pages/rechargeCard/rechargeCard.wxss */
+page {
+  background-color:#f2f3f5;
+}
+.card {
+  margin: 30rpx;
+  border: 1px solid #c1c1c1;
+  border-radius: 5px;
+  background: #fff;
+}
+.logoWrap {
+  display: flex;
+  padding-top: 28rpx;
+  flex-direction: column;
+  align-items: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: #f2f2f2;
+}
+.logo {
+  margin-bottom: 10rpx;
+  width: 110rpx;
+  height: 110rpx;
+}
+.logoText {
+  color: #257CE1;
+  font-family: "Dolphin";
+  font-size:32rpx;
+}
+.content {
+  padding: 30rpx;
+}
+.title {
+  font-size: 32rpx;
+  color: #666;
+}
+.btn-wrap {
+  margin-top: 24rpx;
+}
+.btn {
+  background: linear-gradient(to right, #4D9BFD , #496AF2);
+}
+/* weui样式覆盖 */
+.weui-cell {
+  background-color: #f2f2f2;
+  font-size: 14px;
+  margin-top: 20rpx;
+}
+.weui-label {
+  color: #999;
+}

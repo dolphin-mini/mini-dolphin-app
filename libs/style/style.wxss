@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'icomoon';
+    src: url(data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOcAA0AAAAACFgAAANHAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0ZGVE0cGh4GYACCXhEICoU4hEkLFgABNgIkAyAEIAWDGwdtG+oGyB4H1e0dxidiGOKIiv0pIqLXybunJ1u29IkDwOg/qewglQRlKsQKgOvU/v/v57VFHa+0Ks+kd9dFZbMf/HsCE9loWtX/P/+X4xsLi/amROKM1qA58bKFY+OYmAYSZhf9dOsE6XkiAYaxNjhv4EGEBrfHX4TAF0/41fC1Q68xnh3MwCJUIoaiRoVSXs7delSPVJ/gLrBO/rNFhgxLmYNxV/mnLm9M37BrQVwEY7yqoNx2RQHHKoIV1XZEa6BSiVX/qaeGFPVNpr8v7imiBRCF9EkBUqGC/plQAy8SmTYbtGABZuEHsjqgBgQRRU9ESimrrWQ1AFVvu7pkyxVtRs+142fweLc+23XcyfOJvZo+ftz5fK5J3HrU9wtJNznm/5Uko6N/X6bb/jgMZ1QT7ibtYbf23re9YSR2XdrxK3Q5aSwkrVtfLaaumfC0MHqtbQP2SbdynMnryZMvnwtzcsU5opjRg4sEoR3fv2A6F9gF3G3hbMpxbn1gIc93o1EmDy1ezBKnvIZ4XzRXzR/Mu2E6BwA8/sn1alx91szNZ113reGbiQrXXmfYIgysMbOOMmxeMvOJX5fot4MUJZO4XNEkoejE66NWt0D8NJ0v+nC19MkkTR3fxLB6kLqr7jydnEEQSeKtU1+dThCsMyO4A2F4xELNJ8Mv1v9ihT3N/tTC13MLPvutT07PW98Cw6YfrrxSBlWDE/aMPZvmnT1RwmKVbRu1hmCbJVNRNQfuEXs1aN7dswC22TPPBmje2fIR/bOABW+gt14+WLztzwcCLH/xrOnAtOP/g662mBxm+katvIGBCoQFYAM1qPmPhn4NyFFAhRou8BQeFrRO0AMV6y3M8pKAaMwRUGmsK6Bo7Cqg1jhWQE/nWgF9jfsFtJb5VJF6KGaRQhW2BCrYplCN7avsWeRUZd8st+3Z2tLjznOGS1zkEpe4mPNORacc9uBwZznHVS50msv5XG4Q6NtnnenRznK5K5zXuKrNbGxTLqTLhQOhcWF752uvtKpznOXiWbRPc6WznFl9uuusaj+EHZTamJf3jttKqjg5/GjiCqBiPaIllSpFSZ1e+mky6J9z4fW4DKuuungVCoVCYTYdCmFhLIJF/TEA) format('woff2'),
+        url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAAWMAA0AAAAACFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAFcAAAABoAAAAchaTH90dERUYAAAVUAAAAHAAAAB4AJwAQT1MvMgAAAZAAAAA/AAAAYA8TBeVjbWFwAAAB7AAAAFUAAAFeF1fZ5Gdhc3AAAAVMAAAACAAAAAgAAAAQZ2x5ZgAAAlwAAAHTAAACuHkelEdoZWFkAAABMAAAACwAAAA2Ex7la2hoZWEAAAFcAAAAHAAAACQHwgPHaG10eAAAAdAAAAAaAAAAIAvAAT5sb2NhAAACRAAAABYAAAAWA0wCVm1heHAAAAF4AAAAGAAAACAAEABdbmFtZQAABDAAAADcAAABm/pYTdhwb3N0AAAFDAAAAD8AAABtRVOHlHjaY2BkAINJa9Ny4vltvjJws4D5NxgCyhH0/wMsDMwHgFwOBiaQKAAT8gmPeNpjYGRgYD7w/wADAwsDCABJRgZUwAYATFgCk3jaY2BkYGDgYohmYGUAASYGNAAACsUAbnjaY2Bm3sY4gYGVgYFpJtMZBgaGfgjN+JrBmJGTARUwCqAJMDgwML5kYT7w/wCDAzMQg9QgySowMAIAXPILAwB42mNhgADGUAjNBMQsIEY2wzIgOQMAD24CCgAAeNpjYGBgZoBgGQZGBhCIAPIYwXwWBhsgzcXAwcAEhIwMCi9Z/v/9/x+sSuElA4T9/4k4K1gHFwMMMILMY2QDYmaoABOQYGJABUA7WBiGNwAAKDwNIwAAAAAAAAAACAAIABAAGACYAOgBQAFOAVwAAHjahVIxT9tQEL7zi23sxpYi24kqlED8hB0ZqRKxnVChRPyEdOgSW2IN7dAR8g9gRkhZOrZDp/4E5qqMYSbkD/ADwmvv2Y46MPSGe3f33X0+fT5A2JoC8F6B/+UM4M8de2Y/YR9GMAVAniYB97U2kvPc5gmSi/uDEZKTEPN1G3WCWh1sETIc45CA8B2GAW/4xZsmRTXuFz2eW0xw5evcsS330nYc+9K1bGduua71bZbnVz2yqzyfnefZdS8Me9dZfj6dTC58zv2LyWSa/YszvJ9LhrmzZZCsDq5fM5TMmw/l3Gs+UkGFz3DIbtlHqMNbCCCGYwAnGZxgWogQp44fjJAXSqQc+01ZS4JD9GLH1eQjteEedr1uemsZy+XuQdQ0rOhgd7lUflRBswJegEWbB+ZV5ZfTqq48bBtOKwg/RRHth/AdvrCMcbmXgWOkb5PEtJtuYODrmtsy0Jb/iKSOj/GoPxgaWIZlNsYQlSPcUzVNrVm6bqliJdZm2zRNbIuVSlaWcY+aZFQz8Y1Y4S/sqHV9py47VPGEHZpom+JJrMsuSUgMjxImAPeh2JfuqQbsTl5Wo9vo1mBD2abEFnDDZsqZvD1DYTOxEAvlTCT4+y+I9IMTAHjadc6xasJQGMXxfzRatCCdSul0R6eg4AN0KnVw6SAdG+MlBPReiBF07yN07DP0YXwiT8K3JnDD7zs35yPAjH8S2ifhgSfzQJ6bh/KbOZW/zCMeuZjHyn/NU165qZWkEyWzbkPrgfxiHsoLcyp/mEc8820eK/8xT1nxR0VB5KgTCVAV8Rij8Imn5MyBnFqjL8+HXOj7vi/fak/NSfdt7liS6S/Z+vpUxeCW2aK/+97NjVqltoRuU67Zs1e246r3uuturJupFEPjSh98nTd+73ZXty7iRvsy7uXbPkN42mNgYsAPuBgYGJkYmBiZGZgZWRhZGdkY2Rk52NJzKgsyDNlL8zINDAzAtKulgQGUhvGNoLQxlDYBAMogD6oAAAEAAf//AA942mNgZGBg4AFiMSBmYmAEQk4gZgHzGAAEAQA4eNpjYGBgZACCq0vUOUD0DYaAchgNADYxBOgAAA==) format('woff'),
+        url('icomoon.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-drop .path1:before {
+  content: "\e903";
+  color: rgb(255, 255, 255);
+}
+.icon-drop:before {
+  content: "\e904";
+  margin-left: -1em;
+  color: rgb(50, 51, 51);
+}
+.icon-close {
+  content: "\e902";
+}
+.icon-add:before {
+  content: "\e900";
+}
+.icon-scan:before {
+  content: "\e901";
+}

@@ -1,0 +1,127 @@
+<!--pages/myCenter/myCenter.wxml-->
+<template name="list-modify">
+  <view class="modify-input-wrap">
+    <view class="modify-input-label-wrap">
+      <label for="" class="modify-input-label">{{title}}</label>
+    </view>
+    <view class="modify-input-text-wrap">
+      <input class="modify-input" type="text" value="{{value}}" />
+    </view>
+  </view>
+</template>
+
+<view class="page">
+  <view class='header'>
+    <view class="logo-wrap" bindtap="openModal">
+      <image class="header-logo" src="../../images/myCenter/IDcard.png"></image>
+      <text class="logo-text">身份认证</text>
+    </view>
+    <view class="logo-wrap">
+      <image class="header-logo" src="../../images/myCenter/bill.png"></image>
+      <text class="logo-text">发票抬头</text>
+    </view>
+  </view>
+  <!-- content -->
+  <view class="content">
+    <modify-input></modify-input>
+    <view class="modify-input-wrap">
+      <view class="modify-input-label-wrap">
+        <span class="modify-input-label">昵称</span>
+      </view>
+      <view class="modify-input-text-wrap">
+        <input class="modify-input" type="text" value="15128283552" />
+      </view>
+    </view>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class="modify-input-wrap">
+      <view class="modify-input-label-wrap">
+        <label for="sex" class="modify-input-label">性别</label>
+      </view>
+      <view class="modify-input-text-wrap">
+        <input id="sex" name="sex" class="modify-input" type="text" value="女" />
+      </view>
+    </view>
+
+    <view class="modify-input-wrap">
+      <view class="modify-input-label-wrap">
+        <label for="born" class="modify-input-label">出生日期</label>
+      </view>
+      <view class="modify-input-text-wrap">
+        <input
+          id="born"
+          name="born"
+          class="modify-input"
+          type="number"
+          value="1992-07-12" />
+      </view>
+    </view>
+
+    <view class="modify-input-wrap">
+      <view class="modify-input-label-wrap">
+        <label for="sex" class="modify-input-label">家庭地址</label>
+      </view>
+      <view class="modify-input-text-wrap">
+        <picker
+          mode="region"
+          bindchange="bindRegionChange"
+          value="{{region}}"
+        >
+          <view class="picker">
+            <input
+              id="sex"
+              name="sex"
+              class="modify-input picker-input"
+              type="text"
+              value="{{region[0]}} {{region[1]}} {{region[2]}}" />
+            <i class="icon-drop drop-down"></i>
+          </view>
+          </picker>
+      </view>
+    </view>
+
+    <view class="modify-input-wrap">
+      <view class="modify-input-label-wrap">
+        <label for="adress" class="modify-input-label">详情</label>
+      </view>
+      <view class="modify-input-text-wrap">
+        <input
+          id="adress"
+          name="adress"
+          class="modify-input"
+          type="text"
+          value="千佛山路" />
+      </view>
+    </view>
+  <view class="button-wrap">
+        <button
+          class="btn"
+          type="primary"
+          form-type="submit"
+        >保存</button>
+      </view>
+  </form>
+
+  <!-- 弹层 -->
+  <view class="modal-box" hidden="{{isHiddenModal}}">
+    <view class="modal-body">
+      <view class="modal-head">
+        <i class="icon-close modal-close" bindtap="cancelModal"></i>
+        <view class="modal-title">
+          认证
+        </view>
+      </view>
+      <view class="modal-content">
+        <view class="content-wrap">
+         <input
+          class="editor-input"
+          type="text"
+          placeholder='输入身份证号'
+          focus="{{!isHiddenModal}}"
+          bindinput="IDcardChange"/>
+        </view>
+        <button class="footer-btn" type="primary" bindtap="authentication">保存</button>
+     </view>
+    </view>
+  </view>
+</view>

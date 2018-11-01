@@ -1,0 +1,13 @@
+<!--pages/rechargeDetail/rechargeDetail.wxml-->
+<view class="page">
+  <card imgsrc="../../images/recharge/recharge_completed.png" text="充值成功" btntext="完成">
+    <view class="content-wrap">
+      <view class="list" wx:for="{{orderList}}">
+        <span class='list-title'>
+          {{item.title}}
+        </span>：
+        <text class="list-content">{{item.content}}</text>
+      </view>
+    </view>
+  </card>
+</view>
