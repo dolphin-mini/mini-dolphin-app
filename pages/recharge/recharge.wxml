@@ -21,8 +21,7 @@
   <view class="modal-box" hidden="{{isHidden}}">
     <view class="modal-body">
       <view class="modal-head">
-        <!-- <icon class="modal-close" type="clear" bindtap="closeModal" /> -->
-        <text class="modal-close" bindtap="closeModal">x</text>
+        <i class="icon-close modal-close" bindtap="closeModal"></i>
         <view class="modal-title">
           提示
         </view>
@@ -32,7 +31,7 @@
           <text class="tips">请您再次确认充值金额</text>
           <text class="tipsMoney">￥{{money}}</text>
         </view>
-        <button type="primary" bindtap="closeModal">是</button>
+        <button class="dolphin-button-default" type="primary" bindtap="closeModal">是</button>
      </view>
     </view>
   </view>
