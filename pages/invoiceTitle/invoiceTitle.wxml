@@ -39,8 +39,7 @@
     <!-- 订单列表 -->
     <view class="order-item-wrap">
       <view class="order-item-title">
-        <label>订单编号：</label>
-        <text>293840238490</text>
+        <text>订单编号：293840238490</text>
       </view>
       <view class="order-item-content">
         <view class="order-image">
@@ -69,8 +68,7 @@
   <view class="modal-box" hidden="{{isHiddenModal}}">
     <view class="modal-body">
       <view class="modal-head">
-        <!-- <icon class="modal-close" type="clear" bindtap="closeModal" /> -->
-        <image class="modal-close" src="../../images/invoiceTitle/close.png" bindtap="closeModal"></image>
+        <i class="icon-close modal-close" bindtap="closeModal"></i>
         <view class="modal-title">
           填写抬头
         </view>
@@ -86,7 +84,77 @@
             bindtap="changeTitle"
             data-id="personal">个人/非企业</text>
         </view>
-        <button class="footer-btn" type="primary" bindtap="saveModal">保存</button>
+        <view class="invoice-list-wrap">
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">名称</label>
+            </view>
+            <view class="modify-input-text-wrap">
+              <input
+                id="adress"
+                name="adress"
+                class="modify-input"
+                type="text"
+                value="千佛山路" />
+            </view>
+          </view>
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">税号</label>
+            </view>
+            <view class="modify-input-text-wrap">
+              <input
+                id="adress"
+                name="adress"
+                class="modify-input"
+                type="text"
+                value="千佛山路" />
+            </view>
+          </view>
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">单位地址</label>
+            </view>
+            <view class="modify-textarea-wrap">
+              <textarea class="modify-textarea" placeholder="请输入文本" style="height: 3.3em" />
+            </view>
+          </view>
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">电话号码</label>
+            </view>
+            <view class="modify-input-text-wrap">
+              <input
+                id="adress"
+                name="adress"
+                class="modify-input"
+                type="text"
+                value="千佛山路" />
+            </view>
+          </view>
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">开户银行</label>
+            </view>
+            <view class="modify-textarea-wrap">
+              <textarea class="modify-textarea" placeholder="请输入文本" style="height: 3.3em" />
+            </view>
+          </view>
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">银行账户</label>
+            </view>
+            <view class="modify-input-text-wrap">
+              <input
+                id="adress"
+                name="adress"
+                class="modify-input"
+                type="text"
+                value="千佛山路" />
+            </view>
+          </view>
+        </view>
+        <button class="dolphin-button-default" type="primary" bindtap="saveModal">保存</button>
      </view>
     </view>
   </view>

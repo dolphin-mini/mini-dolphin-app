@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/recharge/recharge",
+    "pages/invoiceTitle/invoiceTitle",
     "pages/myCenter/myCenter",
+    "pages/recharge/recharge",
     "pages/login/login",
     "pages/index/index",
     "pages/order/order",
-    "pages/invoiceTitle/invoiceTitle",
     "pages/invioceDetail/invioceDetail",
     "pages/start/start",
     "pages/rechargeDetail/rechargeDetail",
