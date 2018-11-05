@@ -1,0 +1,69 @@
+<!--pages/newIndex/newIndex.wxml-->
+<view class="container">
+  <view class="tools-wrap">
+    <image class="tools-icon" src="../../images/position.png"></image>
+    <text class="tools-title">{{here}}</text>
+  </view>
+
+  <navigator url="/pages/order/order" class="card-wrap" bindtap="navToOrder">
+    <view class="card-type">
+      签到积分：<text class="card-type-L3">{{cardType}}</text>
+      <image class="card-tips" src="../../images/tips.png"></image>
+    </view>
+    <view class='card-info'>
+      <view class="card-info-wrap">
+        <view class="card-info-left">
+          <view class="avatar-wrap"></view>
+          <view class="userinfo">
+            <view class="userinfo-first">
+              {{userinfo.name}}
+              <image class="fix-name" src="../../images/fix.png" />
+            </view>
+            <view class="userinfo-second">
+              {{userinfo.mobilephone}}
+              <view class="certification">{{userinfo.certification}}<image class="vip-icon" src="../../images/vip.png" /></view>
+            </view>
+          </view>
+        </view>
+        <view class="card-info-right">
+          <image class="QRCode" src="../../images/index/code.png" />
+        </view>
+      </view>
+    </view>
+    <view class="member-ID">
+      <view wx:for="{{userinfo.memberID}}" wx:for-item="item">
+        <image wx:for="{{item}}" wx:for-item="num" class="num-icon" src="../../images/{{num}}.png" />
+      </view>
+    </view>
+  </navigator>
+
+  <view class="content-wrap">
+    <view class="content-title">请选择油枪</view>
+    <view class='oil-type'>
+      <view class="oil-type-item" wx:for="{{oil.type}}">
+        {{item}}
+      </view>
+    </view>
+    <view class="oilgun-type">
+      <view class="oilgun-type-item" wx:for="{{oil.gun}}">
+        <text class="oilgun-type-text">{{item}}号枪</text>
+        <text class="oilgun-type-oil">#92</text>
+      </view>
+    </view>
+    <view class="price">
+      <view class="input-wrap">
+        <label class="label-text">输入金额：</label>
+        <input class="input-text" type='number' />
+        <view class="input-suffix">元</view>
+      </view>
+    </view>
+    <view class="price-card">
+      <view class="price-card-item" wx:for="{{oil.priceCard}}" wx:for-item="item">
+        {{item}}
+      </view>
+    </view>
+    <view class="submit-wrap">
+      <button class="dolphin-button-default" type="primary">下一步</button>
+    </view>
+  </view>
+</view>

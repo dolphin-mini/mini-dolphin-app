@@ -7,9 +7,9 @@ Page({
   data: {
     isGettingCode: false,
     times: 60,
-    isRead: true,
-    mobilePhone: null,
-    secortyCode: null,
+    isRead: false,
+    mobilePhone: null, //手机号
+    secorityCode: null, // 验证码
     countries:[
       {
         id: 86,
@@ -24,7 +24,7 @@ Page({
         key: "交首付款"
       }
     ],
-    prefixPhone: 0
+    prefixPhone: 0, // 手机号前缀
   },
 
   /**
@@ -107,40 +107,57 @@ Page({
       return
     }
     const _this = this;
-    this.setData({
-      isGettingCode: true,
-      times: (_this.data.times - 1),
-    },() => {
-      this.timer = setInterval( () => {
-        if(this.data.times === 0) {
+    const url = '';
+    const data = {};
+    const method = "POST";
+    utils.request(url, data, method).then((res)=>{
+      this.setData({
+        isGettingCode: true,
+        times: (_this.data.times - 1),
+      }, () => {
+        this.timer = setInterval(() => {
+          if (this.data.times === 0) {
+            this.setData({
+              isGettingCode: false,
+              times: 60,
+            });
+            clearInterval(this.timer);
+            this.timer = null;
+            return
+          }
           this.setData({
-            isGettingCode: false,
-            times: 60,
+            isGettingCode: true,
+            times: (this.data.times - 1),
           });
-          clearInterval(this.timer);
-          this.timer = null;
-          return
-        }
-        this.setData({
-          isGettingCode: true,
-          times: (this.data.times - 1),
-        });
-      },1000);
-    });
+        }, 1000);
+      });
+      wx.showToast({
+        title: '您已成功获取验证码，请注意查收',
+        icon: 'none',
+      });
+    },(res)=>{
 
-    wx.showToast({
-      title: '您已成功获取验证码，请注意查收',
-      icon: 'none',
+    });
+  },
+  /**
+   * 输入验证码
+   */
+  secorityCodeChange: function (e) {
+    const code = e.detail.value;
+    this.setData({
+      secorityCode: code,
     });
   },
   /**
    * 是否阅读协议
    */
   isReadChange: function () {
-    console.log(this.data.isRead)
+    // console.log(this.data.isRead)
     this.setData({
       isRead: !this.data.isRead,
     });
+    const { mobilePhone, secorityCode, isRead} = this.data;
+    console.log(mobilePhone, secorityCode, isRead)
   },
   /**
    * 输入手机号
@@ -157,7 +174,7 @@ Page({
   secorityCodeChange: function (e) {
     const code = e.detail.value;
     this.setData({
-      secortyCode: code,
+      secorityCode: code,
     });
   },
   /**
@@ -166,7 +183,7 @@ Page({
   login: function () {
     const { mobilePhone, prefixPhone, secorityCode } = this.data;
     wx.redirectTo({
-      url: '../index/index',
+      url: '../newIndex/newIndex',
     })
     const config = {
       url: "http://sdfds",

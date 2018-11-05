@@ -27,7 +27,7 @@
   font-size: 36rpx;
 }
 .login {
-  margin-top: 100rpx;
+  margin-top: 204rpx;
 }
 .loginTitle {
   margin-left: 30rpx;
@@ -126,8 +126,11 @@
   font-size: 26rpx;
   color: #666;
 }
-.submitWrap {
-  margin: 100rpx 30rpx 0 30rpx;
+.submit-wrap {
+  margin: 0 30rpx;
+  position: absolute;
+  width: calc(100% - 60rpx);
+  bottom: 71rpx;
 }
 .getBtn {
   width: 190rpx;

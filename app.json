@@ -2,6 +2,7 @@
   "pages": [
     "pages/start/start",
     "pages/login/login",
+    "pages/newIndex/newIndex",
     "pages/index/index",
     "pages/invoiceTitle/invoiceTitle",
     "pages/myCenter/myCenter",
