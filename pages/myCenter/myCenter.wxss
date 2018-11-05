@@ -52,7 +52,7 @@
   display: flex;
   width: 270rpx;
   height: 52rpx;
-  border: 1px solid #257CE1;
+  border: 1rpx solid #257CE1;
   border-radius: 3px;
 }
 .modify-input {
@@ -118,8 +118,9 @@
 .modal-head {
   position: relative;
   padding-bottom: 13rpx;
+  border-bottom: 1rpx solid #ccc;
 }
-.modal-head::after {
+/* .modal-head::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -130,7 +131,7 @@
   color: #e5e5e5;
   transform-origin: 0 100%;
   transform: scaleY(0.5);
-}
+} */
 .modal-close {
   position: absolute;
   top: 18rpx;

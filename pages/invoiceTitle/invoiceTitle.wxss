@@ -71,9 +71,7 @@ page {
 /* list */
 .order-item-wrap {
   margin: 30rpx 30rpx 0 30rpx;
-  /* box-shadow: inset 0px 0px 1px -1px #ccc; */
-  box-shadow:inset 0px -1px 1px -1px #ccc;
-  /* border: 1px solid #ccc; */
+  border: 1rpx solid #ccc;
   border-radius: 20rpx;
   background: #FFF;
 }
@@ -86,8 +84,9 @@ page {
   padding: 10rpx 20rpx 10rpx 20rpx;
   font-size: 24rpx;
   color: #333;
+  border-bottom: 1rpx solid #e5e5e5;
 }
-.order-item-title:after {
+/* .order-item-title:after {
   content: " ";
   position: absolute;
   left: 0;
@@ -98,7 +97,7 @@ page {
   color: #e5e5e5;
   transform-origin: 0 100%;
   transform: scaleY(0.5);
-}
+} */
 .order-item-content {
   display: flex;
 }
@@ -140,8 +139,9 @@ page {
   justify-content: space-between;
   padding: 10rpx 22rpx 10rpx 22rpx;
   font-size: 24rpx;
+  border-top: 1rpx solid #e5e5e5;
 }
-.order-item-tips::before {
+/* .order-item-tips::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -152,7 +152,7 @@ page {
   color: #e5e5e5;
   transform-origin: 0 100%;
   transform: scaleY(0.5);
-}
+} */
 
 
 /* footer */
@@ -248,7 +248,6 @@ page {
   font-size: 30rpx;
   color: #666;
   border: 1rpx solid #666;
-  /* box-shadow: inset 0px 0px 1px -1px #666; */
   border-radius: 6rpx;
 }
 .select-item.active {
@@ -291,13 +290,13 @@ page {
   display: flex;
   width: 398rpx;
   height: 52rpx;
-  border: 1px solid #257CE1;
+  border: 1rpx solid #257CE1;
   border-radius: 3px;
 }
 .modify-textarea-wrap {
   position: relative;
   width: 398rpx;
-  border: 1px solid #257CE1;
+  border: 1rpx solid #257CE1;
   border-radius: 3px;
 }
 .modify-textarea {

@@ -2,10 +2,10 @@
   "pages": [
     "pages/invoiceTitle/invoiceTitle",
     "pages/myCenter/myCenter",
-    "pages/recharge/recharge",
-    "pages/login/login",
-    "pages/index/index",
     "pages/order/order",
+    "pages/index/index",
+    "pages/login/login",
+    "pages/recharge/recharge",
     "pages/invioceDetail/invioceDetail",
     "pages/start/start",
     "pages/rechargeDetail/rechargeDetail",

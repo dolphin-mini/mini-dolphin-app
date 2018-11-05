@@ -89,11 +89,8 @@ page {
   bottom: 0;
   right: 0;
   height: 50%;
-  width: 1px;
-  border-right: 1px solid #257CE1;
+  border-right: 1rpx solid #257CE1;
   color: #e5e5e5;
-  transform-origin: 0 100%;
-  transform: scaleX(0.5);
 }
 .results-title {
   font-size: 36rpx;

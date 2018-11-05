@@ -98,6 +98,14 @@ Page({
    * 获取验证码
    */
   getSecurityCode: function () {
+    const { mobilePhone } = this.data;
+    if(!mobilePhone) {
+      wx.showToast({
+        title: '请输入手机号',
+        icon: 'none'
+      });
+      return
+    }
     const _this = this;
     this.setData({
       isGettingCode: true,
@@ -123,14 +131,6 @@ Page({
     wx.showToast({
       title: '您已成功获取验证码，请注意查收',
       icon: 'none',
-      success: function (res) {
-        console.log(res);
-        if (res.confirm) {
-          console.log('用户点击主操作')
-        } else {
-          console.log('用户点击辅助操作')
-        }
-      }
     });
   },
   /**

@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -119,5 +119,19 @@ Page({
         console.log(res)
       }
     })
+    // var _this = this;
+    // wx.requestPayment({
+    //   'timeStamp': '',
+    //   'nonceStr': '',
+    //   'package': '',
+    //   'signType': 'MD5',
+    //   'paySign': '',
+    //   'success': function (res) {
+    //     console.log(res)
+    //   },
+    //   'fail': function (res) {
+    //     console.log(res)
+    //   }
+    // })
   }
 })

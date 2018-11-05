@@ -131,7 +131,7 @@ page {
 .order-list-item {
   position: relative;
   margin-top: 20rpx;
-  border: 1px solid #ccc;
+  border: 1rpx solid #ccc;
   border-radius: 20rpx;
 }
 .order-list-item-header{
@@ -139,8 +139,9 @@ page {
   display: flex;
   align-items: center;
   padding: 19rpx 10rpx 17rpx 10rpx;
+  border-bottom: 1rpx solid #ccc;
 }
-.order-list-item-header::after {
+/* .order-list-item-header::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -151,7 +152,7 @@ page {
   color: #e5e5e5;
   transform-origin: 0 100%;
   transform: scaleY(0.5);
-}
+} */
 .header-text {
   font-size: 24rpx;
   color: #333;
@@ -216,8 +217,9 @@ page {
   justify-content: space-between;
   align-items: center;
   padding: 18rpx 30rpx 14rpx 10rpx;
+  border-top: 1px solid #ccc;
 }
-.order-list-item-footer::before {
+/* .order-list-item-footer::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -228,7 +230,7 @@ page {
   color: #e5e5e5;
   transform-origin: 0 100%;
   transform: scaleY(0.5);
-}
+} */
 .footer-time {
   line-height: 24rpx;
   font-size: 24rpx;
