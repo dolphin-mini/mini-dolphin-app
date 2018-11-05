@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/start/start",
+    "pages/login/login",
+    "pages/index/index",
     "pages/invoiceTitle/invoiceTitle",
     "pages/myCenter/myCenter",
     "pages/order/order",
-    "pages/index/index",
-    "pages/login/login",
     "pages/recharge/recharge",
     "pages/invioceDetail/invioceDetail",
-    "pages/start/start",
     "pages/rechargeDetail/rechargeDetail",
     "pages/logs/logs",
     "pages/rechargeCard/rechargeCard"

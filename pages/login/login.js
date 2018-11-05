@@ -165,6 +165,9 @@ Page({
    */
   login: function () {
     const { mobilePhone, prefixPhone, secorityCode } = this.data;
+    wx.redirectTo({
+      url: '../index/index',
+    })
     const config = {
       url: "http://sdfds",
       method: "post",

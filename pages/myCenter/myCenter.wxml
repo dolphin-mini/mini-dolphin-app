@@ -17,8 +17,10 @@
       <text class="logo-text">身份认证</text>
     </view>
     <view class="logo-wrap">
-      <image class="header-logo" src="../../images/myCenter/bill.png"></image>
-      <text class="logo-text">发票抬头</text>
+      <navigator class="logo-wrap" url="/pages/invoiceTitle/invoiceTitle" hover-class="navigator-hover">
+        <image class="header-logo" src="../../images/myCenter/bill.png"></image>
+        <text class="logo-text">发票抬头</text>
+      </navigator>
     </view>
   </view>
   <!-- content -->
@@ -73,6 +75,7 @@
               name="sex"
               class="modify-input picker-input"
               type="text"
+              disabled
               value="{{region[0]}} {{region[1]}} {{region[2]}}" />
             <i class="icon-drop drop-down"></i>
           </view>

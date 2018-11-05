@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="page">
-  <view class="userinfo">
+  <view class="userinfo" bindtap="navToOrder">
     <!-- 会员信息 -->
     <view class="userMember">
       <view class="memberText">
@@ -34,7 +34,7 @@
     </view>
     <!-- 会员ID -->
     <view class="cardId">
-      <image class="cardNumber" wx:for="{{memberID}}" src="../../images/index/{{item}}.png" />
+      <image class="cardNumber" wx:for="{{memberID}}" wx:key="{{index}}" src="../../images/index/{{item}}.png" />
     </view>
   </view>
   

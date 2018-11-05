@@ -26,7 +26,7 @@
         <view class="text-wrap userPhone">
           <text>132xxxx2323</text>
           <view class="text-wrap">
-            <text class="isAuthor">未认证</text>
+            <navigator url="/pages/myCenter/myCenter" hover-class="navigator-hover"><text class="isAuthor">未认证</text></navigator>
             <image class="memberTips" src="../../images/order/unauthorized.png"></image>
           </view>
         </view>

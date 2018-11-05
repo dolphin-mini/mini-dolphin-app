@@ -51,5 +51,10 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  navToOrder: function () {
+    wx.navigateTo({
+      url: '../order/order',
+    })
   }
 })
