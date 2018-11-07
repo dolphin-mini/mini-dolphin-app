@@ -1,25 +1,31 @@
-// pages/order/order.js
+// pages/maps/maps.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [1,2,3,4,,5,6,7,8,9]
-  },
+    
+    },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+ 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
+  onReady: function (e) {
+    const _this = this;
+   
+    _this.mapCtx = wx.createMapContext('oilMap');
+    _this.mapCtx.moveToLocation()
+   
+  
   },
 
   /**
@@ -63,12 +69,15 @@ Page({
   onShareAppMessage: function () {
 
   },
-  navToOrderDetail: function () {
-    wx.navigateTo({
-      url: '../orderDetail/orderDetail',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+  /**
+   * 获取当前定位
+   */
+  getCurrentPosition: function () {
+    wx.getLocation({
+      success: function(res) {
+        app.globalData.latitude = res.latitude;
+        app.globalData.longitude = res.longitude;
+      },
     })
   }
 })

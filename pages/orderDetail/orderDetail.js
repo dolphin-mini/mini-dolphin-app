@@ -1,11 +1,11 @@
-// pages/order/order.js
+// pages/orderDetail/orderDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [1,2,3,4,,5,6,7,8,9]
+    visible: true,
   },
 
   /**
@@ -63,12 +63,9 @@ Page({
   onShareAppMessage: function () {
 
   },
-  navToOrderDetail: function () {
-    wx.navigateTo({
-      url: '../orderDetail/orderDetail',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+  openPicker: function () {
+    this.setData({
+      visible: false,
+    });
   }
 })

@@ -2,6 +2,9 @@
 @import 'weui.wxss';
 @import './libs/style/style.wxss';
 /* 全局样式 */
+page {
+  background: #F2F3F5;
+}
 .container {
   box-sizing: border-box;
 }

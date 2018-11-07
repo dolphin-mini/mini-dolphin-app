@@ -1,0 +1,12 @@
+<!--pages/maps/maps.wxml-->
+<view style="width:100%;height:100vh;">
+<map 
+  id="oilMap"
+  style="width: 100%; height: 100%;"
+  longitude="{{latitude}}" latitude="{{latitude}}" 
+  markers="{{markers}}"
+  bindtap="getCurrentPosition"
+  show-location
+>
+</map>
+</view>

@@ -35,6 +35,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    longitude: null,
+    latitude: null
   }
 })

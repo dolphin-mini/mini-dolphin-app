@@ -1,0 +1,175 @@
+/* pages/orderDetail/orderDetail.wxss */
+/* 订单信息 */
+.order-list-wrap {
+  position: relative;
+  padding: 30rpx 30rpx;
+}
+.order-list-item {
+  position: relative;
+  border: 1rpx solid #ccc;
+  border-radius: 20rpx;
+  background: #fff;
+}
+.order-list-item-header{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19rpx 20rpx 17rpx 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+/* .order-list-item-header::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #ccc;
+  color: #e5e5e5;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+} */
+.header-text {
+  font-size: 24rpx;
+  color: #333;
+  line-height: 24rpx;
+}
+.order-list-item-content {
+  display: flex;
+}
+.order-list-item-content-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 30rpx;
+}
+.item-image-wrap {
+  width: 150rpx;
+  height: 150rpx;
+  border: 1rpx solid #ccc;
+}
+.order-list-item-content-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(100% - 210rpx);
+}
+.list-item-right-top {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 32rpx;
+  margin-top: 18rpx;
+}
+.list-item-right-center {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 32rpx;
+}
+.oil-type {
+  font-size: 30rpx;
+  color: #257CE1;
+}
+.oil-price {
+  font-size: 28rpx;
+  color: #257CE1;
+}
+.oil-gun {
+  font-size: 24rpx;
+  color: #666;
+}
+.oil-integral {
+  font-size: 22rpx;
+  color: #666;
+}
+.list-item-right-bottom {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+.oil-liter {
+  line-height: 22rpx;
+}
+
+.order-list-item-footer  {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18rpx 30rpx 14rpx 10rpx;
+  border-top: 1px solid #ccc;
+}
+/* .order-list-item-footer::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #ccc;
+  color: #e5e5e5;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+} */
+.footer-time {
+  line-height: 24rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+.footer-pay {
+  line-height: 28rpx;
+  font-size: 28rpx;
+}
+
+/* form */
+.form-content {
+  margin: 30rpx 28rpx;
+}
+.weui-cells {
+  background: transparent;
+}
+.weui-select {
+  border-right: none;
+}
+.weui-cell_select {
+  padding: 10rpx 0px 10rpx 15px !important;
+}
+.weui-cell_switch {
+  padding-top: 20rpx !important;
+  padding-bottom: 20rpx !important;
+}
+.weui-cells:before {
+  display: none;
+}
+
+.weui-cells:nth-last-child(2)::after {
+  display: none;
+}
+
+.weui-cell:before {
+  display: none;
+}
+.weui-cell_select::before {
+  display: none;
+}
+.weui-cell_switch::before {
+  display: none;
+}
+
+.submit-wrap {
+  margin-top: 48rpx;
+}
+/* 优惠信息 */
+.message-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.message-list-item:last-child {
+  border-bottom: none;
+}

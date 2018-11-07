@@ -1,0 +1,58 @@
+<!--components/mypicker/mypicker.wxml-->
+<view class='mini-picker' hidden="{{!isShow}}">
+  <view class='shadow' bindtap='hidePicker'></view>
+  <view class='mini-picker-content'>
+    <view class='picker-head'>
+      <view hidden='{{!(pickerType=="default")}}'>
+        <text class='cancle' bindtap='hidePicker'>取消</text>
+        <text class='sure' bindtap='_successEvent'>确认</text>
+      </view>
+      <view class="picker-head-title" hidden='{{!(pickerType=="type1")}}'>
+       {{title}}
+      </view>
+    </view>
+
+    <picker-view
+      class='picker-view' 
+      indicator-style="height: 100rpx;" 
+      value="{{value}}" 
+      bindchange="bindChange">
+      <!-- 一列picker -->
+      <block wx:if="{{column==='1'}}">
+        <picker-view-column>
+          <view wx:for="{{list}}" style="line-height: 68rpx">
+            <view class="picker-column-wrap">
+              <label>{{item.title}}</label>
+              <image 
+                src="{{item.checked?'../../images/1.png':'../../images/0.png'}}" 
+                style="width:35rpx;height:35rpx;"
+              />
+            </view>
+          </view>
+        </picker-view-column>
+      </block>
+      <!-- 两列picker -->
+      <block wx:if="{{column==='2'}}">
+        <picker-view-column>
+          <view wx:for="{{list}}" style="line-height: 68rpx">{{item.name}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{secondClo}}" style="line-height: 68rpx">{{item.name}}</view>
+        </picker-view-column>
+      </block>
+      <!-- 三列picker -->
+      <block wx:if="{{column==='3'}}">
+        <picker-view-column>
+          <view wx:for="{{list}}" style="line-height: 68rpx">{{item.name}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{secondClo}}" style="line-height: 68rpx">{{item.name}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{thirdClo}}" style="line-height: 68rpx">{{item.name}}</view>
+        </picker-view-column>
+      </block>
+    </picker-view>
+  </view>
+
+</view>

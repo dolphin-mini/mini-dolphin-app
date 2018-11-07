@@ -1,0 +1,152 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="pages">
+    
+  <view class="order-list-wrap">
+    <view class="order-list-item">
+      <view class="order-list-item-header">
+        <text class="header-text">订单编号：239847238974</text>
+        <text class="header-text">西城小海豚加油站</text>
+      </view>
+      <view class="order-list-item-content">
+        <view class="order-list-item-content-left">
+          <view class="item-image-wrap">
+          </view>
+        </view>
+        <view class="order-list-item-content-right">
+          <view>
+            <view class="list-item-right-top">
+              <text class="oil-type">98#油品</text>
+              <text class="oil-price">￥200</text>
+            </view>
+            <view class="list-item-right-center">
+              <text class="oil-gun">2号枪</text>
+              <text class="oil-integral">满200减100</text>
+            </view>
+          </view>
+          <view class="list-item-right-bottom">
+            <text class="oil-liter">40L</text>
+            <text>单价：7.33元/L</text>
+          </view>
+        </view>
+      </view>
+      <view class="order-list-item-footer">
+        <text class="footer-time">下单时间：2018-20-02 12:32:33</text>
+        <text class="footer-pay">未支付</text>
+      </view>
+    </view>
+  </view>
+  <!-- 表单 -->
+  <view class="form-content">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__bd">优惠信息</view>
+        <view class="weui-cell__ft">
+            <view class="weui-select" bindtap="openPicker">全商品减5元</view>
+            <my-picker visible="{{visible}}" bindmyevent='myevent'>
+              <scroll-view scroll-y="{{true}}" style="height:100%">
+              <view class="message-list-item">
+                <text>全商品减1元</text>
+                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
+              </view>
+              <view class="message-list-item">
+                <text>全商品减2元</text>
+                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
+              </view>
+              <view class="message-list-item">
+                <text>全商品减3元</text>
+                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
+              </view>
+              <view class="message-list-item">
+                <text>全商品减5元</text>
+                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
+              </view>
+              <view class="message-list-item">
+                <text>全商品减5元</text>
+                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
+              </view>
+              <view class="message-list-item">
+                <text>全商品减5元</text>
+                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
+              </view>
+               <view class="message-list-item">
+                <text>全商品减5元</text>
+                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
+              </view>
+               <view class="message-list-item">
+                <text>全商品减5元</text>
+                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
+              </view>
+              </scroll-view>
+            </my-picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">可用200积分抵用2元</view>
+          <view class="weui-cell__ft">
+              <switch checked />
+          </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">开具发票</view>
+          <view class="weui-cell__ft">
+              <switch checked />
+          </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__bd">发票类型</view>
+        <view class="weui-cell__ft">
+          <picker bindchange="bindAccountChange" value="{{accountIndex}}" range="{{accounts}}">
+              <view class="weui-select">优惠卡券</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__bd">发票抬头</view>
+        <view class="weui-cell__ft">
+          <picker bindchange="bindAccountChange" value="{{accountIndex}}" range="{{accounts}}">
+              <view class="weui-select">填写抬头</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells_after-title">
+      <view class="weui-cell" style="padding-bottom: 0;">
+        <view class="weui-cell__bd">
+          总金额
+        </view>
+        <view class="weui-cell__ft">
+            ￥200
+        </view>
+      </view>
+      <view class="weui-cell" style="padding-top:10rpx;">
+        <view class="weui-cell__bd">
+        </view>
+        <view class="weui-cell__ft">
+            -￥10
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          实付金额
+        </view>
+        <view class="weui-cell__ft">
+            ￥200
+        </view>
+      </view>
+    </view>
+    <view class="submit-wrap">
+      <button type='primary' class="dolphin-button-default">确认加油</button>
+    </view>
+  </view>
+
+</view>

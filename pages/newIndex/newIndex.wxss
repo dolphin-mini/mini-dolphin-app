@@ -139,6 +139,9 @@ page {
   border-radius: 10rpx;
   margin-right: 15rpx;
 }
+.oil-type-checked {
+  border: 1px dashed rgba(9,99,221,1);
+}
 .oil-type-item:last-child {
   margin-right: 0rpx;
 }
@@ -155,19 +158,22 @@ page {
   justify-content: center;
   width:158rpx;
   height:158rpx;
-  background:linear-gradient(90deg,rgba(77,155,253,1),rgba(73,106,242,1));
-  box-shadow:0rpx 10rpx 19rpx 2rpx rgba(37,124,225,0.47);
+  background:#fff;
   border-radius:10px;
   margin-left: 10rpx;
   margin-bottom: 30rpx;
+   color: #257CE1;
+}
+.oilgun-checked {
+  background:linear-gradient(90deg,rgba(77,155,253,1),rgba(73,106,242,1));
+  box-shadow:0rpx 10rpx 19rpx 2rpx rgba(37,124,225,0.47);
+  color: #fefefe;
 }
 .oilgun-type-text {
   font-size: 48rpx;
-  color: #fefefe;
 }
 .oilgun-type-oil {
   font-size: 30rpx;
-  color: #fefefe;
 }
 /* 输入框 */
 .input-wrap {
@@ -185,7 +191,7 @@ page {
   color: #666;
 }
 .input-text {
-
+  width: 65%;
 }
 .input-suffix {
   font-size: 30rpx;
@@ -207,6 +213,9 @@ page {
   border-radius:5rpx;
   font-size: 36rpx;
   color: #999;
+}
+.price-card-checked {
+  border: 1rpx dashed rgba(37,124,225,1);
 }
 .submit-wrap {
   padding: 60rpx 30rpx;

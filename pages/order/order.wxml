@@ -69,7 +69,7 @@
   </view>
   <!-- 订单信息 -->
   <view class="order-list-wrap">
-    <view wx:for="{{list}}" class="order-list-item">
+    <view wx:for="{{list}}" class="order-list-item" bindtap="navToOrderDetail">
       <view class="order-list-item-header">
         <text class="header-text">订单编号：239847238974</text>
       </view>
