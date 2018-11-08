@@ -95,5 +95,11 @@ Page({
     this.setData({
       isHidden: true,
     });
+    wx.navigateTo({
+      url: '../rechargeDetail/rechargeDetail',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
 })

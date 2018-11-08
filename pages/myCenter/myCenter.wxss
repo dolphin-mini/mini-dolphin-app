@@ -1,8 +1,15 @@
 /* pages/myCenter/myCenter.wxss */
 /* header style */
+.page {
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+}
 .header {
   display: flex;
   height: 230rpx;
+  background: url(http://meatball.org.cn:10000/images/header_bg.png) -85rpx -15rpx;
+  background-size: 120% 120%;
 }
 .logo-wrap {
   flex: 1;
@@ -17,7 +24,7 @@
 }
 .logo-text {
   font-size: 30rpx;
-  color: #f00;
+  color: #fff;
 }
 /* list style */
 .modify-input-wrap {
@@ -27,13 +34,19 @@
   font-size: 30rpx;
   color: #333;
 }
-.modify-input-label {
+/* .modify-input-label {
   display: inline-block;
   overflow: hidden;
   text-align: justify;
   vertical-align: top;
   height: 50rpx;
   width: 120rpx;
+} */
+.modify-input-label {
+  height: 50rpx;
+  width: 120rpx;
+  text-align: justify;
+  text-align-last: justify;
 }
 .modify-input-label::after {
   content: "";
@@ -144,7 +157,10 @@
   font-size: 40rpx;
 }
 .content {
-  margin-top: 30rpx;
+  flex: 1;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  background: #fff;
 }
 .modal-content{
   padding: 0 20rpx;

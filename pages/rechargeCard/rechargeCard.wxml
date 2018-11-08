@@ -30,7 +30,7 @@
         </view>
       </view>
       <view class="btn-wrap">
-        <button class="btn" type="primary" bindtap="openModal">立即充值</button>
+        <button class="dolphin-button-default" type="primary" bindtap="openModal">立即充值</button>
       </view>
     </view>
 

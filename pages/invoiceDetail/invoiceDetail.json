@@ -1,11 +1,10 @@
 {
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "支付页面",
+  "navigationBarTitleText": "发票详情",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
   "usingComponents": {
-    "card": "/components/card/card",
     "detail-input": "../../components/detailInput/detailInput"
   }
 }

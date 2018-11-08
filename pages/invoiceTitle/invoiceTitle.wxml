@@ -43,7 +43,7 @@
       </view>
       <view class="order-item-content">
         <view class="order-image">
-          <image class="order-image-check" src="../../images/invoiceTitle/check_order.png"></image>
+          <image class="order-image-check" src="../../images/unselected.png"></image>
         </view>
         <view class="order-detail">
           <text class="oil-type">98#油品</text>
@@ -60,8 +60,11 @@
     </view>
   </view>
   <view class="footer-wrap">
-    <button wx:if="{{isSelected}}" class="footer-btn" type='primary'>开票请求</button>
-    <button wx:else class="footer-disable-btn" type='primary' disabled>开票请求</button>
+    <button 
+      class="{{isSelected?'dolphin-button-default':'dolphin-button-disabled'}}"
+      type='primary'
+      bindtap="submitInvoice"
+      disabled='{{!isSelected}}'>开票请求</button>
   </view>
 
   <!-- 弹层 -->

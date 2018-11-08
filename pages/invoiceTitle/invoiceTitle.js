@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isSelected: false,
+    isSelected: true,
     isActive: null,
     isHiddenModal: true,
     titleType: null,
@@ -133,5 +133,13 @@ Page({
     //     console.log(res)
     //   }
     // })
+  },
+  /**
+   * 提交请求
+   */
+  submitInvoice: function () {
+    wx.navigateTo({
+      url: '../invoiceDetail/invoiceDetail',
+    });
   }
 })

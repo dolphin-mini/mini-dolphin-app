@@ -36,15 +36,15 @@
     <view class="userinfo-detail">
       <view class="userinfo-detail-item">
         <text class="text-number">3000.00</text>
-        <text class="text-describe">充值</text>
+        <navigator url="/pages/recharge/recharge"><text class="text-describe">充值</text></navigator>
       </view>
       <view class="userinfo-detail-item">
         <text class="text-number">300</text>
-        <text class="text-describe">充值</text>
+        <text class="text-describe">积分兑换</text>
       </view>
       <view class="userinfo-detail-item">
         <text class="text-number">300.00</text>
-        <text class="text-describe">充值</text>
+        <text class="text-describe">累计节省</text>
       </view>
     </view>
   </view>

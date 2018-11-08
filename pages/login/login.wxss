@@ -38,10 +38,9 @@
 .loginPhone {
   display: flex;
   margin: 30rpx;
-  padding: 16rpx 0 14rpx 2rpx;
-  border: 1px solid #fff;
   box-shadow:0rpx 10rpx 19rpx 2rpx rgba(153,153,153,0.47);
   border-radius:10rpx;  
+  height: 90rpx;
 }
 .country {
   flex: 1;
@@ -75,8 +74,8 @@
 }
 .securityCodeWrap {
   display: flex;
-  margin: 30rpx 30rpx 0 30rpx;
-  padding: 16rpx 0 14rpx 2rpx;
+  margin: 30rpx 30rpx 31rpx 30rpx;
+  height: 90rpx;
 }
 .securityCode {
   flex: 3;

@@ -25,85 +25,109 @@
   </view>
   <!-- content -->
   <view class="content">
-    <modify-input></modify-input>
-    <view class="modify-input-wrap">
-      <view class="modify-input-label-wrap">
-        <span class="modify-input-label">昵称</span>
+    <form bindsubmit="formSubmit">
+  
+      <view class="modify-input-wrap">
+        <view class="modify-input-label-wrap">
+          <text class="modify-input-label">手机号码</text>
+        </view>
+        <view class="modify-input-text-wrap">
+          <input class="modify-input" type="number" disabled value="15128283552" />
+        </view>
+        <view wx:if="{{!isModify}}" class="modify-btn" bindtap="modify">
+          修改手机号
+        </view>
       </view>
-      <view class="modify-input-text-wrap">
-        <input class="modify-input" type="text" value="15128283552" />
+      <view wx:if="{{isModify}}" class="modify-input-wrap">
+        <view class="modify-input-label-wrap">
+          <span class="modify-input-label"></span>
+        </view>
+        <view class="modify-input-text-wrap">
+          <input class="modify-input" type="number" />
+        </view>
+        <view class="modify-btn">
+          获取验证码
+        </view>
       </view>
-    </view>
+
+      <view class="modify-input-wrap">
+        <view class="modify-input-label-wrap">
+          <span class="modify-input-label">昵称</span>
+        </view>
+        <view class="modify-input-text-wrap">
+          <input class="modify-input" type="text" value="15128283552" />
+        </view>
+      </view>
+      <view class="modify-input-wrap">
+        <view class="modify-input-label-wrap">
+          <label for="sex" class="modify-input-label">性别</label>
+        </view>
+        <view class="modify-input-text-wrap">
+          <input id="sex" name="sex" class="modify-input" type="text" value="女" />
+        </view>
+      </view>
+
+      <view class="modify-input-wrap">
+        <view class="modify-input-label-wrap">
+          <label for="born" class="modify-input-label">出生日期</label>
+        </view>
+        <view class="modify-input-text-wrap">
+          <input
+            id="born"
+            name="born"
+            class="modify-input"
+            type="number"
+            value="1992-07-12" />
+        </view>
+      </view>
+
+      <view class="modify-input-wrap">
+        <view class="modify-input-label-wrap">
+          <label for="sex" class="modify-input-label">家庭地址</label>
+        </view>
+        <view class="modify-input-text-wrap">
+          <picker
+            mode="region"
+            bindchange="bindRegionChange"
+            value="{{region}}"
+          >
+            <view class="picker">
+              <input
+                id="sex"
+                name="sex"
+                class="modify-input picker-input"
+                type="text"
+                disabled
+                value="{{region[0]}} {{region[1]}} {{region[2]}}" />
+              <i class="icon-drop drop-down"></i>
+            </view>
+            </picker>
+        </view>
+      </view>
+
+      <view class="modify-input-wrap">
+        <view class="modify-input-label-wrap">
+          <label for="adress" class="modify-input-label">详情</label>
+        </view>
+        <view class="modify-input-text-wrap">
+          <input
+            id="adress"
+            name="adress"
+            class="modify-input"
+            type="text"
+            value="千佛山路" />
+        </view>
+      </view>
+      <view class="button-wrap">
+          <button
+            class="dolphin-button-default"
+            type="primary"
+            form-type="submit"
+          >保存</button>
+      </view>
+    </form>
   </view>
-  <form bindsubmit="formSubmit">
-    <view class="modify-input-wrap">
-      <view class="modify-input-label-wrap">
-        <label for="sex" class="modify-input-label">性别</label>
-      </view>
-      <view class="modify-input-text-wrap">
-        <input id="sex" name="sex" class="modify-input" type="text" value="女" />
-      </view>
-    </view>
-
-    <view class="modify-input-wrap">
-      <view class="modify-input-label-wrap">
-        <label for="born" class="modify-input-label">出生日期</label>
-      </view>
-      <view class="modify-input-text-wrap">
-        <input
-          id="born"
-          name="born"
-          class="modify-input"
-          type="number"
-          value="1992-07-12" />
-      </view>
-    </view>
-
-    <view class="modify-input-wrap">
-      <view class="modify-input-label-wrap">
-        <label for="sex" class="modify-input-label">家庭地址</label>
-      </view>
-      <view class="modify-input-text-wrap">
-        <picker
-          mode="region"
-          bindchange="bindRegionChange"
-          value="{{region}}"
-        >
-          <view class="picker">
-            <input
-              id="sex"
-              name="sex"
-              class="modify-input picker-input"
-              type="text"
-              disabled
-              value="{{region[0]}} {{region[1]}} {{region[2]}}" />
-            <i class="icon-drop drop-down"></i>
-          </view>
-          </picker>
-      </view>
-    </view>
-
-    <view class="modify-input-wrap">
-      <view class="modify-input-label-wrap">
-        <label for="adress" class="modify-input-label">详情</label>
-      </view>
-      <view class="modify-input-text-wrap">
-        <input
-          id="adress"
-          name="adress"
-          class="modify-input"
-          type="text"
-          value="千佛山路" />
-      </view>
-    </view>
-  <view class="button-wrap">
-        <button
-          class="btn"
-          type="primary"
-          form-type="submit"
-        >保存</button>
-      </view>
-  </form>
+</view>
 
   <!-- 弹层 -->
   <view class="modal-box" hidden="{{isHiddenModal}}">
@@ -123,8 +147,7 @@
           focus="{{!isHiddenModal}}"
           bindinput="IDcardChange"/>
         </view>
-        <button class="footer-btn" type="primary" bindtap="authentication">验证</button>
+        <button class="dolphin-button-default" type="primary" bindtap="authentication">验证</button>
      </view>
     </view>
   </view>
-</view>

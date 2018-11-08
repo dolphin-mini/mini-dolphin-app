@@ -7,7 +7,8 @@ Page({
   data: {
     isHiddenModal: true,
     IDCard: null,
-    region: ['广东省', '广州市', '海珠区']
+    region: ['广东省', '广州市', '海珠区'],
+    isModify: false,
   },
 
   /**
@@ -64,6 +65,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  modify: function () {
+    this.setData({
+      isModify: true,
+    });
   },
   /**
    * 打开弹层
