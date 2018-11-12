@@ -1,3 +1,4 @@
+const httpAjax = 'http://192.168.3.20:8088';
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -12,6 +13,27 @@ const formatTime = date => {
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
+}
+/**
+ * 调用微信登录
+ */
+function login() {
+  return new Promise(function (resolve, reject) {
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          //登录远程服务器
+          console.log(res)
+          resolve(res);
+        } else {
+          reject(res);
+        }
+      },
+      fail: function (err) {
+        reject(err);
+      }
+    });
+  });
 }
 /**
  * 封装loading
@@ -102,8 +124,10 @@ function showErrorToast(msg) {
 }
 
 module.exports = {
-  formatTime: formatTime,
-  loading: loading,
-  hideLoading: hideLoading,
-  request: request,
+  formatTime,
+  loading,
+  hideLoading,
+  request,
+  login,
+  httpAjax,
 }

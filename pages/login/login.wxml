@@ -69,6 +69,5 @@
           disabled="{{!(mobilePhone&&secorityCode&&isRead)}}"
         >立即验证</button>
     </view>
-
   </view>
 </view>

@@ -45,9 +45,16 @@
   padding: 20rpx 30rpx;
 }
 .item-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 150rpx;
   height: 150rpx;
   border: 1rpx solid #ccc;
+  background: url(http://meatball.org.cn:10000/images/avatar.png) 50% 50% no-repeat;
+  background-size: 70%;
+ color: #fff;
+ font-size: 37rpx;
 }
 .order-list-item-content-right {
   display: flex;

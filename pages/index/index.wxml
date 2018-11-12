@@ -12,11 +12,14 @@
     <!-- 用户信息 -->
     <view class="userWrap">
       <view class="userAvatar">
+        <button wx:if="{{true}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
         <image 
           bindtap="bindViewTap"
           class="userinfo-avatar"
           src="{{userInfo.avatarUrl}}"
           mode="cover" />
+      </block>
       </view>
       <view class="detailWrap">
         <view class="text-wrap">

@@ -1,16 +1,17 @@
 // pages/newIndex/newIndex.js
+const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    getUserInfo: false,
     here: '西城小海豚', // 状态 定位中... 定位失败
     cardType: '金卡',
     userinfo: {
-      name: '老谁家的小谁',
-      mobilephone: 151282828282,
-      avatar: 'http://xxxxxx',
+      nickName: 'Hi,游客',
+      avatarUrl: 'https://platform-wxmall.oss-cn-beijing.aliyuncs.com/upload/20180727/150547696d798c.png',
+      mobilephone: 'xxxxxxxxxxx',
       certification: '未认证',
       memberID: [[1,2,3],[4,5,6],[7,8,9],[0,1,2]],
     },
@@ -22,7 +23,6 @@ Page({
         }, {
           name:'95#',
           value: 2,
-          checked: true,
           gun: [1, 2, 3,4,5]
         },
         {
@@ -48,9 +48,8 @@ Page({
       value: 3,
       gun: [1, 2, 3]
     },
-    currentGun: 1,
+    currentGun: '',
     price: '',
-    
   },
 
   /**
@@ -65,6 +64,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+
     this.initGun();
   },
 
@@ -107,6 +107,34 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  /**
+   * 获取微信用户的信息
+   */
+  getWxUserInfo: function () {
+    const userinfo = this.data.userinfo;
+    const _this = this;
+    wx.getUserInfo({
+      success: function (res) {
+        console.log(res)
+        if(res.userInfo) {
+          const info = Object.assign({},userinfo,res.userInfo);
+          _this.setData({
+            userinfo: info,
+            getUserInfo: true,
+          });
+        } else {
+          this.setData({
+            getUserInfo: false,
+          });
+        }
+      },
+      fail: function () {
+        this.setData({
+          getUserInfo: false,
+        })
+      }
+    })
   },
   initGun: function () {
     const { oil } = this.data;
@@ -170,6 +198,7 @@ Page({
     this.setData({
       oil,
       currentOilType,
+      currentGun: '',
     });
   },
   /**
@@ -199,6 +228,11 @@ Page({
       });
     }
 
+  },
+  navToOrder: function () {
+    wx.navigateTo({
+      url: '../order/order',
+    })
   },
   navToOrderDetail: function () {
     wx.navigateTo({

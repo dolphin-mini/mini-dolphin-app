@@ -4,6 +4,7 @@
 /* 全局样式 */
 page {
   background: #F2F3F5;
+  font-family: PingFangSC-Regular,Roboto-Regular;
 }
 .container {
   box-sizing: border-box;

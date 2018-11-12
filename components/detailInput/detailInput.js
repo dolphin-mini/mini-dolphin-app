@@ -3,6 +3,7 @@ Component({
   /**
    * 组件的属性列表
    */
+  externalClasses:["label-class","input-class"],
   properties: {
     disabled: {
       type: Boolean,
@@ -39,13 +40,8 @@ Component({
     inputStyle: {
       type: String,
       value: '',
-    },
-    type: {
-      type: String,
-      value: 'text',
     }
   },
-  externalClasses: ['label-class'],
   /**
    * 组件的初始数据
    */

@@ -18,13 +18,16 @@ page {
 }
 .card-wrap {
   width: 100%;
-  height: 475rpx;
+  height: 455rpx;
+  background: url('http://meatball.org.cn:10000/images/card_bg.png') -15rpx -20rpx;
+  background-size: 102% 100%;
+
 }
 .card-type {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-top: 60rpx;
+  padding-top: 40rpx;
   padding-right: 46rpx;
   font-size:24rpx;
   color:rgba(51,51,51,1);
@@ -54,11 +57,31 @@ page {
   display: flex;
 }
 .avatar-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 95rpx;
   height: 114rpx;
   margin-left: 62rpx;
   margin-right: 34rpx;  
-  background: #ed43ff;
+  background: url('http://meatball.org.cn:10000/images/avatar.png');
+  background-size: 100%;
+}
+.avatar {
+  margin-top:20rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%; 
+}
+.get-avatar {
+  
+  font-size: 20rpx;
+  line-height: 20rpx;
+  padding: 0;
+  background: transparent;
+}
+.get-avatar::after {
+  border:none !important;
 }
 .userinfo {
 
@@ -115,6 +138,7 @@ page {
 /* content style */
 
 .content-wrap {
+  margin-top: -15rpx;
   padding: 0 29rpx;
 }
 .content-title {
@@ -132,15 +156,18 @@ page {
   align-items: center;
   justify-content: center;
   min-width: 125rpx;
-  height: 60rpx;
+  height: 59rpx;
   font-size: 30rpx;
   color:#257CE1;
   border: 1rpx solid #ccc;
   border-radius: 10rpx;
   margin-right: 15rpx;
+  background: #fff;
 }
 .oil-type-checked {
-  border: 1px dashed rgba(9,99,221,1);
+  border: none;
+  background:url('http://meatball.org.cn:10000/images/check_button_bg.png');
+  background-size: 100%;
 }
 .oil-type-item:last-child {
   margin-right: 0rpx;
@@ -162,12 +189,14 @@ page {
   border-radius:10px;
   margin-left: 10rpx;
   margin-bottom: 30rpx;
-   color: #257CE1;
+  color: #257CE1;
+  border:1px solid rgba(9,99,221,1);
 }
 .oilgun-checked {
   background:linear-gradient(90deg,rgba(77,155,253,1),rgba(73,106,242,1));
   box-shadow:0rpx 10rpx 19rpx 2rpx rgba(37,124,225,0.47);
   color: #fefefe;
+  border: none;
 }
 .oilgun-type-text {
   font-size: 48rpx;
@@ -215,7 +244,10 @@ page {
   color: #999;
 }
 .price-card-checked {
-  border: 1rpx dashed rgba(37,124,225,1);
+  border: none;
+  box-shadow:0rpx 10rpx 19rpx 2rpx rgba(37,124,225,0.47);
+  background:url('http://meatball.org.cn:10000/images/check_button_2xbg.png');
+  background-size: 100%;
 }
 .submit-wrap {
   padding: 60rpx 30rpx;

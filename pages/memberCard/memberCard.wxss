@@ -1,0 +1,71 @@
+/* pages/memberCard/memberCard.wxss */
+.member-card-wrap {
+  box-sizing: border-box;
+  padding: 30rpx 30rpx 0 30rpx;
+}
+.header {
+  padding: 40rpx;
+  height: 360rpx;
+  background: blue;
+}
+.title {
+  color: #fff;
+  font-size: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+}
+.text1 {
+  display: flex;
+  align-items: center;
+  margin-top: 36rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #fff;
+}
+.point {
+  display: inline-block;
+  margin-right: 10rpx;
+  width: 7rpx;
+  height: 7rpx;
+  background: #fff;
+  border-radius: 50%;
+}
+.text2 {
+  display: flex;
+  align-items: center;
+  margin-top: 32rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #fff;
+}
+.methods {
+  display: flex;
+  flex-direction: column;
+  margin-top: 26rpx;
+  padding-left: 17rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #eee;
+}
+
+.recharge-card {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 23rpx;
+}
+.card-item {
+  height: 180rpx;
+  width: 327rpx;
+  background: blue;
+}
+.rule-title {
+  margin: 50rpx 0;
+  font-size: 36rpx;
+  color: #333;
+  text-align: center;
+}
+.rule-list {
+  font-size: 24rpx;
+  color: #666;
+  line-heihgt: 36rpx;
+}

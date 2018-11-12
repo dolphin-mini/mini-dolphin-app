@@ -1,5 +1,7 @@
 // pages/login/login.js
 const utils = require('../../utils/util.js');
+const { httpAjax } = utils;
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -8,7 +10,7 @@ Page({
     isGettingCode: false,
     times: 60,
     isRead: false,
-    mobilePhone: null, //手机号
+    mobilePhone: 17610351811, //手机号
     secorityCode: null, // 验证码
     countries:[
       {
@@ -31,7 +33,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getUserInfo({
+      success: function () {
 
+      }
+    })
   },
 
   /**
@@ -107,8 +113,10 @@ Page({
       return
     }
     const _this = this;
-    const url = '';
-    const data = {};
+    const url = `${httpAjax}/sendMessage`;
+    const data = {
+      phone: mobilePhone,
+    };
     const method = "POST";
     utils.request(url, data, method).then((res)=>{
       this.setData({
@@ -182,7 +190,7 @@ Page({
    */
   login: function () {
     const { mobilePhone, prefixPhone, secorityCode } = this.data;
-    wx.redirectTo({
+    wx.switchTab({
       url: '../newIndex/newIndex',
     })
     const config = {
@@ -197,5 +205,5 @@ Page({
     utils.request(config).catch((error)=>{
       console.log(error.errMsg)
     });
-  }
+  },
 })

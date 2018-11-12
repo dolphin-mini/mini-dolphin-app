@@ -9,6 +9,7 @@
 .logoWrap {
   display: flex;
   padding-top: 28rpx;
+  padding-bottom: 20rpx;
   flex-direction: column;
   align-items: center;
   border-top-left-radius: 5px;

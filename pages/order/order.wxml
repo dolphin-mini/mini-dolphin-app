@@ -76,6 +76,7 @@
       <view class="order-list-item-content">
         <view class="order-list-item-content-left">
           <view class="item-image-wrap">
+            <text style="padding-top:10rpx;">98#</text>
           </view>
         </view>
         <view class="order-list-item-content-right">

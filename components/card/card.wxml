@@ -12,7 +12,7 @@
         <button
           class="dolphin-card-button"
           type="primary"
-          bindtap="openModal"
+          bindtap="submitbtn"
         >{{btntext}}</button>
       </view>
     </view>

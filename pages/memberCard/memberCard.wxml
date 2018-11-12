@@ -1,0 +1,29 @@
+<!--pages/memberCard/memberCard.wxml-->
+<view class="member-card-wrap">
+  <view class="header">
+    <view class="title">会员金卡</view>
+    <view class="text1"><text class="point"></text>消费金额条件100元起</view>
+    <view class="text2"><text class="point"></text> 优惠方式</view>
+    <view class='methods'>
+        <text>柴油优惠：每升优惠1元</text>
+        <text>汽油优惠：每升优惠1.1元</text>
+        <text>天然气优惠：每公斤优惠1.2元</text>
+    </view>
+  </view>
+  <view class="recharge-card">
+    <view class="card-item"></view>
+    <view class="card-item"></view>
+  </view>
+  <view class="rules">
+    <view class="rule-title">积分规则</view>
+    <view class="rule-list">
+      <text class="point-white"></text> 新用户首次登录成功：赠送1积分
+    </view>
+    <view class="rule-list">
+      <text class="point-white"></text> 全部油品(包含汽油柴油天然气)每消费金额2元送1积分
+    </view>
+    <view class="rule-list">
+      <text class="point-white"></text> 便利店每成功交易一次，送1积分
+    </view>
+  </view>
+</view>

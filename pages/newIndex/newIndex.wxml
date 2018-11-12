@@ -6,7 +6,7 @@
     <text class="tools-title">{{here}}</text>
   </view>
 
-  <navigator url="/pages/order/order" class="card-wrap" bindtap="navToOrder">
+  <view class="card-wrap">
     <view class="card-type">
       签到积分：<text class="card-type-L3">{{cardType}}</text>
       <image class="card-tips" src="../../images/tips.png"></image>
@@ -14,10 +14,13 @@
     <view class='card-info'>
       <view class="card-info-wrap">
         <view class="card-info-left">
-          <view class="avatar-wrap"></view>
+          <view class="avatar-wrap">
+            <image wx:if="{{getUserInfo}}" class="avatar" src="{{userinfo.avatarUrl}}" bindtap="navToOrder"></image>
+            <button class="get-avatar" wx:else open-type="getUserInfo" bindgetuserinfo="getWxUserInfo">点击获取</button>
+          </view>
           <view class="userinfo">
             <view class="userinfo-first">
-              {{userinfo.name}}
+              {{userinfo.nickName}}
               <image class="fix-name" src="../../images/fix.png" />
             </view>
             <view class="userinfo-second">
@@ -36,7 +39,7 @@
         <image wx:for="{{item}}" wx:for-item="num" class="num-icon" src="../../images/{{num}}.png" />
       </view>
     </view>
-  </navigator>
+  </view>
 
   <view class="content-wrap">
     <view class="content-title">请选择油枪</view>
@@ -70,6 +73,7 @@
     </view>
     <view class="submit-wrap">
       <button 
+        id="op"
         class="{{price?'dolphin-button-default':'dolphin-button-disabled'}}" 
         type="primary" 
         bindtap="navToOrderDetail"

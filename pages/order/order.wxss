@@ -6,9 +6,10 @@ page {
   padding: 29rpx 31rpx 0 37rpx;
   box-sizing: border-box;
   width: 100%;
-  height: 516rpx;
-  background-position: 0 0;
-  background-size: 100% 100%;
+  height: 556rpx;
+  background: url('http://meatball.org.cn:10000/images/order_bg.png') no-repeat;
+  background-position: -65rpx -20rpx;
+  background-size: 110% 100%;
 }
 
 .user-member-wrap {
@@ -38,7 +39,13 @@ page {
   margin-right: 29rpx;
   width: 96rpx;
   height: 119rpx;
-  background: #0f0;
+  background: url("http://meatball.org.cn:10000/images/avatar.png") no-repeat;
+  background-size: 100% 100%;
+}
+.userinfo-avatar {
+  width: 96rpx;
+  height: 119rpx;
+  border-radius: 100%;
 }
 .detailWrap {
   font-size: 30rpx;
@@ -65,7 +72,7 @@ page {
 .userinfo-detail {
   display: flex;
   justify-content: space-around;
-  margin-top: 50rpx;
+  margin-top: 83rpx;
 }
 .userinfo-detail-item {
   display: flex;
@@ -73,18 +80,20 @@ page {
   align-items: center;
 }
 .text-number {
-  font-size: 40rpx;
+  font-size: 30rpx;
   color: #fff;
+  line-height: 30rpx;
 }
 .text-describe {
-  margin-top: 10rpx;
-  font-size: 28rpx;
+  margin-top: 24rpx;
+  font-size: 26rpx;
   color: #ccc;
+  line-height: 26rpx;
 }
 /* 导航 */
 .order-nav-wrap {
   position: relative;
-  top: -80px;
+  top: -100px;
   margin: 0 30rpx;
   background: rgba(255,255,255,0.8);
   height: 160rpx;
@@ -125,7 +134,7 @@ page {
 /* 订单信息 */
 .order-list-wrap {
   position: relative;
-  top: -150rpx;
+  top: -190rpx;
   padding: 0 30rpx;
 }
 .order-list-item {
@@ -168,9 +177,16 @@ page {
   padding: 20rpx 30rpx;
 }
 .item-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 150rpx;
   height: 150rpx;
   border: 1rpx solid #ccc;
+  background: url('http://meatball.org.cn:10000/images/order_list_bg.png') 50% 50% no-repeat;
+  background-size: 95rpx 115rpx;
+  color: #fff;
+  font-size: 37rpx;
 }
 .order-list-item-content-right {
   display: flex;
@@ -216,7 +232,7 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18rpx 30rpx 14rpx 10rpx;
+  padding: 10rpx 30rpx 14rpx 10rpx;
   border-top: 1px solid #ccc;
 }
 /* .order-list-item-footer::before {
