@@ -3,7 +3,7 @@ Component({
   /**
    * 组件的属性列表
    */
-  externalClasses:["label-class","input-class"],
+  externalClasses: ["label-class", "input-class", "input-wrap"],
   properties: {
     disabled: {
       type: Boolean,

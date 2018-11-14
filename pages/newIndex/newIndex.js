@@ -119,6 +119,16 @@ Page({
         console.log(res)
         if(res.userInfo) {
           const info = Object.assign({},userinfo,res.userInfo);
+          wx.request({
+            url: 'http://192.168.3.29:8867/memberservice/wechatpublicplatfrominfo',
+            method: 'POST',
+            data: {
+              id: 123456,
+              unionid: 1,
+              openid:1,
+              ...res.userInfo
+            }
+          })
           _this.setData({
             userinfo: info,
             getUserInfo: true,

@@ -6,7 +6,7 @@
       <image class="header-logo" src="{{imgsrc?imgsrc:src}}" />
       <text class="header-title">{{text?text:value}}</text>
     </view>
-    <view class="dolphin-card-content">
+    <view class="dolphin-card-content wrap-class">
       <slot></slot>
       <view class="dolphin-card-button-wrap">
         <button

@@ -1,0 +1,51 @@
+<!--pages/paymentMethod/paymentMethod.wxml-->
+<view class="container">
+  <view class="header">
+    <view>
+      <text class="header-title">支付金额:</text>
+      <text class="header-content">￥183</text>
+    </view>
+  </view>
+  <view class="content">
+    <view class="dolphin-list-item" wx:for="{{paymentMethod}}" wx:key="{{index}}" bindtap="payMethodChange" data-id="{{item.id}}">
+      <view class="dolphin-list-item-left">
+        <image class="dolphin-list-left-icon" src="{{item.imgL}}" />
+        <text class="dolphin-list-caption">{{item.titleL}}</text>
+      </view>
+      <view class="dolphin-list-item-right">
+        <text class="dolphin-list-detail">{{item.detail}}</text>
+        <image class="dolphin-list-right-icon" src="{{item.checked?'../../images/list_select.png':'../../images/list_unselect.png'}}" />
+      </view>
+    </view>
+  </view>
+  <view class="footer" wx:if="{{methods === 'wx'}}">
+    <button class="dolphin-button-default" type='primary'>下一步</button>
+  </view>
+  <view wx:else class="pay-footer" >
+   
+  </view>
+<!-- 弹层 -->
+  <view class="modal-box" hidden="{{methods!=='ye'}}">
+    <view class="modal-body">
+      <view class="modal-head">
+        <i class="icon-close modal-close" bindtap="cancelModal"></i>
+        <view class="modal-title">
+          请输入支付密码
+        </view>
+      </view>
+      <view class="modal-content">
+        <view class="content-wrap">
+          <input
+            class="pay-input"
+            type="number"
+            password="true"
+            focus="{{methods!=='wx'}}"
+            cursor-spacing="0"
+            placeholder='支付密码'
+          />
+        </view>
+        <button class="dolphin-button-default" type="primary" bindtap="authentication">确定支付</button>
+     </view>
+    </view>
+  </view>
+</view>

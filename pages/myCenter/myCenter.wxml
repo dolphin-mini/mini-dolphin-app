@@ -12,21 +12,49 @@
 
 <view class="page">
   <view class='header'>
-    <view class="logo-wrap" bindtap="openModal">
-      <image class="header-logo" src="../../images/myCenter/IDcard.png"></image>
+    <view class="userinfo-detail">
+      <navigator class="userinfo-detail-item" url="/pages/recharge/recharge">
+        <image class="header-nav-img" src="../../images/recharge.png" />
+        <text class="text-number">3000.00</text>
+        <text class="text-describe">充值</text>
+      </navigator>
+      <view class="userinfo-detail-item">
+      <image class="header-nav-img" src="../../images/accumulation.png" />
+        <text class="text-number">300</text>
+        <text class="text-describe">积分兑换</text>
+      </view>
+      <view class="userinfo-detail-item">
+      <image class="header-nav-img" src="../../images/points.png" />
+        <text class="text-number">300.00</text>
+        <text class="text-describe">累计节省</text>
+      </view>
+    </view>
+    <view class="header-item">
+      <view class="logo-wrap-left" bindtap="openModal">
+      <image class="header-logo" src="../../images/IDcard.png"></image>
       <text class="logo-text">身份认证</text>
     </view>
-    <view class="logo-wrap">
-      <navigator class="logo-wrap" url="/pages/invoiceTitle/invoiceTitle" hover-class="navigator-hover">
-        <image class="header-logo" src="../../images/myCenter/bill.png"></image>
+    <view class="logo-wrap-right">
+      <navigator class="logo-wrap-right" url="/pages/invoiceTitle/invoiceTitle" hover-class="navigator-hover">
+        <image class="header-logo" src="../../images/bill.png"></image>
         <text class="logo-text">发票抬头</text>
       </navigator>
     </view>
+    </view>
+    
   </view>
   <!-- content -->
   <view class="content">
     <form bindsubmit="formSubmit">
   
+      <view class="modify-input-wrap">
+        <view class="modify-input-label-wrap">
+          <span class="modify-input-label">昵称</span>
+        </view>
+        <view class="modify-input-text-wrap">
+          <input class="modify-input" type="text" value="小花" />
+        </view>
+      </view>
       <view class="modify-input-wrap">
         <view class="modify-input-label-wrap">
           <text class="modify-input-label">手机号码</text>
@@ -50,14 +78,6 @@
         </view>
       </view>
 
-      <view class="modify-input-wrap">
-        <view class="modify-input-label-wrap">
-          <span class="modify-input-label">昵称</span>
-        </view>
-        <view class="modify-input-text-wrap">
-          <input class="modify-input" type="text" value="15128283552" />
-        </view>
-      </view>
       <view class="modify-input-wrap">
         <view class="modify-input-label-wrap">
           <label for="sex" class="modify-input-label">性别</label>

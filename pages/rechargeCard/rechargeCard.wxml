@@ -3,7 +3,7 @@
   <view class="card">
     <view class="logoWrap">
       <image class="logo" src="../../images/recharge/recharge_logo.png" />
-      <text class="logoText">小海豚加油站J</text>
+      <text class="logoText">小海豚加油站</text>
     </view>
 
     <view class="content">

@@ -1,17 +1,19 @@
 <!--pages/invioceDetail/invioceDetail.wxml-->
 <view class='page'>
   <view class="content-wrap">
-    <view class="content-title">
-      增值税电子发票
+    <view class="invoice-content">
+      <view class="content-title">
+        增值税电子发票
+      </view>
+      <detail-input label="发票订单" label-class="label" value="8932749237492"></detail-input>
+      <detail-input label="申请时间" label-class="label" value="8932749237492"></detail-input>
+      <detail-input label="税号" label-class="label" value="8932749237492"></detail-input>
+      <detail-input label="开票金额" label-class="label" value="山东嘻嘻嘻嘻数据啊快乐飞机离开是大家弗利萨快乐发动机嘻公司"></detail-input>
+      <detail-input label="发票抬头" label-class="label" value="￥7656"></detail-input>
+      <detail-input label="税号" label-class="label" value="xxxxxx923874"></detail-input>
+      <detail-input label="开票内容" label-class="label" value="嘻嘻嘻嘻嘻嘻嘻绿"></detail-input>
     </view>
-    <detail-input label="发票订单" value="8932749237492"></detail-input>
-    <detail-input label="申请时间" value="8932749237492"></detail-input>
-    <detail-input label="税号" value="8932749237492"></detail-input>
-    <detail-input label="开票金额" value="山东嘻嘻嘻嘻数据啊快乐飞机离开是大家弗利萨快乐发动机嘻公司"></detail-input>
-    <detail-input label="发票抬头" value="￥7656"></detail-input>
-    <detail-input label="税号" value="xxxxxx923874"></detail-input>
-    <detail-input label="开票内容" value="嘻嘻嘻嘻嘻嘻嘻绿"></detail-input>
-  </view>
+    </view>
   <view class="footer-wrap">
     <button class="dolphin-button-default" type="primary">保存发票</button>
   </view>

@@ -5,9 +5,14 @@
   margin-bottom: 15rpx;
   flex-grow: 1;
 }
+.detail-label-item {
+  position: relative;
+  box-sizing: border-box;
+}
 .detail-input-item {
   position: relative;
   box-sizing: border-box;
+  padding-left: 54rpx;
 }
 .input-wrap {
   flex: 1;

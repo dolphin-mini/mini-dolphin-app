@@ -3,6 +3,7 @@ page {
   background-color:#f2f3f5;
 }
 .content-wrap {
+  margin-top: -2rpx;
   margin-bottom: 69rpx;
 }
 .list {
@@ -28,4 +29,16 @@ page {
 .list-text {
   font-size: 26rpx !important;
   color:#999 !important;
+  width: 108rpx;
+  margin-left: 22rpx !important;
+}
+.input-text {
+  font-size: 26rpx !important;
+  color:#999 !important;
+}
+.input-wrap {
+  padding-left: 28rpx !important;
+}
+.wrap {
+  padding: 28rpx 30rpx 81rpx 30rpx !important;
 }

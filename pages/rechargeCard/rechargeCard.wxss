@@ -18,8 +18,8 @@
 }
 .logo {
   margin-bottom: 10rpx;
-  width: 110rpx;
-  height: 110rpx;
+  width: 116rpx;
+  height: 116rpx;
 }
 .logoText {
   color: #257CE1;
@@ -27,10 +27,11 @@
   font-size:32rpx;
 }
 .content {
-  padding: 30rpx 30rpx 50rpx 30rpx;
+  padding: 26rpx 30rpx 50rpx 30rpx;
 }
 .title {
   font-size: 32rpx;
+  line-height: 30rpx;
   color: #666;
 }
 .btn-wrap {
@@ -42,7 +43,9 @@
   background-color: #f2f2f2;
   font-size: 14px;
   margin-top: 20rpx;
+  height: 80rpx;
 }
 .weui-label {
   color: #999;
+  width: 170rpx;
 }

@@ -6,9 +6,23 @@ Page({
    */
   data: {
     isSelected: true,
-    isActive: null,
+    isActive: 'company',
     isHiddenModal: true,
-    titleType: null,
+    titleType: 'company',
+    invoiceInfo: [
+      {
+        id: 1,
+        duty: '12837xx891273',
+        address: '山东xxxx',
+        checked: true,
+      },
+      {
+        id: 2,
+        duty: '2131289371289',
+        address: 'xxxxxx',
+        checked: false,
+      },
+    ]
   },
 
   /**
@@ -67,6 +81,23 @@ Page({
 
   },
   /**
+   * 更改发票太够
+   */
+  invoiceTitleChange: function (e) {
+    let { id } = e.currentTarget.dataset;
+    const {invoiceInfo} = this.data;
+    invoiceInfo.forEach((item) => {
+      if(item.id === id) {
+        item.checked = true;
+      } else {
+        item.checked = false;
+      }
+    });
+    this.setData({
+      invoiceInfo,
+    });
+  },
+  /**
    * 更改发票抬头
    */
   changeTitle: function (e) {
@@ -78,6 +109,7 @@ Page({
     }
     this.setData({
       isActive: id,
+      titleType: id,
     });
   },
   /**
@@ -103,11 +135,14 @@ Page({
   /**
    * 保存modal
    */
-  saveModal: function () {
+  formSubmit: function (e) {
+    console.log(e)
+    const invoiceInfo = e.detail.value;
     const { isActive } = this.data;
     this.setData({
       isHiddenModal: true,
       titleType: isActive,
+      invoiceInfo,
     })
   },
   /**

@@ -2,8 +2,7 @@
 <view class="page">
   <!-- 用户信息 -->
    <view class="userinfo-wrap">
-    <!-- 用户信息 -->
-    <view class="userWrap">
+    <!-- <view class="userWrap">
       <view class="userAvatar">
         <image 
           bindtap="bindViewTap"
@@ -31,9 +30,8 @@
           </view>
         </view>
       </view>
-    </view>
-    <!-- 统计 -->
-    <view class="userinfo-detail">
+    </view> -->
+    <!-- <view class="userinfo-detail">
       <view class="userinfo-detail-item">
         <text class="text-number">3000.00</text>
         <navigator url="/pages/recharge/recharge"><text class="text-describe">充值</text></navigator>
@@ -46,7 +44,7 @@
         <text class="text-number">300.00</text>
         <text class="text-describe">累计节省</text>
       </view>
-    </view>
+    </view> -->
   </view>
   <!-- 导航信息 -->
   <view class="order-nav-wrap">

@@ -14,7 +14,7 @@ Component({
       type: String
     },
   },
-
+  externalClasses: ["wrap-class"],
   /**
    * 组件的初始数据
    */

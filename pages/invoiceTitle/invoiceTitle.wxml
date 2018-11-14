@@ -1,7 +1,7 @@
 <!--pages/invoiceTitle/invoiceTitle.wxml-->
 <view class="page">
   <view class="header">
-    <view wx:if="{{true}}" class="header-wrap">
+    <view class="header-wrap">
       <view class="header-wrap-left" bindtap='openModal'>
         <i class="icon-add icon-size"></i>
         <text class="add-tips">添加发票抬头</text>
@@ -9,18 +9,6 @@
       <view class="header-wrap-right" bindtap="openScanCode">
         <i class="icon-scan icon-size"></i>
       </view>
-    </view>
-    <view wx:else class="header-list-wrap">
-      <view class="header-list-item">
-        <view class='header-list-item-image'>
-          <i class="icon-add icon-size"></i>
-        </view>
-        <view class='header-list-item-content'>
-          <text class="item-title">山东洗车机下次y偶限公司</text>
-          <text class="item-text">税号：23094803284</text>
-        </view>
-      </view>
-
     </view>
   </view>
   <view class="content">
@@ -36,6 +24,21 @@
         <!-- <image class="add-icon" src="../../images/invoiceTitle/scan.png"></image> -->
       </view>
     </view>
+    <!-- 发票抬头列表 -->
+    <view class="invoice-list">
+      <view class="header-list-wrap" wx:for="{{invoiceInfo}}" wx:key="{{index}}" bindtap='invoiceTitleChange' data-id="{{item.id}}">
+        <view class="header-list-item">
+          <view class='header-list-item-image'>
+            <image class="invoice-item-left-img" src="{{item.checked?'../../images/selected.png':'../../images/unselected.png'}}" />
+          </view>
+          <view class='header-list-item-content'>
+            <text class="item-title">{{item.address}}</text>
+            <text class="item-text">税号：{{item.duty}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+   <view class="section-caption">选择开票订单</view>
     <!-- 订单列表 -->
     <view class="order-item-wrap">
       <view class="order-item-title">
@@ -87,7 +90,7 @@
             bindtap="changeTitle"
             data-id="personal">个人/非企业</text>
         </view>
-        <view class="invoice-list-wrap">
+        <form wx:if="{{isActive==='company'}}" class="invoice-list-wrap" bindsubmit="formSubmit">
           <view class="modify-input-wrap">
             <view class="modify-input-label-wrap">
               <label for="adress" class="modify-input-label">名称</label>
@@ -98,7 +101,7 @@
                 name="adress"
                 class="modify-input"
                 type="text"
-                value="千佛山路" />
+              />
             </view>
           </view>
           <view class="modify-input-wrap">
@@ -107,11 +110,11 @@
             </view>
             <view class="modify-input-text-wrap">
               <input
-                id="adress"
-                name="adress"
+                id="duty"
+                name="duty"
                 class="modify-input"
                 type="text"
-                value="千佛山路" />
+              />
             </view>
           </view>
           <view class="modify-input-wrap">
@@ -156,8 +159,8 @@
                 value="千佛山路" />
             </view>
           </view>
-        </view>
-        <button class="dolphin-button-default" type="primary" bindtap="saveModal">保存</button>
+          <button class="dolphin-button-default" type="primary" formType='submit'>保存</button>
+        </form>
      </view>
     </view>
   </view>

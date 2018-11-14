@@ -4,8 +4,8 @@ page {
 }
 .card {
   margin: 30rpx;
-  
-  height: 669rpx;
+  padding-bottom: 11rpx;
+  min-height: 669rpx;
   background:#fff;
   box-shadow:0rpx 10rpx 19rpx 2rpx rgba(204,204,204,0.47);
   border-radius:10rpx;
@@ -77,17 +77,17 @@ page {
   width:100%;
   height:100%;
   top:0px;
-  background:rgba(0,0,0,0.4);
+  background:rgba(0,0,0,0.35);
   overflow: hidden;
   z-index: 99999999;
   }
 
 .modal-body{
   margin: 0 42rpx;
-  padding: 20rpx;
+  padding: 20rpx 44rpx 20rpx 39rpx;
   position:relative;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-65%);
   /* height:520rpx; */
   background:rgba(255,255,255,1);
   border-radius:30rpx;
@@ -95,7 +95,7 @@ page {
 
 .modal-head {
   padding-bottom: 13rpx;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1rpx solid #ccc;
 }
 .modal-head::after {
   content: " ";
@@ -112,7 +112,9 @@ page {
 }
 .modal-close {
   position: absolute;
-  top: 30rpx;
+  top: 38rpx;
+  font-size:30rpx;
+
 }
 .modal-title {
  

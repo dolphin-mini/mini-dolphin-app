@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/order/order",
-    "pages/newIndex/newIndex",
-    "pages/orderDetail/orderDetail",
-    "pages/login/login",
-    "pages/memberCard/memberCard",
     "pages/myCenter/myCenter",
+    "pages/order/order",
     "pages/invoiceTitle/invoiceTitle",
+    "pages/paymentMethod/paymentMethod",
+    "pages/newIndex/newIndex",
+    "pages/login/login",
+    "pages/orderDetail/orderDetail",
+    "pages/memberCard/memberCard",
     "pages/authorize/authorize",
     "pages/rechargeDetail/rechargeDetail",
     "pages/recharge/recharge",
