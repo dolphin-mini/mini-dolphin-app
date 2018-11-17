@@ -98,16 +98,7 @@
           </view>
       </view>
     </view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_select">
-        <view class="weui-cell__bd">发票类型</view>
-        <view class="weui-cell__ft">
-          <picker bindchange="bindAccountChange" value="{{accountIndex}}" range="{{accounts}}">
-              <view class="weui-select">优惠卡券</view>
-          </picker>
-        </view>
-      </view>
-    </view>
+ 
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__bd">发票抬头</view>
@@ -135,19 +126,13 @@
         </view>
       </view>
     </view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
-        <view class="weui-cell__bd">
-          实付金额
-        </view>
-        <view class="weui-cell__ft">
-            ￥200
-        </view>
+    <view class="submit-wrap">
+      <view class="submit-wrap-left">
+        实付金额: <text class="RMB">￥</text> <text class="realPay">183</text>
+      </view>
+      <view class="submit-wrap-right">
+        <button type='primary' class="dolphin-button-default" bindtap='submitOrder'>提交订单</button>
       </view>
     </view>
-    <view class="submit-wrap">
-      <button type='primary' class="dolphin-button-default">确认加油</button>
-    </view>
   </view>
-
 </view>

@@ -1,5 +1,5 @@
 {
-  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarBackgroundColor": "transparent",
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "登录",
   "backgroundColor": "#eeeeee",

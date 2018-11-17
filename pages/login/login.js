@@ -33,25 +33,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getUserInfo({
-      success: function () {
-
-      }
-    })
+   
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
@@ -191,7 +187,7 @@ Page({
   login: function () {
     const { mobilePhone, prefixPhone, secorityCode } = this.data;
     wx.switchTab({
-      url: '../newIndex/newIndex',
+      url: '../index/index',
     })
     const config = {
       url: "http://sdfds",

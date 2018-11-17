@@ -22,6 +22,7 @@ page {
 
 /* footer */
 .footer {
+  display: flex;
   position: absolute;
   left: 29rpx;
   right: 29rpx;
@@ -79,6 +80,10 @@ page {
   width: 35rpx;
   height: 39rpx;
 }
+.dolphin-button-default {
+  width: 325rpx;
+}
+
 /* modal */
 .modal-box{
   position:fixed;

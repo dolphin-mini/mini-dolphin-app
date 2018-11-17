@@ -1,131 +1,344 @@
-/**index.wxss**/
+/* pages/newIndex/newIndex.wxss */
 page {
-  background: #F2F3F5;
+  background: #f2f3f5;
+}
+.tools-wrap {
+  display: flex;
+  align-items: center;
+  padding: 18rpx 27rpx 0 27rpx;
+}
+.tools-icon {
+  margin-right: 13rpx;
+  width: 53rpx;
+  height: 53rpx;
+}
+.tools-title {
+  font-size:26rpx;
+  color:rgba(51,51,51,1);
+}
+.card-wrap {
+  width: 100%;
+  height: 455rpx;
+  background: url('http://meatball.org.cn:10000/images/card_bg.png') -15rpx -20rpx;
+  background-size: 102% 100%;
+
+}
+.card-type {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 40rpx;
+  padding-right: 46rpx;
+  font-size:24rpx;
+  color:rgba(51,51,51,1);
+}
+.card-type-L3 {
+  color:#F69E29;
+}
+.card-type-L2 {
+  color:#F69E29;
+}
+.card-type-L1 {
+  color:#F69E29;
+}
+.card-tips {
+  margin-left: 10rpx;
+  width: 28rpx;
+  height: 28rpx;
+}
+.card-info {
+ 
+}
+.card-info-wrap {
+  display: flex;
+}
+.card-info-left {
+  flex:2;
+  display: flex;
+}
+.avatar-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95rpx;
+  height: 114rpx;
+  margin-left: 62rpx;
+  margin-right: 34rpx;  
+  background: url('http://meatball.org.cn:10000/images/avatar.png');
+  background-size: 100%;
+}
+.avatar {
+  margin-top:20rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%; 
+}
+.get-avatar {
+  
+  font-size: 20rpx;
+  line-height: 20rpx;
+  padding: 0;
+  background: transparent;
+}
+.get-avatar::after {
+  border:none !important;
 }
 .userinfo {
-  padding: 57rpx 47rpx 0 61rpx;
-  box-sizing: border-box;
-  width: 100%;
-  height: 475rpx;
-  background-position: 0 0;
-  background-size: 100% 100%;
-}
-.userMember {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 24rpx;
-  color: #333;
-}
-.memberText {
-  display: flex;
-  align-items: center;
-}
-.memberType {
-  color: #F69E29;
-}
-.memberTips {
-  width: 36rpx;
-  height: 36rpx;
-}
 
-.userWrap {
-  display: flex;
-  align-items: center;
 }
-.userAvatar {
-  margin-right: 32rpx;
-  width: 98rpx;
-  height: 120rpx;
-  background: #0f0;
-}
-.detailWrap {
+.userinfo-first {
+  margin-top: 26rpx;
   font-size: 30rpx;
+  line-height: 30rpx;
   color: #000;
 }
-.text-wrap {
-  display: flex;
-  align-items: center;
+.fix-name {
+  width: 21rpx;
+  height: 21rpx;
 }
-.userPhone {
+.vip-icon {
+  margin-left: 10rpx;
+  width: 18rpx;
+  height: 18rpx;
+}
+.userinfo-second {
   display: flex;
-  font-size: 26rpx;
+  margin-top: 26rpx;
+  font-size:  26rpx;
+  line-height: 26rpx;
   color: #333;
 }
-.isAuthor {
+.certification {
   margin-left: 24rpx;
   font-size: 20rpx;
   color: #ccc;
 }
-.cardId {
+.card-info-right {
+  flex: 1;
   display: flex;
   justify-content: center;
+  padding-top: 29rpx;
+  width: 100%;
 }
-.cardNumber {
+.QRCode {
+  margin-right: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+.member-ID {
+  display: flex;
+  
+  justify-content: space-around;
+  padding: 67rpx 100rpx 0 100rpx;
+}
+.num-icon {
   width: 40rpx;
   height: 60rpx;
 }
+/* content style */
 
-/* contnet */
-
-.results {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: -50rpx;
-  color: #257CE1;
+.content-wrap {
+  margin-top: -15rpx;
+  padding: 0 29rpx;
 }
-.resultsWrap {
-  flex: 1;
+.content-title {
+  font-size:36rpx;
+  line-height: 36rpx;
+  color:rgba(37,124,225,1);
+}
+.oil-type {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 29rpx;
+}
+.oil-type-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 125rpx;
+  height: 59rpx;
+  font-size: 30rpx;
+  color:#257CE1;
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
+  margin-right: 15rpx;
+  background: #fff;
+}
+.oil-type-checked {
+  border: none;
+  background:url('http://meatball.org.cn:10000/images/check_button_bg.png');
+  background-size: 100%;
+}
+.oil-type-item:last-child {
+  margin-right: 0rpx;
+}
+.oilgun-type {
+  display: flex;
+  align-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+.oilgun-type-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  justify-content: center;
+  width:158rpx;
+  height:158rpx;
+  background:#fff;
+  border-radius:10px;
+  margin-left: 10rpx;
+  margin-bottom: 30rpx;
+  color: #257CE1;
+  border:1px solid rgba(9,99,221,1);
 }
-.resultsWrap::after {
-  content: " ";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  height: 50%;
-  border-right: 1rpx solid #257CE1;
-  color: #e5e5e5;
+.oilgun-checked {
+  background:linear-gradient(90deg,rgba(77,155,253,1),rgba(73,106,242,1));
+  box-shadow:0rpx 10rpx 19rpx 2rpx rgba(37,124,225,0.47);
+  color: #fefefe;
+  border: none;
 }
-.results-title {
-  font-size: 36rpx;
-  margin-top: 24rpx;
-  margin-bottom: 10rpx;
-}
-.results-content {
+.oilgun-type-text {
   font-size: 48rpx;
 }
-.memberCode {
+.oilgun-type-oil {
+  font-size: 30rpx;
+}
+/* 输入框 */
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 90rpx;
+  background:rgba(255,255,255,1);
+  border-radius:10rpx;
+}
+.label-text {
+  padding-left: 26rpx;
+  font-size: 30rpx;
+  color: #666;
+}
+.input-text {
+  width: 65%;
+}
+.input-suffix {
+  font-size: 30rpx;
+  color: #999;
+}
+.price-card {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 31rpx;
+}
+.price-card-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 216rpx;
+  height: 101rpx;
+  background:rgba(255,255,255,1);
+  border:1rpx solid rgba(37,124,225,1);
+  border-radius:5rpx;
+  font-size: 36rpx;
+  color: #999;
+}
+.price-card-checked {
+  border: none;
+  box-shadow:0rpx 10rpx 19rpx 2rpx rgba(37,124,225,0.47);
+  background:url('http://meatball.org.cn:10000/images/check_button_2xbg.png');
+  background-size: 100%;
+}
+.submit-wrap {
+  padding: 60rpx 30rpx;
+}
+
+/* modal */
+
+.modal-box{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  background:rgba(0,0,0,0.35);
+  overflow: hidden;
+  z-index: 99999999;
+  }
+
+.modal-body{
+  margin: 0 auto;
+  position:relative;
+  top: 50%;
+  transform: translateY(-65%);
+  background:rgba(255,255,255,1);
+  border-radius:26rpx;
+  width: 540rpx;
+}
+
+
+.modal-head::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #ccc;
+  color: #e5e5e5;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+
+}
+.modal-close {
+  position: absolute;
+  top: 38rpx;
+  font-size:30rpx;
+
+}
+.modal-title {
+ 
+  text-align: center;  
+  font-size: 40rpx;
+  
+}
+
+.modal-content{
+  border-top-left-radius: 26rpx;
+  border-top-right-radius: 26rpx;
+}
+
+.modal-content-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.member-code-picture {
-  width: 374rpx;
-  height: 374rpx;
-}
-.user-tips {
-  margin-top:54rpx;
-  font-size: 26rpx;
-  line-height: 26rpx;
-  color: #333;
-}
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+  padding: 71rpx 75rpx 58rpx 70rpx;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.tips {
+  font-size: 28rpx;
+  line-height: 32rpx;
+  color: #111;
+}
+.map-position {
+  width: 18rpx;
+  height: 28rpx;
+}
+.position-tips {
+  font-weight: bold;
 }
 
-.usermotto {
-  margin-top: 200px;
+.modal-footer {
+  display: flex;
+  border: 1rpx solid #CDCED2;
+  height: 90rpx;
+  border-bottom-left-radius: 26rpx;
+  border-bottom-right-radius: 26rpx;
+}
+.modal-footer-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0076FF;
+  font-size: 34rpx;
 }

@@ -3,20 +3,30 @@ const utils = require('./utils/util.js');
 const user = require('./services/user.js');
 App({
   onLaunch: function () {
+    
     // 获取code
     utils.login().then((res)=>{
+      console.log(res.code)
         if(res.code) {
           console.log('%c%s','color:green','获取code');
-          const url = "";
-          const data = {};
+          let url = `http://192.168.3.20:8867/memberservice/decodeUserInfo`;
+          const data = {
+            code: res.code,
+          };
           const method = 'POST';
-          utils.request(url, data, method).then((res) => {
-            if(res) {
-              this.globalData.openId = 'xxx';
-              this.globalData.secorityKey = 'xxx';
+          wx.getUserInfo({
+            success: function (res) {
+              data.iv = res.iv;
+              data.encryptedData = res.encryptedData;
+              utils.request(url, data, method).then((res) => {
+                if(res) {
+                  this.globalData.openId = 'xxx';
+                  this.globalData.secorityKey = 'xxx';
+                }
+              }).catch((err) => {
+                console.log(err)
+              });
             }
-          }).catch((err) => {
-            console.log(err)
           });
         } else {
           console.log('%c%s', 'color:green',res.errMsg);

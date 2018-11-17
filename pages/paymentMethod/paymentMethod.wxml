@@ -19,7 +19,8 @@
     </view>
   </view>
   <view class="footer" wx:if="{{methods === 'wx'}}">
-    <button class="dolphin-button-default" type='primary'>下一步</button>
+    <button class="dolphin-button-default" type='primary' bindtap='navBackToOrder'>返回订单</button>
+    <button class="dolphin-button-default" type='primary' bindtap="navTowxpay">支付</button>
   </view>
   <view wx:else class="pay-footer" >
    

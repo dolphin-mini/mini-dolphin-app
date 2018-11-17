@@ -64,8 +64,9 @@ Page({
 
   },
   navToOrderDetail: function () {
-    wx.navigateTo({
-      url: '../orderDetail/orderDetail',
+    getCurrentPages().pop();
+    wx.redirectTo({
+      url: '../paymentMethod/paymentMethod',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},

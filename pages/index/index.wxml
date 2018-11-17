@@ -1,59 +1,109 @@
-<!--index.wxml-->
-<view class="page">
-  <view class="userinfo" bindtap="navToOrder">
-    <!-- 会员信息 -->
-    <view class="userMember">
-      <view class="memberText">
-        会员级别：
-        <text class="memberType">金卡</text>
-        <image class="memberTips" src="../../images/index/question.png"></image>
-      </view>
+<!--pages/newIndex/newIndex.wxml-->
+<view class="container">
+
+  <view class="tools-wrap" >
+    <image class="tools-icon" src="../../images/position.png" bindtap="openMap"></image>
+    <text class="tools-title">{{here}}</text>
+  </view>
+
+  <view class="card-wrap">
+    <view class="card-type">
+      签到积分：<text class="card-type-L3">{{cardType}}</text>
+      <image class="card-tips" src="../../images/tips.png"></image>
     </view>
-    <!-- 用户信息 -->
-    <view class="userWrap">
-      <view class="userAvatar">
-        <button wx:if="{{true}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-        <image 
-          bindtap="bindViewTap"
-          class="userinfo-avatar"
-          src="{{userInfo.avatarUrl}}"
-          mode="cover" />
-      </block>
-      </view>
-      <view class="detailWrap">
-        <view class="text-wrap">
-          <text>乌云乌云快走开</text>
-          <image class="memberTips" src="../../images/index/fix.png"></image>
-        </view>
-        <view class="text-wrap userPhone">
-          <text>132xxxx2323</text>
-          <view class="text-wrap">
-            <text class="isAuthor">未认证</text>
-            <image class="memberTips" src="../../images/index/vip.png"></image>
+    <view class='card-info'>
+      <view class="card-info-wrap">
+        <view class="card-info-left">
+          <view class="avatar-wrap">
+            <image class="avatar" src="{{userinfo.avatarUrl}}" bindtap="navToOrder"></image>
+          </view>
+          <view class="userinfo">
+            <view class="userinfo-first">
+              {{userinfo.nickName}}
+              <image class="fix-name" src="../../images/fix.png" />
+            </view>
+            <view class="userinfo-second">
+              {{userinfo.mobilephone}}
+              <view class="certification">{{userinfo.certification}}<image class="vip-icon" src="../../images/vip.png" /></view>
+            </view>
           </view>
         </view>
+        <view class="card-info-right">
+          <image class="QRCode" src="../../images/index/code.png" />
+        </view>
       </view>
     </view>
-    <!-- 会员ID -->
-    <view class="cardId">
-      <image class="cardNumber" wx:for="{{memberID}}" wx:key="{{index}}" src="../../images/index/{{item}}.png" />
+    <view class="member-ID">
+      <view wx:for="{{userinfo.memberID}}" wx:for-item="item">
+        <image wx:for="{{item}}" wx:for-item="num" class="num-icon" src="../../images/{{num}}.png" />
+      </view>
     </view>
   </view>
-  
-  <view class="results">
-    <view class="resultsWrap">
-      <text class="results-title">累计次数</text>
-      <text class="results-content">nn</text>
+
+  <view class="content-wrap">
+    <view class="content-title">请选择油枪</view>
+    <view class='oil-type'>
+      <view wx:for="{{oil.type}}" class="{{item.checked?'oil-type-item oil-type-checked':'oil-type-item'}}" bindtap="oilTypeChange" data-value="{{item.value}}">
+        {{item.name}}
+      </view>
     </view>
-    <view class="resultsWrap">
-      <text class="results-title">积分</text>
-      <text class="results-content">3333</text>
+    <view class="oilgun-type">
+      <view class="{{currentGun==item?'oilgun-type-item oilgun-checked':'oilgun-type-item'}}" wx:for="{{currentOilType.gun}}" bindtap="changeGun" data-gun="{{item}}">
+        <text class="oilgun-type-text">{{item}}号枪</text>
+        <text class="oilgun-type-oil">{{currentOilType.name}}</text>
+      </view>
+    </view>
+    <view class="price">
+      <view class="input-wrap">
+        <label class="label-text">输入金额：</label>
+        <input class="input-text" type='number' bindinput="changePrice" value="{{price}}" />
+        <view class="input-suffix">元</view>
+      </view>
+    </view>
+    <view class="price-card">
+      <view 
+        class="{{price==item?'price-card-item price-card-checked':'price-card-item'}}" 
+        wx:for="{{oil.priceCard}}" 
+        data-money="{{item}}"
+        bindtap="changePrice"
+      >
+        {{item}}
+      </view>
+    </view>
+    <view class="submit-wrap">
+      <button 
+        id="op"
+        class="{{price?'dolphin-button-default':'dolphin-button-disabled'}}" 
+        type="primary" 
+        bindtap="navToOrderDetail"
+        disabled='{{!price}}'
+      >下一步</button>
     </view>
   </view>
-  <!-- 二维码 -->
-  <view class="memberCode">
-    <image class="member-code-picture" src="../../images/index/code.png"></image>
-    <text class="user-tips">使用时请向加油员出示会员码</text>
+  <!-- 弹层 -->
+  <view class="modal-box" hidden="{{!visible}}">
+    <view class="modal-body">
+      <view class="modal-content">
+        <view class="modal-content-wrap">
+          <view class="tips">
+            定位到您在 
+            <image class="map-position" src="../../images/map_position.png" />
+            <text class="position-tips"> 西城小海豚加油站</text>是否切换到该加油站？
+          </view>
+        </view>
+     </view>
+     <view class="modal-footer">
+        <view
+          class="modal-footer-button"
+          style="border-right: 1rpx solid #CDCED2"
+          bindtap="modalCancel"
+        >
+          取消
+        </view>
+        <view class="modal-footer-button" bindtap="modalOk">
+          切换
+        </view>
+     </view>
+    </view>
   </view>
 </view>

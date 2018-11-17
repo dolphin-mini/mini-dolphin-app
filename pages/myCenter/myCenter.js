@@ -1,4 +1,5 @@
 // pages/myCenter/myCenter.js
+const utils = require('../../utils/util.js');
 Page({
 
   /**
@@ -15,7 +16,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const url = 'http://192.168.3.20:8867/memberservice/wechatuserinfovo',
+          method = 'GET',
+          data = {
+            openId: '123',
+          };
+    utils.request(url, data, method).then((res) => {
+      console.log(res)
+    });
   },
 
   /**

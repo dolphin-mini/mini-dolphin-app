@@ -1,22 +1,21 @@
 {
   "pages": [
+    "pages/paymentMethod/paymentMethod",
+    "pages/index/index",
+    "pages/recharge/recharge",
+    "pages/start/start",
+    "pages/login/login",
     "pages/myCenter/myCenter",
+    "pages/orderDetail/orderDetail",
     "pages/order/order",
     "pages/invoiceTitle/invoiceTitle",
-    "pages/paymentMethod/paymentMethod",
-    "pages/newIndex/newIndex",
-    "pages/login/login",
-    "pages/orderDetail/orderDetail",
     "pages/memberCard/memberCard",
     "pages/authorize/authorize",
     "pages/rechargeDetail/rechargeDetail",
-    "pages/recharge/recharge",
     "pages/invoiceDetail/invoiceDetail",
-    "pages/index/index",
     "pages/maps/maps",
     "pages/logs/logs",
-    "pages/rechargeCard/rechargeCard",
-    "pages/start/start"
+    "pages/rechargeCard/rechargeCard"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,7 +27,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/newIndex/newIndex",
+        "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "./images/home_unselected.png",
         "selectedIconPath": "./images/home_selected.png"
