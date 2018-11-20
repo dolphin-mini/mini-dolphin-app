@@ -15,15 +15,15 @@
       <view class="card-info-wrap">
         <view class="card-info-left">
           <view class="avatar-wrap">
-            <image class="avatar" src="{{userinfo.avatarUrl}}" bindtap="navToOrder"></image>
+            <image class="avatar" src="{{userInfo.avatarUrl}}" bindtap="navToOrder"></image>
           </view>
           <view class="userinfo">
             <view class="userinfo-first">
-              {{userinfo.nickName}}
+              {{userInfo.nickName}}
               <image class="fix-name" src="../../images/fix.png" />
             </view>
             <view class="userinfo-second">
-              {{userinfo.mobilephone}}
+              {{userInfo.mobilephone}}
               <view class="certification">{{userinfo.certification}}<image class="vip-icon" src="../../images/vip.png" /></view>
             </view>
           </view>
@@ -34,7 +34,7 @@
       </view>
     </view>
     <view class="member-ID">
-      <view wx:for="{{userinfo.memberID}}" wx:for-item="item">
+      <view wx:for="{{userInfo.memberID}}" wx:for-item="item">
         <image wx:for="{{item}}" wx:for-item="num" class="num-icon" src="../../images/{{num}}.png" />
       </view>
     </view>
@@ -43,12 +43,12 @@
   <view class="content-wrap">
     <view class="content-title">请选择油枪</view>
     <view class='oil-type'>
-      <view wx:for="{{oil.type}}" class="{{item.checked?'oil-type-item oil-type-checked':'oil-type-item'}}" bindtap="oilTypeChange" data-value="{{item.value}}">
-        {{item.name}}
+      <view wx:for="{{oilTypeData}}" class="{{item.checked?'oil-type-item oil-type-checked':'oil-type-item'}}" bindtap="oilTypeChange" data-value="{{item.key}}">
+        {{item.type}}
       </view>
     </view>
     <view class="oilgun-type">
-      <view class="{{currentGun==item?'oilgun-type-item oilgun-checked':'oilgun-type-item'}}" wx:for="{{currentOilType.gun}}" bindtap="changeGun" data-gun="{{item}}">
+      <view class="{{currentGunType==item?'oilgun-type-item oilgun-checked':'oilgun-type-item'}}" wx:for="{{currentOilType.gun}}" bindtap="changeGun" data-gun="{{item}}">
         <text class="oilgun-type-text">{{item}}号枪</text>
         <text class="oilgun-type-oil">{{currentOilType.name}}</text>
       </view>

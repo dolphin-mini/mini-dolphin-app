@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    swiper: false,
+    swiperStartPoint: null,
     isSelected: true,
     isActive: 'company',
     isHiddenModal: true,
@@ -15,12 +17,14 @@ Page({
         duty: '12837xx891273',
         address: '山东xxxx',
         checked: true,
+        swiper: false,
       },
       {
         id: 2,
         duty: '2131289371289',
         address: 'xxxxxx',
         checked: false,
+        swiper: false,
       },
     ]
   },
@@ -168,6 +172,42 @@ Page({
     //     console.log(res)
     //   }
     // })
+  },
+  swiperStart: function (e){
+    this.setData({
+      swiperStartPoint: e.touches[0],
+    });
+  },
+  swiperMove: function (e) {
+    const {
+      swiperStartPoint,
+      invoiceInfo,
+    } = this.data;
+    const endX = e.touches[0].clientX;
+    const  listId = e.currentTarget.dataset.id;
+    if(swiperStartPoint.clientX -endX > 5) {
+      invoiceInfo.forEach((item) => {
+        if(listId === item.id) {
+          item.swiper = true;
+        } else {
+          item.swiper = false;
+        }
+      });
+      this.setData({
+        invoiceInfo,
+      });      
+    }
+  },
+  clearSwiper: function (e) {
+    const {
+      invoiceInfo,
+    } = this.data;
+    invoiceInfo.forEach((item) => {
+      item.swiper = false;
+    })
+    this.setData({
+      invoiceInfo,
+    });
   },
   /**
    * 提交请求

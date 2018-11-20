@@ -19,6 +19,7 @@ page {
   font-size: 26rpx;
   padding: 20rpx;
   height: 90rpx;
+  color: #FFF;
 }
 .dolphin-button-default::after {
   border: none;

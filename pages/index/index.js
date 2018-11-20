@@ -1,5 +1,6 @@
 // pages/newIndex/newIndex.js
 const app = getApp();
+const utils = require('../../utils/util.js');
 Page({
   /**
    * 页面的初始数据
@@ -9,13 +10,8 @@ Page({
     getUserInfo: false,
     here: '西城小海豚', // 状态 定位中... 定位失败
     cardType: '金卡',
-    userinfo: {
-      nickName: 'Hi,游客',
-      avatarUrl: 'https://platform-wxmall.oss-cn-beijing.aliyuncs.com/upload/20180727/150547696d798c.png',
-      mobilephone: 'xxxxxxxxxxx',
-      certification: '未认证',
-      memberID: [[1,2,3],[4,5,6],[7,8,9],[0,1,2]],
-    },
+    userInfo: {},
+    oilTypeData:[], 
     oil: {
       type: [{
         name: '92#',
@@ -44,12 +40,12 @@ Page({
         
       priceCard: [100,200,300],
     },
-    currentOilType: {
+    currentOilType: { // 选中油品类型
       name: '101#',
       value: 3,
       gun: [1, 2, 3]
     },
-    currentGun: '',
+    currentGunType: null, // 选中油枪类型
     price: '',
   },
 
@@ -65,7 +61,20 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    const {
+      userInfo,
+      weChatUserInfo,
+      memberInfo,
+    } = app.globalData;
+    this.setData({
+      userInfo: {
+        nickName: userInfo.name,
+        avatarUrl: weChatUserInfo ? weChatUserInfo.headimgurl : '',
+        mobilephone: memberInfo ? memberInfo.phone : '',
+        certification: '未认证',
+        memberID: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [0, 1, 2]],
+      }
+    })
     this.initGun();
   },
 
@@ -107,50 +116,24 @@ Page({
   /**
    * 获取微信用户的信息
    */
-  getWxUserInfo: function () {
-    const userinfo = this.data.userinfo;
-    const _this = this;
-    wx.getUserInfo({
-      success: function (res) {
-        console.log(res)
-        if(res.userInfo) {
-          const info = Object.assign({},userinfo,res.userInfo);
-          wx.request({
-            url: 'http://192.168.3.29:8867/memberservice/wechatpublicplatfrominfo',
-            method: 'POST',
-            data: {
-              id: 123456,
-              unionid: 1,
-              openid:1,
-              ...res.userInfo
-            }
-          })
-          _this.setData({
-            userinfo: info,
-            getUserInfo: true,
-          });
-        } else {
-          this.setData({
-            getUserInfo: false,
-          });
-        }
-      },
-      fail: function () {
-        this.setData({
-          getUserInfo: false,
-        })
-      }
-    })
-  },
 
   initGun: function () {
     const { oil } = this.data;
-    oil.type.forEach((item) => {
-      if (item.checked) {
-        this.setData({
-          currentOilType: item,
-        });
-      }
+    const url = 'http://192.168.3.39:8090/oilsservice/oilsinfo/1';
+    utils.request(url, {}).then((res) => {
+      const oilType =  [];
+      res.data.forEach((item, i) => {
+       
+          oilType.push({
+            type: item,
+            key: i,
+            checked: false,
+          });
+        
+      });
+      this.setData({
+        oilTypeData: oilType,
+      });
     });
   },
   modalCancel: function () {
@@ -197,12 +180,28 @@ Page({
     })
   },
   /**
-   * 油号切换
+   * 油品类型切换
    */
   oilTypeChange: function (e) {
     const cur = e.currentTarget.dataset.value;
     const {oil} = this.data;
+    const gunTypeData = [];
     let currentOilType = [];
+    utils.request(`http://192.168.3.39:8080/oilgunbyoilsbyid/1`,{}).then((res) => {
+      if(res.code === 10000) {
+        res.data.forEach((item, i) => {
+          currentOilType.push({
+            type: item,
+            key: i,
+            checked: false,
+          });
+        });
+      }
+    });
+
+
+
+
     const oilType = oil.type;
     oilType.forEach((item, i) => {
       if(item.value === cur) {
@@ -214,18 +213,16 @@ Page({
     });
     this.setData({
       oil,
-      currentOilType,
-      currentGun: '',
+      currentOilType: null,
     });
   },
   /**
    * 油枪切换
    */
   changeGun: function (e) {
-    console.log(e);
     const num = e.currentTarget.dataset.gun;
     this.setData({
-      currentGun: num,
+      currentGunType: num,
     });
   },
   /**

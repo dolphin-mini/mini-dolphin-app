@@ -39,6 +39,7 @@ page {
   padding: 32rpx 26rpx 36rpx 30rpx;
   color: #fff;
   background: #fff;
+  overflow: hidden;
 }
 .header-list-wrap:first-child {
   border-top-left-radius: 20rpx;
@@ -63,8 +64,39 @@ page {
   display: none;
 }
 .header-list-item {
+  position: relative;
+  left: 0;
   display: flex;
   align-items: center;
+  transition: all .5s ease;
+  z-index: 1;
+  background: #fff;
+}
+.swiper {
+  left: -50px;
+}
+.header-list-item-delete {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  top: 32rpx;
+  left: 30rpx;
+  bottom: 36rpx;
+  right: 32rpx;
+  z-index: 0;
+  background: #eaeaea;
+}
+.delete-btn {
+  font-size:35rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f00;
+  border-radius:17rpx;
+  width:93rpx;
+  height:66rpx;
+
 }
 .header-list-item-image {
   display: flex;

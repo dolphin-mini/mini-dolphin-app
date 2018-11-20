@@ -148,7 +148,6 @@ page {
 }
 .oil-type {
   display: flex;
-  justify-content: space-between;
   margin-top: 29rpx;
 }
 .oil-type-item {

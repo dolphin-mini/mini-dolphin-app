@@ -9,7 +9,6 @@ Page({
     isHiddenModal: true,
     IDCard: null,
     region: ['广东省', '广州市', '海珠区'],
-    isModify: false,
   },
 
   /**
@@ -75,8 +74,8 @@ Page({
 
   },
   modify: function () {
-    this.setData({
-      isModify: true,
+    wx.navigateTo({
+      url: '../modifyPhone/modifyPhone',
     });
   },
   /**

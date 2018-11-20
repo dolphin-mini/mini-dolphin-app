@@ -1,28 +1,11 @@
-// pages/rechargeDetail/rechargeDetail.js
+// pages/modifyPhone/modifyPhone.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orderList: [
-      {
-        title: "卡号",
-        content: "20839482342"
-      },
-      {
-        title: "勿复制呢",
-        content: "山东小海豚能源有限公司"
-      },
-      {
-        title: "阿西吧",
-        content: "20839482342"
-      },
-      {
-        title: "卡号",
-        content: "20839482342"
-      },
-    ]
+
   },
 
   /**
@@ -79,10 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  orderComplete: function () {
-    wx.navigateTo({
-      url: '../index/index',
-    });
   }
 })

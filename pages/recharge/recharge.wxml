@@ -9,7 +9,7 @@
       <text class="title">充值金额</text>
       <view class="payWrap">
         <text class="moneySymbol">￥</text>
-        <input class="weui-input money" type="number" placeholder='请输入金额' bindinput="moneyChange" />
+        <input class="weui-input money" type="number" placeholder='请输入金额' placeholder-style="font-weight:normal;" bindinput="moneyChange" />
       </view>
       <navigator url="../rechargeCard/rechargeCard" class="weui-agree__link cards">储蓄卡充值</navigator>
     </view>

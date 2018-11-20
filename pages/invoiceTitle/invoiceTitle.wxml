@@ -1,5 +1,5 @@
 <!--pages/invoiceTitle/invoiceTitle.wxml-->
-<view class="page">
+<view class="page" bindtap="clearSwiper">
   <view class="header">
     <view class="header-wrap">
       <view class="header-wrap-left" bindtap='openModal'>
@@ -27,7 +27,7 @@
     <!-- 发票抬头列表 -->
     <view class="invoice-list">
       <view class="header-list-wrap" wx:for="{{invoiceInfo}}" wx:key="{{index}}" bindtap='invoiceTitleChange' data-id="{{item.id}}">
-        <view class="header-list-item">
+        <view class="header-list-item {{item.swiper?'swiper':''}}" data-id="{{item.id}}" bindtouchstart="swiperStart" bindtouchmove="swiperMove">
           <view class='header-list-item-image'>
             <image class="invoice-item-left-img" src="{{item.checked?'../../images/selected.png':'../../images/unselected.png'}}" />
           </view>
@@ -35,6 +35,9 @@
             <text class="item-title">{{item.address}}</text>
             <text class="item-text">税号：{{item.duty}}</text>
           </view>
+        </view>
+        <view class="header-list-item-delete">
+          <view class="delete-btn">删除</view>
         </view>
       </view>
     </view>

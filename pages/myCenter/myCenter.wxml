@@ -13,7 +13,7 @@
 <view class="page">
   <view class='header'>
     <view class="userinfo-detail">
-      <navigator class="userinfo-detail-item" url="/pages/recharge/recharge">
+      <navigator class="userinfo-detail-item" url="/pages/recharge/recharge" open-type="navigate">
         <image class="header-nav-img" src="../../images/recharge.png" />
         <text class="text-number">3000.00</text>
         <text class="text-describe">充值</text>
@@ -62,22 +62,11 @@
         <view class="modify-input-text-wrap">
           <input class="modify-input" type="number" disabled value="15128283552" />
         </view>
-        <view wx:if="{{!isModify}}" class="modify-btn" bindtap="modify">
+        <view class="modify-btn" bindtap="modify">
           修改手机号
         </view>
       </view>
-      <view wx:if="{{isModify}}" class="modify-input-wrap">
-        <view class="modify-input-label-wrap">
-          <span class="modify-input-label"></span>
-        </view>
-        <view class="modify-input-text-wrap">
-          <input class="modify-input" type="number" />
-        </view>
-        <view class="modify-btn">
-          获取验证码
-        </view>
-      </view>
-
+      
       <view class="modify-input-wrap">
         <view class="modify-input-label-wrap">
           <label for="sex" class="modify-input-label">性别</label>

@@ -1,7 +1,7 @@
 {
-  "navigationBarBackgroundColor": "fff",
+  "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "登录",
+  "navigationBarTitleText": "修改手机号",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light"
 }
