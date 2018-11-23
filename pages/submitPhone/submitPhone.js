@@ -1,18 +1,26 @@
-// pages/submitPhone/submitPhone.js
+// pages/submitPhone/submitPhone.js\
+const utils = require('../../utils/util.js');
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    phone: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    debugger
+    if(options.detail) {
+      this.setData({
+        phone: options.detail,
+      });
+    }
   },
 
   /**
@@ -42,25 +50,38 @@ Page({
   onUnload: function () {
 
   },
-
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
+   * 输入验证码
    */
-  onPullDownRefresh: function () {
-
+  codeChange: function (e) {
+    const phoneCode = e.detail.value;
+    this.setData({
+      phoneCode,
+    });
   },
-
   /**
-   * 页面上拉触底事件的处理函数
+   * 提交
    */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  submitCode: function () {
+    debugger
+    const {
+      oilStationId,
+      memberInfo,
+    } = app.globalData;
+   
+    const {
+      phone,
+      phoneCode
+    } = this.data;
+    utils.request('http://192.168.3.29:8867/memberservice/updatephone', {
+      oilStationId,
+      phone,
+      phoneCode,
+      memberId: memberInfo.id,
+    }, 'POST').then((res) => {
+      if(res.code === 10000) {
+        app.globalData.memberInfo = res.data;
+      }
+    });
   }
 })

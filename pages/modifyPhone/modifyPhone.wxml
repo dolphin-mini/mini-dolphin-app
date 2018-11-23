@@ -9,23 +9,23 @@
           <view class="weui-label">国家/地区</view>
       </view>
       <view class="weui-cell__bd">
-          <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
-              <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+          <picker bindchange="bindCountryChange" range-key="chineseName" range="{{COUNTRY_JSON}}" value="{{countryIndex}}" bindchange="countryChange">
+              <view class="weui-select weui-select_in-select-after">{{COUNTRY_JSON[countryIndex].chineseName}}</view>
           </picker>
       </view>
     </view>
     <view class="weui-cell weui-cell_select">
         <view class="weui-cell__hd" style="width: 105px">
-            <picker bindchange="bindCountryCodeChange" value="{{countryCodeIndex}}" range="{{countryCodes}}">
-                <view class="weui-select">{{countryCodes[countryCodeIndex]}}</view>
+            <picker bindchange="bindCountryCodeChange" value="{{countryIndex}}" range-key="chineseName" range="{{COUNTRY_JSON}}" disabled>
+                <view class="weui-select">{{COUNTRY_JSON[countryIndex].region}}</view>
             </picker>
         </view>
         <view class="weui-cell__bd weui-cell__bd_in-select-before">
-            <input class="weui-input" placeholder="请输入号码" />
+            <input class="weui-input" placeholder="请输入号码" bindinput="phoneChange" />
         </view>
     </view>
   </view>
   <view class="modify-footer">
-    <button class="dolphin-button-default">下一步</button>
+    <button class="dolphin-button-default" bindtap="nextStep">下一步</button>
   </view>
 </view>
