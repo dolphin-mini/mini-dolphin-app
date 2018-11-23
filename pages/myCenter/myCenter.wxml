@@ -116,7 +116,7 @@
 
       <view class="modify-input-wrap">
         <view class="modify-input-label-wrap">
-          <label for="adress" class="modify-input-label">详情</label>
+          <label for="adress" class="modify-input-label">地址详情</label>
         </view>
         <view class="modify-input-text-wrap">
           <input

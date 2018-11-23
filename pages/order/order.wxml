@@ -2,67 +2,23 @@
 <view class="page">
   <!-- 用户信息 -->
    <view class="userinfo-wrap">
-    <!-- <view class="userWrap">
-      <view class="userAvatar">
-        <image 
-          bindtap="bindViewTap"
-          class="userinfo-avatar"
-          src="{{userInfo.avatarUrl}}"
-          mode="cover" />
+    <view class="order-nav-wrap">
+      <view class="order-nav-item">
+        <image class="nav-img order-all" src="../../images/order/order_all.png"></image>
+        <text class="nav-describe">全部订单</text>
       </view>
-      <view class="detailWrap">
-        <view class="text-wrap">
-          <view>
-            <text>乌云乌云快走开</text>
-            <image class="memberTips" src="../../images/index/fix.png"></image>
-          </view>
-          <view class="memberText">
-            会员级别：
-            <text class="memberType">金卡</text>
-            <image class="memberTips" src="../../images/index/question.png"></image>
-          </view>
-        </view>
-        <view class="text-wrap userPhone">
-          <text>132xxxx2323</text>
-          <view class="text-wrap">
-            <navigator url="/pages/myCenter/myCenter" hover-class="navigator-hover"><text class="isAuthor">未认证</text></navigator>
-            <image class="memberTips" src="../../images/order/unauthorized.png"></image>
-          </view>
-        </view>
+      <view class="order-nav-item">
+        <image class="nav-img wait-pay" src="../../images/order/wait_pay.png"></image>
+        <text class="nav-describe">待支付</text>
       </view>
-    </view> -->
-    <!-- <view class="userinfo-detail">
-      <view class="userinfo-detail-item">
-        <text class="text-number">3000.00</text>
-        <navigator url="/pages/recharge/recharge"><text class="text-describe">充值</text></navigator>
+      <view class="order-nav-item">
+        <image class="nav-img completed" src="../../images/order/completed.png"></image>
+        <text class="nav-describe">已完成</text>
       </view>
-      <view class="userinfo-detail-item">
-        <text class="text-number">300</text>
-        <text class="text-describe">积分兑换</text>
+      <view class="order-nav-item">
+        <image class="nav-img repay" src="../../images/order/repay.png"></image>
+        <text class="nav-describe">已退款</text>
       </view>
-      <view class="userinfo-detail-item">
-        <text class="text-number">300.00</text>
-        <text class="text-describe">累计节省</text>
-      </view>
-    </view> -->
-  </view>
-  <!-- 导航信息 -->
-  <view class="order-nav-wrap">
-    <view class="order-nav-item">
-      <image class="nav-img order-all" src="../../images/order/order_all.png"></image>
-      <text class="nav-describe">全部订单</text>
-    </view>
-    <view class="order-nav-item">
-      <image class="nav-img wait-pay" src="../../images/order/wait_pay.png"></image>
-      <text class="nav-describe">待支付</text>
-    </view>
-    <view class="order-nav-item">
-      <image class="nav-img completed" src="../../images/order/completed.png"></image>
-      <text class="nav-describe">已完成</text>
-    </view>
-    <view class="order-nav-item">
-      <image class="nav-img repay" src="../../images/order/repay.png"></image>
-      <text class="nav-describe">已退款</text>
     </view>
   </view>
   <!-- 订单信息 -->

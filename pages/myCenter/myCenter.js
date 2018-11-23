@@ -1,7 +1,8 @@
 // pages/myCenter/myCenter.js
 const utils = require('../../utils/util.js');
-Page({
+const app = getApp();
 
+Page({
   /**
    * 页面的初始数据
    */
@@ -107,6 +108,22 @@ Page({
    * 身份认证
    */
   authentication: function () {
+    const {
+      IDCard
+    } = this.data;
+    const {
+      userInfo
+    } = app.globalData;
+
+    utils.request('http://192.168.3.29:8867/memberservice/userinfo/asd/asd',{
+      id: userInfo.id,
+      cardNum: IDCard,
+    },'GET').then((res) => {
+      wx.showToast({
+        title: res.message,
+        icon: 'none'
+      });
+    });
     this.setData({
       isHiddenModal: true,
     });
@@ -120,6 +137,9 @@ Page({
       region: e.detail.value
     })
   },
+  /**
+   * 提交修改信息
+   */
   formSubmit: function (e) {
     console.log(arguments)
   }
