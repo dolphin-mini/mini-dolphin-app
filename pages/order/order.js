@@ -1,4 +1,11 @@
 // pages/order/order.js
+const utils = require('../../utils/util.js');
+const app = getApp();
+const {
+  request,
+  httpAjax,
+} = utils;
+
 Page({
 
   /**
@@ -18,6 +25,34 @@ Page({
         status: '未支付'
       },
     ],
+    mock: {
+      orderList: [
+        {
+          id: '1',
+          name: 'xx',
+          alias:'zz',
+          tags: '',
+          creator: 'xxv',
+          createdTime: '123',
+          lastModifier: '432',
+          lastModifiedTime: '22334',
+          oilStationId: 'xxxx',
+          squadId: '2132',
+          staffId:'',
+          memberId:'xx',
+          oilMoney: '11',
+          proMoney:'33',
+          orderSum: 'ss',
+          prodIsCounts: '22',
+          orderdIsCounts: '22',
+          copeWith: '23',
+          blankSta: '33',
+          paymentInfo: '33',
+          orderGenerationTime: '1028-09-09',
+          orderCompletionTime: '2012-02-19',
+        }
+      ]
+    }
   },
 
   /**
@@ -31,7 +66,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.queryOrderListData();
   },
 
   /**
@@ -72,9 +107,25 @@ Page({
     console.log(e)
   },
 
+  /**
+   * 初始化订单列表
+   */
+  queryOrderListData: function () {
+    const url = `${httpAjax}/orderservice/blanketorder/list`;
+
+    request(url, {}, 'GET').then((res) => {
+      if(res.code == 10000) {
+        
+      }
+    });
+  },
+
+  /**
+   * 订单详情跳转
+   */
   navToOrderDetail: function () {
-    getCurrentPages().pop();
-    wx.redirectTo({
+    // getCurrentPages().pop();
+    wx.navigateTo({
       url: '../paymentMethod/paymentMethod',
       success: function(res) {},
       fail: function(res) {},

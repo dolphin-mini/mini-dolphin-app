@@ -52,7 +52,7 @@
           <span class="modify-input-label">昵称</span>
         </view>
         <view class="modify-input-text-wrap">
-          <input class="modify-input" type="text" value="小花" />
+          <input name="name" class="modify-input" type="text" value="小花" />
         </view>
       </view>
       <view class="modify-input-wrap">
@@ -72,7 +72,7 @@
           <label for="sex" class="modify-input-label">性别</label>
         </view>
         <view class="modify-input-text-wrap">
-          <input id="sex" name="sex" class="modify-input" type="text" value="女" />
+          <input id="userSex" name="userSex" class="modify-input" type="text" value="女" />
         </view>
       </view>
 
@@ -82,8 +82,8 @@
         </view>
         <view class="modify-input-text-wrap">
           <input
-            id="born"
-            name="born"
+            id="userBirthday"
+            name="userBirthday"
             class="modify-input"
             type="number"
             value="1992-07-12" />
@@ -102,8 +102,8 @@
           >
             <view class="picker">
               <input
-                id="sex"
-                name="sex"
+                id="userAddress"
+                name="userAddress"
                 class="modify-input picker-input"
                 type="text"
                 disabled
@@ -120,8 +120,8 @@
         </view>
         <view class="modify-input-text-wrap">
           <input
-            id="adress"
-            name="adress"
+            id="detailAddress"
+            name="detailAddress"
             class="modify-input"
             type="text"
             value="千佛山路" />

@@ -6,7 +6,8 @@
 .header {
   padding: 40rpx;
   height: 360rpx;
-  background: blue;
+  background: url('http://meatball.org.cn:10000/images/member_bg.png');
+  /* background: blue; */
 }
 .title {
   color: #fff;
@@ -54,9 +55,49 @@
   margin-top: 23rpx;
 }
 .card-item {
+  position: relative;
   height: 180rpx;
   width: 327rpx;
-  background: blue;
+  background: url('http://meatball.org.cn:10000/images/ticket_bg.png');
+  background-size: 100% 100%;
+}
+.card-item-right {
+  position: absolute;
+  top: 30rpx;
+  right: 39rpx;
+  width: 21rpx;
+  color: #FACB3D;
+  font-size: 22rpx;
+  line-height: 27rpx;
+}
+.card-item-right-arrow {
+  position: absolute;
+  top: 112rpx;
+  right: -7rpx;
+  transform: rotate(90deg);
+}
+.card-type {
+  position: absolute;
+  top: 124rpx;
+  left: 30rpx;
+  font-size: 22rpx;
+  background: #fff;
+  padding: 3rpx 43rpx 3rpx 43rpx;
+}
+.card-price-tip {
+  position: absolute;
+  left: 15rpx;
+  top: 6rpx;
+  font-size: 32rpx;
+}
+.price-icon {
+  font-size: 25rpx;
+}
+.card-price {
+  margin-right: 5rpx;
+  letter-spacing: -4px;
+  font-size: 80rpx;
+  color: #FACB3D;
 }
 .rule-title {
   margin: 50rpx 0;

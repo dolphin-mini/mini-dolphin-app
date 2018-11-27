@@ -3,6 +3,7 @@ const utils = require('../../utils/util.js');
 const {
   httpAjax
 } = utils;
+
 const app = getApp();
 Page({
   /**

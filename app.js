@@ -7,7 +7,9 @@ App({
   },
   globalData: {
     code: null, // 微信code
-    oilStationId: '123456', // 油站id
+    oilStationId: 'LwoYv4qBSsC_0xPsYIPskA', // 油站id
+    openId: '1234a',
+    unionId: '1234a',
     iv: null,
     encryptedData: null,
     userInfoAuthorization: undefined, //是否授权用户信息

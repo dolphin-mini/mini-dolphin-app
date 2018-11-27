@@ -1,5 +1,5 @@
 <!--pages/order/order.wxml-->
-<view class="page">
+<scroll-view class="page" scroll-y="{{true}}">
   <!-- 用户信息 -->
    <view class="userinfo-wrap">
     <view class="order-nav-wrap">
@@ -55,4 +55,4 @@
       </view>
     </view>
   </view>
-</view>
+</scroll-view>

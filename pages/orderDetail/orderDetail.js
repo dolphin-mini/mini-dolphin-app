@@ -1,4 +1,11 @@
 // pages/orderDetail/orderDetail.js
+const app = getApp();
+const utils = require('../../utils/util.js');
+const {
+  httpAjax,
+  request,
+} = utils;
+
 Page({
 
   /**
@@ -12,14 +19,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log(options)
+    const currentOilType = JSON.parse(options.currentOilType);
+    const currentGunType = JSON.parse(options.currentGunType);
+    const price = JSON.parse(options.price);
+
+    this.setData({
+      currentOilType,
+      currentGunType,
+      price,
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getDiscountInfo();
   },
 
   /**
@@ -42,19 +58,38 @@ Page({
   onUnload: function () {
 
   },
-
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
+   * 获取优惠信息
    */
-  onPullDownRefresh: function () {
+  getDiscountInfo: function () {
+    const {
+      currentGunType,
+      currentOilType,
+      currentUnitPrice,
+      price,
+    } = this.data;
+    const {
+      memberInfo
+    } = app.globalData;
+    const url = `${httpAjax}/discountservice/discount/select`;
 
-  },
+    request(url,{
+      member: {
+        "memberCompanyGroupId": "1111",
+        "memberCompanyId": "111",
+        "memberGroupId": "111",
+        "memberId": "111",
+        "memberRankId": "111"
+      },
+      oil: {
+        oilId: currentOilType,
+        quantity: null,
+        totalAmount: price,
+        unitPrice: currentUnitPrice,
+      },
+    },'POST').then((res) => {
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+    });
   },
 
   openPicker: function () {
@@ -63,9 +98,37 @@ Page({
     });
   },
   submitOrder: function () {
-    wx.redirectTo({
-      url: '../paymentMethod/paymentMethod',
+    const {
+      currentGunType,
+      currentOilType,
+      currentUnitPrice,
+      price,
+    } = this.data;
+    const {
+      memberInfo
+    } = app.globalData;
+    const url = `${httpAjax}/orderservice/blanketorder/ordersubmmit`;
+
+    request(url,{
+      member: {
+        "memberCompanyGroupId": "1111",
+        "memberCompanyId": "111",
+        "memberGroupId": "111",
+        "memberId": "111",
+        "memberRankId": "111"
+      },
+      oil: {
+        oilId: currentOilType,
+        quantity: null,
+        totalAmount: price,
+        unitPrice: currentUnitPrice,
+      },
+      disCouponIds:[1],
+      isJoinDiscount : 1,
+    },'POST').then((res) => {
+      wx.redirectTo({
+        url: '../paymentMethod/paymentMethod',
+      });
     });
   }
-
 })

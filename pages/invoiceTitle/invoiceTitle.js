@@ -1,4 +1,7 @@
 // pages/invoiceTitle/invoiceTitle.js
+const utils = require('../../utils/util.js');
+const app = getApp();
+
 Page({
 
   /**
@@ -17,6 +20,34 @@ Page({
         duty: '12837xx891273',
         address: '山东xxxx',
         checked: true,
+        swiper: false,
+      },
+      {
+        id: 2,
+        duty: '2131289371289',
+        address: 'xxxxxx',
+        checked: false,
+        swiper: false,
+      },
+      {
+        id: 2,
+        duty: '2131289371289',
+        address: 'xxxxxx',
+        checked: false,
+        swiper: false,
+      },
+      {
+        id: 2,
+        duty: '2131289371289',
+        address: 'xxxxxx',
+        checked: false,
+        swiper: false,
+      },
+      {
+        id: 2,
+        duty: '2131289371289',
+        address: 'xxxxxx',
+        checked: false,
         swiper: false,
       },
       {
@@ -85,7 +116,7 @@ Page({
 
   },
   /**
-   * 更改发票太够
+   * 切换抬头类型
    */
   invoiceTitleChange: function (e) {
     let { id } = e.currentTarget.dataset;
@@ -137,17 +168,72 @@ Page({
     });
   },
   /**
-   * 保存modal
+   * 初始化发票抬头列表
    */
-  formSubmit: function (e) {
+  initInvoiceList: function () {
+    const {
+      userInfo,
+    } = app.globalData;
+    utils.request('http://192.168.3.29:8867/memberservice/invoicetitleinfo/list',{
+      userId: userInfo.id,
+    },'GET').then((res) => {
+      if(res === 10000) {
+        res.data.forEach((item) => {
+          item.checkd = false;
+        });
+      }
+    });
+  },
+  /**
+   * 新增公司发票抬头
+   */
+  formSubmitCompany: function (e) {
     console.log(e)
     const invoiceInfo = e.detail.value;
     const { isActive } = this.data;
+    utils.request('http://192.168.3.29:8867/memberservice/invoicetitleinfo',{
+      ...invoiceInfo,
+      status: 1,
+    },'POST').then((res) => {
+      wx.showToast({
+        title: res.message,
+        icon: 'none',
+      });
+    });
+
     this.setData({
       isHiddenModal: true,
       titleType: isActive,
-      invoiceInfo,
-    })
+    });
+  },
+  /**
+   * 新增个人发票抬头
+   */
+  formSubmitPerson: function (e) {
+    utils.request('http://192.168.3.29:8867/memberservice/invoicetitleinfo', {
+      status: 2,
+    }, 'POST').then((res) => {
+      wx.showToast({
+        title: res.message,
+        icon: 'none',
+      });
+    });
+    this.setData({
+      isHiddenModal: true,
+      titleType: isActive,
+    });
+  },
+  /**
+   * 删除发票抬头
+   */
+  removeInvoiceTitle: function (e) {
+    console.log(e)
+    const id = e.currentTarget.dataset.id;
+    utils.request(`http://192.168.3.29:8867/memberservice/invoicetitleinfo/${id}`,{},'GET').then((res) => {
+      if(res.code) {
+        this.initInvoiceList();
+      }
+    });
   },
   /**
    * 扫一扫
@@ -157,7 +243,7 @@ Page({
       success(res) {
         console.log(res)
       }
-    })
+    });
     // var _this = this;
     // wx.requestPayment({
     //   'timeStamp': '',

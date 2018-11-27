@@ -141,6 +141,21 @@ Page({
    * 提交修改信息
    */
   formSubmit: function (e) {
+    const formData = e.detail.value;
+    const {
+      userInfo,
+    } = app.globalData;
+    formData.userAddress += ' ' + formData.detailAddress;
+    delete formData.detailAddress;
     console.log(arguments)
+    utils.request('http://192.168.3.29:8867/memberservice/userinfo',{
+      id: userInfo.id,
+      ...formData
+    },'PUT').then((res) => {
+      wx.showToast({
+        title: res.message,
+        icon: 'none'
+      });
+    });
   }
 })

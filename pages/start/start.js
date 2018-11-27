@@ -1,6 +1,11 @@
 // pages/start/start.js
 const app = getApp();
 const utils = require('../../utils/util.js');
+const {
+  httpAjax,
+  request,
+} = utils;
+
 Page({
 
   /**
@@ -49,11 +54,10 @@ Page({
                   data.encryptedData = res.encryptedData;
                   app.globalData.iv = res.iv;
                   app.globalData.encryptedData = res.encryptedData;
-                  utils.request('http://192.168.3.29:8867/memberservice/decodeUserInfo', data, 'POST').then((res) => {
+                  utils.request(`${httpAjax}/memberservice/decodeUserInfo`, data, 'POST').then((res) => {
                     app.globalData.memberInfo = res.memberInfo;
-                    app.globalData.weChatUserInfo = res.weChatUserInfo;
                     app.globalData.userInfoJSON = res.userInfoJSON;
-                    app.globalData.userInfo = res.userInfo;
+                    app.globalData.userInfo = JSON.parse(res.userInfoJSON);
                     if (res && res.code === 1001) {
                         // 授权过并且未注册跳转注册页面
                       _this.timer = setTimeout(() => {

@@ -1,7 +1,6 @@
 /* pages/order/order.wxss */
-page {
-  background: #F2F3F5;
-}
+
+
 .userinfo-wrap {
   position: relative;
   padding: 29rpx 31rpx 0 37rpx;
@@ -96,8 +95,8 @@ page {
   position: absolute;
   left: 30rpx;
   right: 30rpx;
-  bottom: 0;
-  background: rgba(255,255,255,0.8);
+  bottom: -50rpx;
+  background: rgba(255,255,255,0.9);
   height: 160rpx;
   box-shadow:0px 10px 19px 2px rgba(204,204,204,0.47);
   border-radius: 20rpx;
@@ -137,13 +136,14 @@ page {
 /* 订单信息 */
 .order-list-wrap {
   position: relative;
+  margin-top: 80rpx;
   margin-bottom: 30rpx;
   padding: 0 30rpx;
 }
 .order-list-item {
   position: relative;
   margin-top: 20rpx;
-  box-shadow:0px 10rpx 19rpx 2rpx rgba(204,204,204,0.47);
+  box-shadow:0px 0rpx 19rpx 2rpx rgba(204,204,204,0.47);
   border-radius: 20rpx;
 }
 .order-list-item-header{

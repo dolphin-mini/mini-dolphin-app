@@ -37,11 +37,11 @@
           </view>
         </view>
         <view class="header-list-item-delete">
-          <view class="delete-btn">删除</view>
+          <view class="delete-btn" bindtap="removeInvoiceTitle" data-id="{{item.id}}">删除</view>
         </view>
       </view>
     </view>
-   <view class="section-caption">选择开票订单</view>
+   <view class="section-caption">已开票订单</view>
     <!-- 订单列表 -->
     <view class="order-item-wrap">
       <view class="order-item-title">
@@ -49,7 +49,7 @@
       </view>
       <view class="order-item-content">
         <view class="order-image">
-          <image class="order-image-check" src="../../images/unselected.png"></image>
+          <!-- <image class="order-image-check" src="../../images/unselected.png"></image> -->
         </view>
         <view class="order-detail">
           <text class="oil-type">98#油品</text>
@@ -65,13 +65,13 @@
       </view>
     </view>
   </view>
-  <view class="footer-wrap">
+  <!-- <view class="footer-wrap">
     <button 
       class="{{isSelected?'dolphin-button-default':'dolphin-button-disabled'}}"
       type='primary'
       bindtap="submitInvoice"
       disabled='{{!isSelected}}'>开票请求</button>
-  </view>
+  </view> -->
 
   <!-- 弹层 -->
   <view class="modal-box" hidden="{{isHiddenModal}}">
@@ -93,15 +93,14 @@
             bindtap="changeTitle"
             data-id="personal">个人/非企业</text>
         </view>
-        <form wx:if="{{isActive==='company'}}" class="invoice-list-wrap" bindsubmit="formSubmit">
+        <form wx:if="{{isActive==='company'}}" class="invoice-list-wrap" bindsubmit="formSubmitCompany">
           <view class="modify-input-wrap">
             <view class="modify-input-label-wrap">
               <label for="adress" class="modify-input-label">名称</label>
             </view>
             <view class="modify-input-text-wrap">
               <input
-                id="adress"
-                name="adress"
+                name="name"
                 class="modify-input"
                 type="text"
               />
@@ -114,7 +113,7 @@
             <view class="modify-input-text-wrap">
               <input
                 id="duty"
-                name="duty"
+                name="dutyNum"
                 class="modify-input"
                 type="text"
               />
@@ -125,7 +124,7 @@
               <label for="adress" class="modify-input-label">单位地址</label>
             </view>
             <view class="modify-textarea-wrap">
-              <textarea class="modify-textarea" placeholder="请输入文本" style="height: 3.3em" />
+              <textarea name="unitAddress" class="modify-textarea" placeholder="请输入文本" style="height: 3.3em" />
             </view>
           </view>
           <view class="modify-input-wrap">
@@ -134,11 +133,10 @@
             </view>
             <view class="modify-input-text-wrap">
               <input
-                id="adress"
-                name="adress"
+                name="phone"
                 class="modify-input"
                 type="text"
-                value="千佛山路" />
+              />
             </view>
           </view>
           <view class="modify-input-wrap">
@@ -146,7 +144,7 @@
               <label for="adress" class="modify-input-label">开户银行</label>
             </view>
             <view class="modify-textarea-wrap">
-              <textarea class="modify-textarea" placeholder="请输入文本" style="height: 3.3em" />
+              <textarea name="openingBank" class="modify-textarea" placeholder="请输入文本" style="height: 3.3em" />
             </view>
           </view>
           <view class="modify-input-wrap">
@@ -155,15 +153,15 @@
             </view>
             <view class="modify-input-text-wrap">
               <input
-                id="adress"
-                name="adress"
+                name="bankAccount"
                 class="modify-input"
                 type="text"
-                value="千佛山路" />
+              />
             </view>
           </view>
           <button class="dolphin-button-default" type="primary" formType='submit'>保存</button>
         </form>
+        <button wx:if="{{isActive!=='company'}}" class="dolphin-button-default" type="primary" bindtap="formSubmitPerson">保存</button>
      </view>
     </view>
   </view>

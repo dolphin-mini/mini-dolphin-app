@@ -11,8 +11,17 @@
     </view>
   </view>
   <view class="recharge-card">
-    <view class="card-item"></view>
-    <view class="card-item"></view>
+    <view class="card-item">
+      <view class="card-price-tip">
+        <text class="price-icon">￥</text><text class="card-price">50</text>代金券
+      </view>
+      <view class="card-item-right">立即使用<text class="card-item-right-arrow">>></text></view>
+      <view class="card-type">新用户专享</view>
+    </view>
+    <view class="card-item">
+      <view class="card-item-right">立即使用<text class="card-item-right-arrow">>></text></view>
+      <view class="card-type">新用户专享</view>
+    </view>
   </view>
   <view class="rules">
     <view class="rule-title">积分规则</view>

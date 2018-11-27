@@ -4,34 +4,34 @@
   <view class="order-list-wrap">
     <view class="order-list-item">
       <view class="order-list-item-header">
-        <text class="header-text">订单编号：239847238974</text>
+        <text class="header-text"></text>
         <text class="header-text">西城小海豚加油站</text>
       </view>
       <view class="order-list-item-content">
         <view class="order-list-item-content-left">
           <view class="item-image-wrap">
-            98#
+            {{currentOilType.name}}
           </view>
         </view>
         <view class="order-list-item-content-right">
           <view>
             <view class="list-item-right-top">
-              <text class="oil-type">98#油品</text>
-              <text class="oil-price">￥200</text>
+              <text class="oil-type">{{currentOilType.name}}</text>
+              <text class="oil-price">{{price}}</text>
             </view>
             <view class="list-item-right-center">
-              <text class="oil-gun">2号枪</text>
+              <text class="oil-gun">{{currentGunType.name}}</text>
               <text class="oil-integral">满200减100</text>
             </view>
           </view>
           <view class="list-item-right-bottom">
-            <text class="oil-liter">40L</text>
-            <text>单价：7.33元/L</text>
+            <text class="oil-liter"></text>
+            <text>单价：{{currentOilType.settingPrice}}元/L</text>
           </view>
         </view>
       </view>
       <view class="order-list-item-footer">
-        <text class="footer-time">下单时间：2018-20-02 12:32:33</text>
+        <text class="footer-time"></text>
         <text class="footer-pay">未支付</text>
       </view>
     </view>
@@ -82,24 +82,24 @@
         </view>
       </view>
     </view>
-    <view class="weui-cells weui-cells_after-title">
+    <!-- <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_switch">
           <view class="weui-cell__bd">可用200积分抵用2元</view>
           <view class="weui-cell__ft">
               <switch checked />
           </view>
       </view>
-    </view>
-    <view class="weui-cells weui-cells_after-title">
+    </view> -->
+    <!-- <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_switch">
           <view class="weui-cell__bd">开具发票</view>
           <view class="weui-cell__ft">
               <switch checked />
           </view>
       </view>
-    </view>
+    </view> -->
  
-    <view class="weui-cells weui-cells_after-title">
+    <!-- <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__bd">发票抬头</view>
         <view class="weui-cell__ft">
@@ -108,7 +108,7 @@
           </picker>
         </view>
       </view>
-    </view>
+    </view> -->
     <view class="weui-cells_after-title">
       <view class="weui-cell" style="padding-bottom: 0;">
         <view class="weui-cell__bd">

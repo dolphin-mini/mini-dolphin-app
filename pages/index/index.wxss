@@ -2,6 +2,7 @@
 page {
   background: #f2f3f5;
 }
+
 .tools-wrap {
   display: flex;
   align-items: center;
@@ -122,8 +123,8 @@ page {
 }
 .QRCode {
   margin-right: 100rpx;
-  width: 100rpx;
-  height: 100rpx;
+  width: 50px;
+  height: 50px;
 }
 .member-ID {
   display: flex;
@@ -340,4 +341,23 @@ page {
   justify-content: center;
   color: #0076FF;
   font-size: 34rpx;
+}
+
+/* 查看二维码 */
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bigQRCode {
+  width: 200px;
+  height: 200px;
+  z-index: 1000;
 }

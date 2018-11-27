@@ -72,6 +72,10 @@ page {
   z-index: 1;
   background: #fff;
 }
+.content {
+  /* margin-bottom: 170rpx; */
+  margin-bottom: 20rpx;
+}
 .swiper {
   left: -50px;
 }
@@ -248,10 +252,12 @@ page {
 
 /* footer */
 .footer-wrap {
-  position: absolute;
-  bottom: 70rpx;
+  position: fixed;
+  bottom: 0rpx;
   padding: 0 30rpx;
   width: calc(100% - 60rpx);
+  height: 150rpx;
+  background: #f2f2f2;
 }
 
 /* modal */

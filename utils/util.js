@@ -1,4 +1,4 @@
-const httpAjax = 'http://192.168.3.29:8867';
+const httpAjax = 'http://192.168.3.200/api';
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1

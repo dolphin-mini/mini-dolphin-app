@@ -1,52 +1,31 @@
 // pages/newIndex/newIndex.js
 const app = getApp();
 const utils = require('../../utils/util.js');
+const QRCode = require('../../utils/QRCord.js');
+
+const {
+  httpAjax,
+} = utils;
+
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    lookatQRCode: false,
     visible: true,
     getUserInfo: false,
     here: '西城小海豚', // 状态 定位中... 定位失败
     cardType: '金卡',
-    userInfo: {},
+    wxUserInfo: {},
+    memberInfo: {},
     oilTypeData:[], 
-    oil: {
-      type: [{
-        name: '92#',
-        value: 1,
-        gun: [1,2,3]
-        }, {
-          name:'95#',
-          value: 2,
-          gun: [1, 2, 3,4,5]
-        },
-        {
-          name:'101#',
-          value:3,
-          gun: [ 1, 2, 3]
-        }, 
-        {
-          name:'0#',
-          value:4,
-          gun: [ 1, 2, 3]
-        }, 
-        {
-          name:'CNG',
-          value:5,
-          gun: [0, 1, 2, 3]
-        }],
-        
-      priceCard: [100,200,300],
-    },
-    currentOilType: { // 选中油品类型
-      name: '101#',
-      value: 3,
-      gun: [1, 2, 3]
-    },
-    currentGunType: null, // 选中油枪类型
-    price: '',
+    oilGunData: [],
+    currentOilType: {}, // 选中油品
+    currentGunType: {}, // 选中油枪类型
+    currentUnitPrice: null, //当前商品单价
+    price: '', // 消费金额
+    priceCard: [100,200,300]
   },
 
   /**
@@ -56,96 +35,141 @@ Page({
     this.getUserPosition();
     
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    const {
-      userInfo,
-      weChatUserInfo,
-      memberInfo,
-    } = app.globalData;
-    this.setData({
-      userInfo: {
-        nickName: userInfo.name,
-        avatarUrl: weChatUserInfo ? weChatUserInfo.headimgurl : '',
-        mobilephone: memberInfo ? memberInfo.phone : '',
-        certification: '未认证',
-        memberID: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [0, 1, 2]],
-      }
-    })
-    this.initGun();
+    this.getWxUserInfo();
+    this.getMemberInfo();
+    this.initOilType();
   },
-
   /**
-   * 生命周期函数--监听页面显示
+   * 生成二维码
    */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 获取微信用户的信息
-   */
-
-  initGun: function () {
-    const { oil } = this.data;
-    const url = 'http://192.168.3.39:8090/oilsservice/oilsinfo/1';
-    utils.request(url, {}).then((res) => {
-      const oilType =  [];
-      res.data.forEach((item, i) => {
-       
-          oilType.push({
-            type: item,
-            key: i,
-            checked: false,
-          });
-        
-      });
-      this.setData({
-        oilTypeData: oilType,
-      });
+  createQRCode: function (ele, text, w, h) {
+    new QRCode(ele, {
+      // usingIn: this,
+      text,
+      width: w,
+      height: h,
+      colorDark: "#000",
+      colorLight: "white",
+      correctLevel: QRCode.CorrectLevel.H,
     });
   },
+  /**
+   * 点击放大二维码
+   */
+  lookatQRCode: function () {
+    this.setData({
+      lookatQRCode: true,
+    });
+  },
+  hideQRCode: function () {
+    this.setData({
+      lookatQRCode: false,
+    });
+  },
+  /**
+   * 获取用户信息
+   */
+  getWxUserInfo: function () {
+    const url = `${httpAjax}/memberservice/wechatuserinfovo`;
+    const {
+      openId,
+      unionId,
+      oilStationId,
+    } = app.globalData;
+    const data = {
+      oilStationId,
+      unionId,
+      openId,
+    };
+
+    utils.request(url, data, 'GET').then((res) => {
+      if(res.code == 10000) {
+        app.globalData.wxUserInfo = res.data;
+        this.setData({
+          wxUserInfo: res.data,
+        });
+      }
+    });
+  },
+  /**
+   * 获取会员信息接口
+   */
+  getMemberInfo: function () {
+    const url = `${httpAjax}/memberservice/membervo`;
+    const {
+      openId,
+      unionId,
+      oilStationId,
+    } = app.globalData;
+    const data = {
+      oilStationId:'1234a',
+      unionId,
+      // openId,
+    };
+
+    utils.request(url, data, 'GET').then((res) => {
+      if (res.code == 10000) {
+        this.createQRCode( 'canvas',res.data.id, 50,50);
+        this.createQRCode('bigCanvas',res.data.id, 200, 200);
+        app.globalData.memberInfo = res.data;
+        const memberCardNum = '123567321678';
+        const memberNum = [];
+        const index = [0,3,6,9];
+        index.forEach((item) => {
+          const arr = [];
+          [0,1,2].forEach((key) => {
+            arr.push(memberCardNum.substr(item, 3)[key])
+          });
+          memberNum.push(arr);
+        })
+        this.setData({
+          memberInfo: res.data,
+          memberNum,
+        });
+      }
+    });
+  },
+  /**
+   * 初始化油品类型(根据油站查油品)
+   */
+  initOilType: function () {
+    const { oil } = this.data;
+    const {
+      oilStationId,
+    } = app.globalData;
+    const url = `${httpAjax}/basicsresourceservice/oils/list`;
+  
+    utils.request(url, {
+      oilStationId,
+    }).then((res) => {
+      if(res.code == 10000) {
+        const oilType = res.data;
+        oilType.forEach((item, i) => {
+          item.checked = false;
+        });
+        this.setData({
+          oilTypeData: oilType,
+        });
+      }
+    });
+  },
+
   modalCancel: function () {
     this.setData({
       visible: false,
     });
   },
+
   modalOk: function () {
     this.setData({
       visible: false,
     });
   },
+
   /**
    * 打开地图
    */
@@ -163,6 +187,7 @@ Page({
       }
     })
   },
+
   /**
    * 获取当前位置
    */
@@ -179,57 +204,74 @@ Page({
       }
     })
   },
+
   /**
    * 油品类型切换
    */
   oilTypeChange: function (e) {
-    const cur = e.currentTarget.dataset.value;
-    const {oil} = this.data;
+    const cur = e.currentTarget.dataset.id;
+    const curName = e.currentTarget.dataset.name;
     const gunTypeData = [];
-    let currentOilType = [];
-    utils.request(`http://192.168.3.39:8080/oilgunbyoilsbyid/1`,{}).then((res) => {
-      if(res.code === 10000) {
-        res.data.forEach((item, i) => {
-          currentOilType.push({
-            type: item,
-            key: i,
-            checked: false,
-          });
-        });
-      }
-    });
+    const url = `${httpAjax}/basicsresourceservice/oilgun/list`;
+    const {
+      oilTypeData,
+    } = this.data;
+    let currentUnitPrice = null;
 
-
-
-
-    const oilType = oil.type;
-    oilType.forEach((item, i) => {
-      if(item.value === cur) {
+    oilTypeData.forEach((item) => {
+      if(item.id == cur) {
         item.checked = true;
-        currentOilType = item;
+        currentUnitPrice = item.sellingPrice;
       } else {
         item.checked = false;
       }
     });
+
+    utils.request(url, {
+      oilsId:`${cur}@7`,
+    },'GET').then((res) => {
+      if(res.code == 10000) {
+        const oilGunData = res.data;
+        oilGunData.forEach((item) => {
+          item.checked = false;
+        });
+        this.setData({
+          oilGunData,
+        });
+      } else {
+        this.setData({
+          oilGunData: [],
+        });
+      }
+    });
     this.setData({
-      oil,
-      currentOilType: null,
+      oilTypeData,
+      currentUnitPrice,
+      currentOilType: {
+        name: curName,
+        value: cur,
+        settingPrice: currentUnitPrice,
+      },
+      currentGunType: null,
     });
   },
   /**
    * 油枪切换
    */
   changeGun: function (e) {
-    const num = e.currentTarget.dataset.gun;
+    const value = e.currentTarget.dataset.gun;
+    const name = e.currentTarget.dataset.name;
     this.setData({
-      currentGunType: num,
+      currentGunType: {
+        name,
+        value,
+      },
     });
   },
   /**
    * 输入金额
    */
   changePrice: function (e) {
-    console.log(e)
     if(e.type == 'tap') {
       const num = e.currentTarget.dataset.money;
       this.setData({
@@ -241,16 +283,21 @@ Page({
         price: val,
       });
     }
-
   },
   navToOrder: function () {
     wx.navigateTo({
       url: '../order/order',
-    })
+    });
   },
   navToOrderDetail: function () {
+    const {
+      currentOilType,
+      currentGunType,
+      price,
+    } = this.data;
+
     wx.navigateTo({
-      url: '../orderDetail/orderDetail',
-    })
+      url: `../orderDetail/orderDetail?currentOilType=${JSON.stringify(currentOilType)}&currentGunType=${JSON.stringify(currentGunType)}&price=${price}`,
+    });
   }
 })
