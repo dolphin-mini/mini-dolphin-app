@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    positionState: false,
     lookatQRCode: false,
     visible: true,
     getUserInfo: false,
@@ -32,8 +33,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getUserPosition();
-    
+    this.checkAuthorizeLocation()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -42,6 +42,81 @@ Page({
     this.getWxUserInfo();
     this.getMemberInfo();
     this.initOilType();
+  },
+  /**
+   * 检测用户是否授权获取地理位置信息
+   */
+  checkAuthorizeLocation: function () {
+    const that = this;
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {//非初始化进入该页面,且未授权
+          wx.showModal({
+            title: '是否授权当前位置',
+            content: '需要获取您的地理位置，请确认授权，否则无法获取您所需数据',
+            success: function (res) {
+              if (res.cancel) {
+                that.setData({
+                  isshowCIty: false
+                })
+                wx.showToast({
+                  title: '授权失败',
+                  icon: 'success',
+                  duration: 1000
+                })
+              } else if (res.confirm) {
+                wx.openSetting({
+                  success: function (dataAu) {
+                    if (dataAu.authSetting["scope.userLocation"] == true) {
+                      wx.showToast({
+                        title: '授权成功',
+                        icon: 'success',
+                        duration: 1000
+                      })
+                      //再次授权，调用getLocationt的API
+                      getLocation(that);
+                    } else {
+                      wx.showToast({
+                        title: '授权失败',
+                        icon: 'success',
+                        duration: 2000
+                      })
+                    }
+                  }
+                })
+              }
+            }
+          })
+        } else if (res.authSetting['scope.userLocation'] == undefined) {
+          //初始化进入
+          that.getLocation();
+        }
+        else { //授权后默认加载
+          that.getLocation();
+        }
+      }
+    })
+  },
+  /**
+   * 获取地理信息
+   */
+  getLocation: function () {
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        // 经纬度
+        var latitude = res.latitude
+        var longitude = res.longitude
+        var aK = that.data.aK
+      },
+      fail: function () {
+        wx.showToast({
+          title: '授权失败',
+          icon: 'success',
+          duration: 1000
+        })
+      }
+    })
   },
   /**
    * 生成二维码
@@ -174,35 +249,18 @@ Page({
    * 打开地图
    */
   openMap: function () {
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success(res) {
-        const latitude = res.latitude
-        const longitude = res.longitude
-        wx.openLocation({
-          latitude,
-          longitude,
-          scale: 28
-        })
-      }
-    })
-  },
-
-  /**
-   * 获取当前位置
-   */
-  getUserPosition: function () {
-    console.log('start')
-    wx.getLocation({
-      type: 'wgs84',
-      success(res) {
-        console.log(res)
-        const latitude = res.latitude
-        const longitude = res.longitude
-        const speed = res.speed
-        const accuracy = res.accuracy
-      }
-    })
+    // wx.getLocation({
+    //   type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+    //   success(res) {
+    //     const latitude = res.latitude
+    //     const longitude = res.longitude
+    //     wx.openLocation({
+    //       latitude,
+    //       longitude,
+    //       scale: 28
+    //     })
+    //   }
+    // })
   },
 
   /**

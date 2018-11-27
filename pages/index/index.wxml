@@ -1,9 +1,9 @@
 <!--pages/newIndex/newIndex.wxml-->
 <view class="container">
 
-  <view class="tools-wrap" >
+  <view class="tools-wrap" bindtap="checkAuthorizeLocation">
     <image class="tools-icon" src="../../images/position.png" bindtap="openMap"></image>
-    <text class="tools-title">{{here}}</text>
+    <text class="tools-title">{{positionState?here:'定位失败，点击刷新'}}</text>
   </view>
 
   <view class="card-wrap">
@@ -56,6 +56,16 @@
       >
         {{item.name}}
       </view>
+      <view 
+        wx:for="{{oilTypeData}}"
+        class="{{item.checked?'oil-type-item oil-type-checked':'oil-type-item'}}"
+        data-id="{{item.id}}"
+        data-name="{{item.name}}"
+        key="{{item.id}}"
+        bindtap="oilTypeChange"
+      >
+        {{item.name}}
+      </view>
     </view>
     <view class="oilgun-type">
       <view
@@ -98,7 +108,7 @@
     </view>
   </view>
   <!-- 弹层 -->
-  <view class="modal-box" hidden="{{!visible}}">
+  <!-- <view class="modal-box" hidden="{{!visible}}">
     <view class="modal-body">
       <view class="modal-content">
         <view class="modal-content-wrap">
@@ -122,5 +132,5 @@
         </view>
      </view>
     </view>
-  </view>
+  </view> -->
 </view>

@@ -1,6 +1,9 @@
 // pages/myCenter/myCenter.js
 const utils = require('../../utils/util.js');
 const app = getApp();
+const {
+  httpAjax,
+} = utils;
 
 Page({
   /**
@@ -16,7 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const url = 'http://192.168.3.20:8867/memberservice/wechatuserinfovo',
+    const url = `${httpAjax}/memberservice/wechatuserinfovo`,
           method = 'GET',
           data = {
             openId: '123',
@@ -115,7 +118,7 @@ Page({
       userInfo
     } = app.globalData;
 
-    utils.request('http://192.168.3.29:8867/memberservice/userinfo/asd/asd',{
+    utils.request(`${httpAjax}/memberservice/userinfo/asd/asd`,{
       id: userInfo.id,
       cardNum: IDCard,
     },'GET').then((res) => {
@@ -135,7 +138,7 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       region: e.detail.value
-    })
+    });
   },
   /**
    * 提交修改信息

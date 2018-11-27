@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/start/start",
-    "pages/order/order",
     "pages/myCenter/myCenter",
+    "pages/order/order",
+    "pages/start/start",
     "pages/memberCard/memberCard",
     "pages/invoiceTitle/invoiceTitle",
     "pages/saveManage/setPayPassword/setPayPassword",

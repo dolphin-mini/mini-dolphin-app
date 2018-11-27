@@ -149,6 +149,8 @@ page {
 }
 .oil-type {
   display: flex;
+  flex-flow: row wrap;
+  /* justify-content: space-between; */
   margin-top: 29rpx;
 }
 .oil-type-item {
@@ -161,7 +163,8 @@ page {
   color:#257CE1;
   border: 1rpx solid #ccc;
   border-radius: 10rpx;
-  margin-right: 15rpx;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
   background: #fff;
 }
 .oil-type-checked {
