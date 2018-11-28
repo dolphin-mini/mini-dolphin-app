@@ -3,19 +3,19 @@
   <!-- 用户信息 -->
    <view class="userinfo-wrap">
     <view class="order-nav-wrap">
-      <view class="order-nav-item">
+      <view class="order-nav-item" data-blankSta="all" bindtap="changeOrderType">
         <image class="nav-img order-all" src="../../images/order/order_all.png"></image>
         <text class="nav-describe">全部订单</text>
       </view>
-      <view class="order-nav-item">
+      <view class="order-nav-item" data-blankSta="1" bindtap="changeOrderType">
         <image class="nav-img wait-pay" src="../../images/order/wait_pay.png"></image>
         <text class="nav-describe">待支付</text>
       </view>
-      <view class="order-nav-item">
+      <view class="order-nav-item" data-blankSta="2" bindtap="changeOrderType">
         <image class="nav-img completed" src="../../images/order/completed.png"></image>
         <text class="nav-describe">已完成</text>
       </view>
-      <view class="order-nav-item">
+      <view class="order-nav-item" data-blankSta="4" bindtap="changeOrderType">
         <image class="nav-img repay" src="../../images/order/repay.png"></image>
         <text class="nav-describe">已退款</text>
       </view>
@@ -23,24 +23,24 @@
   </view>
   <!-- 订单信息 -->
   <view class="order-list-wrap">
-    <view wx:for="{{list}}" class="order-list-item" bindtap="navToOrderDetail">
+    <view wx:for="{{orderList}}" class="order-list-item" bindtap="navToOrderDetail">
       <view class="order-list-item-header">
-        <text class="header-text">订单编号：239847238974</text>
+        <text class="header-text">订单编号：{{item.blanketorderNo}}</text>
       </view>
       <view class="order-list-item-content">
         <view class="order-list-item-content-left">
           <view class="item-image-wrap">
-            <text style="padding-top:10rpx;">98#</text>
+            <text style="padding-top:10rpx;">{{item.oilsorder.name?oilsorder.name: ""}}</text>
           </view>
         </view>
         <view class="order-list-item-content-right">
           <view>
             <view class="list-item-right-top">
-              <text class="oil-type">98#油品</text>
-              <text class="oil-price">￥200</text>
+              <text class="oil-type">{{item.oilsorder.name?oilsorder.name:(productorder.name?productorder.name:'')}}</text>
+              <text class="oil-price">￥{{item.orderSum}}</text>
             </view>
             <view class="list-item-right-center">
-              <text class="oil-gun">2号枪</text>
+              <text class="oil-gun">{{item.oilsorder.oilGun?oilsorder.oilGun:''}}</text>
               <text class="oil-integral">+30积分</text>
             </view>
           </view>
@@ -50,8 +50,8 @@
         </view>
       </view>
       <view class="order-list-item-footer">
-        <text class="footer-time">下单时间：2018-20-02 12:32:33</text>
-        <text class="footer-pay">未支付</text>
+        <text class="footer-time">下单时间：{{item.orderGenerationTime}}</text>
+        <text class="footer-pay">{{orderState[blankSta]}}</text>
       </view>
     </view>
   </view>

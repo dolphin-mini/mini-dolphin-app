@@ -133,7 +133,7 @@ Page({
     });
   },
   /**
-   * 点击放大二维码
+   * 点击放大与隐藏二维码
    */
   lookatQRCode: function () {
     this.setData({

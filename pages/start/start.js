@@ -54,27 +54,8 @@ Page({
                   data.encryptedData = res.encryptedData;
                   app.globalData.iv = res.iv;
                   app.globalData.encryptedData = res.encryptedData;
-                  utils.request(`${httpAjax}/memberservice/decodeUserInfo`, data, 'POST').then((res) => {
-                    app.globalData.memberInfo = res.memberInfo;
-                    app.globalData.userInfoJSON = res.userInfoJSON;
-                    app.globalData.userInfo = JSON.parse(res.userInfoJSON);
-                    if (res && res.code === 1001) {
-                        // 授权过并且未注册跳转注册页面
-                      _this.timer = setTimeout(() => {
-                        wx.redirectTo({
-                          url: '../login/login',
-                        });
-                      }, 2000);
-                    } else if (res && res.code === 1000) {
-                      // 授权过并且注册过跳转首页
-                      _this.timer = setTimeout(() => {
-                        wx.switchTab({
-                          url: '../index/index',
-                        });
-                      }, 300);
-                    }
-                  }).catch((err) => {
-                    console.log(err)
+                  utils.request(`${httpAjax}/memberservice/getwechatuserinfo`, data, 'POST').then((res) => {
+
                   });
                 }
               });
@@ -84,13 +65,31 @@ Page({
       }
     });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  test: function () {
+    utils.request(`${httpAjax}/memberservice/decodeUserInfo`, data, 'POST').then((res) => {
+      app.globalData.memberInfo = res.memberInfo;
+      app.globalData.userInfoJSON = res.userInfoJSON;
+      app.globalData.userInfo = JSON.parse(res.userInfoJSON);
+      if (res && res.code === 1001) {
+        // 授权过并且未注册跳转注册页面
+        _this.timer = setTimeout(() => {
+          wx.redirectTo({
+            url: '../login/login',
+          });
+        }, 2000);
+      } else if (res && res.code === 1000) {
+        // 授权过并且注册过跳转首页
+        _this.timer = setTimeout(() => {
+          wx.switchTab({
+            url: '../index/index',
+          });
+        }, 300);
+      }
+    }).catch((err) => {
+      console.log(err)
+    });
   },
+ 
   onUnload() {
     if(this.timer) {
       clearTimeout(this.timer);

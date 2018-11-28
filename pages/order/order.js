@@ -25,6 +25,11 @@ Page({
         status: '未支付'
       },
     ],
+    blankSta: "all",
+    pageNum: 1,
+    pageSize: 15,
+    orderList: [],
+    orderState: ['进行中','待支付','完成','取消','退款'],
     mock: {
       orderList: [
         {
@@ -68,54 +73,127 @@ Page({
   onReady: function () {
     this.queryOrderListData();
   },
-
   /**
-   * 生命周期函数--监听页面显示
+   * 切换订单类型
    */
-  onShow: function () {
-
+  changeOrderType: function (e) {
+    const type = e.currentTarget.dataset.blanksta;
+    this.setData({
+      blankSta: type,
+      pageNum: 1,
+    },() => {
+      this.queryOrderListData();
+    });
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+     * 页面上拉触底事件的处理函数
+     */
+  onReachBottom: function () {
+    const url = `${httpAjax}/orderservice/blanketorder/detailspage`;
+    const {
+      pageNum,
+      pageSize,
+      orderList,
+      blankSta,
+    } = this.data;
+    const data = {
+      pageNum: pageNum + 1,
+      pageSize,
+    };
+    if (blankSta != 'all') {
+      data.blankSta = `${blankSta}@1`;
+    }
+    request(url, data, 'GET').then((res) => {
+      if (res.code == 10000) {
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        this.setData({
+          orderList: orderList,
+          pageNum: pageNum + 1,
+        });
+      }
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function (e) {
+  onPullDownRefresh: function () {
+    const url = `${httpAjax}/orderservice/blanketorder/detailspage`;
+    const {
+      pageSize,
+      blankSta,
+    } = this.data;
+    const data = {
+      pageNum: 1,
+      pageSize,
+    };
+    if (blankSta != 'all') {
+      data.blankSta = `${blankSta}@1`;
+    }
+    request(url, data, 'GET').then((res) => {
+      if (res.code == 10000) {
+        const orderList = [];
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        this.setData({
+          pageNum: 1,
+          orderList: orderList,
+        });
+      }
+      wx.stopPullDownRefresh();
+    });
   },
   
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function (e) {
-    console.log(e, '上拉刷新')
-    //请求列表数据
-  },
-  pullDownRefresh: function (e) {
-    console.log(e)
-  },
-
   /**
    * 初始化订单列表
    */
   queryOrderListData: function () {
-    const url = `${httpAjax}/orderservice/blanketorder/list`;
-
-    request(url, {}, 'GET').then((res) => {
+    const url = `${httpAjax}/orderservice/blanketorder/detailspage`;
+    const {
+      pageSize,
+      blankSta
+    } = this.data;
+    const data = {
+      pageNum: 1,
+      pageSize,
+    };
+    if (blankSta != 'all') {
+      data.blankSta = `${blankSta}@1`;
+    }
+    
+    request(url, data, 'GET').then((res) => {
       if(res.code == 10000) {
-        
+        const orderList = [];
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        orderList.push(res.data[0]);
+        this.setData({
+          orderList: orderList,
+        });
       }
     });
   },

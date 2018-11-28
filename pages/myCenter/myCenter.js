@@ -33,49 +33,71 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getMemberInfo();
+    this.getWxUserInfo();
   },
-
   /**
-   * 生命周期函数--监听页面显示
+   * 获取用户信息
    */
-  onShow: function () {
+  getWxUserInfo: function () {
+    const url = `${httpAjax}/memberservice/wechatuserinfovo`;
+    const {
+      openId,
+      unionId,
+      oilStationId,
+    } = app.globalData;
+    const data = {
+      oilStationId,
+      unionId,
+      openId,
+    };
 
+    utils.request(url, data, 'GET').then((res) => {
+      if (res.code == 10000) {
+        app.globalData.wxUserInfo = res.data;
+        this.setData({
+          wxUserInfo: res.data,
+        });
+      }
+    });
   },
-
   /**
-   * 生命周期函数--监听页面隐藏
+   * 获取会员信息接口
    */
-  onHide: function () {
+  getMemberInfo: function () {
+    const url = `${httpAjax}/memberservice/membervo`;
+    const {
+      openId,
+      unionId,
+      oilStationId,
+    } = app.globalData;
+    const data = {
+      oilStationId: '1234a',
+      unionId,
+      // openId,
+    };
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    utils.request(url, data, 'GET').then((res) => {
+      if (res.code == 10000) {
+        this.createQRCode('canvas', res.data.id, 50, 50);
+        this.createQRCode('bigCanvas', res.data.id, 200, 200);
+        app.globalData.memberInfo = res.data;
+        const memberCardNum = '123567321678';
+        const memberNum = [];
+        const index = [0, 3, 6, 9];
+        index.forEach((item) => {
+          const arr = [];
+          [0, 1, 2].forEach((key) => {
+            arr.push(memberCardNum.substr(item, 3)[key])
+          });
+          memberNum.push(arr);
+        })
+        this.setData({
+          memberInfo: res.data,
+          memberNum,
+        });
+      }
+    });
   },
   modify: function () {
     wx.navigateTo({
