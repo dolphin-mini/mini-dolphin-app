@@ -1,4 +1,9 @@
 // pages/paymentMethod/paymentMethod.js
+const app = getApp();
+const utils = require('../../utils/util.js');
+const {
+  httpAjax,
+} = utils;
 Page({
 
   /**
@@ -106,16 +111,20 @@ Page({
     });
   },
   navTowxpay: function () {
-    // wx.requestPayment(
-    //   {
-    //     'timeStamp': '',
-    //     'nonceStr': '',
-    //     'package': '',
-    //     'signType': 'MD5',
-    //     'paySign': '',
-    //     'success': function (res) { },
-    //     'fail': function (res) { },
-    //     'complete': function (res) { }
-    //   })
+    const OrderId = '123123';
+    const {openId} = app.globalData;
+    const url = `${httpAjax}/pay/smallprogram/${OrderId}/${openId}`;
+    utils.request(url,{},'POST');
+    wx.requestPayment(
+      {
+        'timeStamp': '',
+        'nonceStr': '',
+        'package': '',
+        'signType': 'MD5',
+        'paySign': '',
+        'success': function (res) { },
+        'fail': function (res) { },
+        'complete': function (res) { }
+      })
   }
 })

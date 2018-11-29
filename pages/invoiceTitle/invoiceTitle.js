@@ -1,6 +1,9 @@
 // pages/invoiceTitle/invoiceTitle.js
 const utils = require('../../utils/util.js');
 const app = getApp();
+const {
+  httpAjax,
+} = utils;
 
 Page({
 
@@ -74,47 +77,7 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   /**
    * 切换抬头类型
    */
@@ -174,7 +137,7 @@ Page({
     const {
       userInfo,
     } = app.globalData;
-    utils.request('http://192.168.3.29:8867/memberservice/invoicetitleinfo/list',{
+    utils.request(`${httpAjax}/memberservice/invoicetitleinfo/list`,{
       userId: userInfo.id,
     },'GET').then((res) => {
       if(res === 10000) {
@@ -191,7 +154,7 @@ Page({
     console.log(e)
     const invoiceInfo = e.detail.value;
     const { isActive } = this.data;
-    utils.request('http://192.168.3.29:8867/memberservice/invoicetitleinfo',{
+    utils.request(`${httpAjax}/memberservice/invoicetitleinfo`,{
       ...invoiceInfo,
       status: 1,
     },'POST').then((res) => {
@@ -210,7 +173,7 @@ Page({
    * 新增个人发票抬头
    */
   formSubmitPerson: function (e) {
-    utils.request('http://192.168.3.29:8867/memberservice/invoicetitleinfo', {
+    utils.request(`${httpAjax}memberservice/invoicetitleinfo`, {
       status: 2,
     }, 'POST').then((res) => {
       wx.showToast({
@@ -229,7 +192,7 @@ Page({
   removeInvoiceTitle: function (e) {
     console.log(e)
     const id = e.currentTarget.dataset.id;
-    utils.request(`http://192.168.3.29:8867/memberservice/invoicetitleinfo/${id}`,{},'GET').then((res) => {
+    utils.request(`${httpAjax}/memberservice/invoicetitleinfo/${id}`,{},'GET').then((res) => {
       if(res.code) {
         this.initInvoiceList();
       }

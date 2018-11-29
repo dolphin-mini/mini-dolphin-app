@@ -12,93 +12,129 @@ Page({
   data: {
     isHiddenModal: true,
     IDCard: null,
-    region: ['广东省', '广州市', '海珠区'],
+    accountInfo: {},
+    integralInfo: {},
+    userInfo: {},
+    sexData: [{
+      name: '女',
+      value: 0,
+    }, {
+      name: '男',
+      value: 1,
+    }],
+    sexIndex: 0,
+    born: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const url = `${httpAjax}/memberservice/wechatuserinfovo`,
-          method = 'GET',
-          data = {
-            openId: '123',
-          };
-    utils.request(url, data, method).then((res) => {
-      console.log(res)
-    });
+    // const url = `${httpAjax}/memberservice/wechatuserinfovo`,
+    //       method = 'GET',
+    //       data = {
+    //         openId: '123',
+    //       };
+    // utils.request(url, data, method).then((res) => {
+    //   console.log(res)
+    // });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getMemberInfo();
-    this.getWxUserInfo();
-  },
+    this.getWxChartUserrInfo();
+    this.getAccountInfo();
+    this.getAccumulateInfo();
+    this.getIntegralInfo();
+  }, 
   /**
    * 获取用户信息
    */
-  getWxUserInfo: function () {
-    const url = `${httpAjax}/memberservice/wechatuserinfovo`;
+  getWxChartUserrInfo: function () {
     const {
-      openId,
       unionId,
-      oilStationId,
     } = app.globalData;
-    const data = {
-      oilStationId,
-      unionId,
-      openId,
-    };
-
-    utils.request(url, data, 'GET').then((res) => {
+    const url = `${httpAjax}/memberservice/finduserbyunionid/${unionId}`;
+ 
+    utils.request(url, {}, 'GET').then((res) => {
       if (res.code == 10000) {
-        app.globalData.wxUserInfo = res.data;
+        if(res.data.userAddress) {
+          res.data.userAddress = res.data.userAddress.split(' ');
+        }
         this.setData({
-          wxUserInfo: res.data,
+          userInfo: res.data,
+          sexIndex: res.data.userSex,
+          born: res.data.userBirthday,
         });
       }
     });
   },
   /**
-   * 获取会员信息接口
+   * 获取账户信息
    */
-  getMemberInfo: function () {
-    const url = `${httpAjax}/memberservice/membervo`;
-    const {
-      openId,
-      unionId,
-      oilStationId,
-    } = app.globalData;
-    const data = {
-      oilStationId: '1234a',
-      unionId,
-      // openId,
-    };
-
-    utils.request(url, data, 'GET').then((res) => {
-      if (res.code == 10000) {
-        this.createQRCode('canvas', res.data.id, 50, 50);
-        this.createQRCode('bigCanvas', res.data.id, 200, 200);
-        app.globalData.memberInfo = res.data;
-        const memberCardNum = '123567321678';
-        const memberNum = [];
-        const index = [0, 3, 6, 9];
-        index.forEach((item) => {
-          const arr = [];
-          [0, 1, 2].forEach((key) => {
-            arr.push(memberCardNum.substr(item, 3)[key])
-          });
-          memberNum.push(arr);
-        })
+  getAccountInfo: function () {
+    const {id} = app.globalData.memberInfo;
+    const url = `${httpAjax}/accoutservice/vipaccount/bymemberid/${id}`;
+    utils.request(url,{},'GET').then((res) => {
+      if(res.code == 10000) {
         this.setData({
-          memberInfo: res.data,
-          memberNum,
+          accountInfo: res.data,
         });
       }
     });
   },
+  /**
+   * 获取累计数据
+   */
+  getAccumulateInfo: function () {
+    const { id } = app.globalData.memberInfo;
+    const url = `${httpAjax}/favorablestatisticsservice/discountinfo/bymemberid/${id}`;
+
+    utils.request(url, {}, 'GET').then((res) => {
+      if (res.code == 10000) {
+        this.setData({
+          accumulateInfo: res.data,
+        });
+      }
+    });
+  },
+  /**
+   * 获取积分数据
+   */
+  getIntegralInfo: function () {
+    const { id } = app.globalData.memberInfo;
+    const url = `${httpAjax}/integralservice/integral/bymemberid/${id}`;
+    utils.request(url,{},'GET').then((res) => {
+      if(res.code == 10000) {
+        this.setData({
+          integralInfo: res.data
+        })
+      }
+    });
+  },
+  /**
+   * 修改性别
+   */
+  bindSexChange: function (e) {
+    console.log(e)
+    this.setData({
+      sexIndex: e.detail.value
+    });
+  },
+  /**
+   * 修改出生日期
+   */
+  bindDateChange: function (e) {
+    const born = e.detail.value;
+    this.setData({
+      born,
+    });
+  },
+  /**
+   * 修改手机号
+   */
   modify: function () {
     wx.navigateTo({
       url: '../modifyPhone/modifyPhone',
@@ -124,7 +160,7 @@ Page({
    * 输入身份ID
    */
   IDcardChange: function (e) {
-    const id = e.target.detail;
+    const id = e.detail.value;
     this.setData({
       IDCard: id,
     });
@@ -134,20 +170,24 @@ Page({
    */
   authentication: function () {
     const {
-      IDCard
+      IDCard,
+      userInfo,
     } = this.data;
-    const {
-      userInfo
-    } = app.globalData;
 
-    utils.request(`${httpAjax}/memberservice/userinfo/asd/asd`,{
-      id: userInfo.id,
-      cardNum: IDCard,
-    },'GET').then((res) => {
-      wx.showToast({
-        title: res.message,
-        icon: 'none'
-      });
+    utils.request(`${httpAjax}/memberservice/userinfo/${IDCard}/${userInfo.id}`,{
+     
+    },'PUT').then((res) => {
+      if(res.code == 10000) {
+        wx.showToast({
+          title: '身份验证成功',
+          icon: 'none'
+        });
+      } else {
+        wx.showToast({
+          title: '身份校验失败',
+          icon: 'none'
+        });
+      }
     });
     this.setData({
       isHiddenModal: true,
@@ -163,18 +203,15 @@ Page({
     });
   },
   /**
-   * 提交修改信息
+   * 保存用户信息
    */
   formSubmit: function (e) {
     const formData = e.detail.value;
     const {
       userInfo,
-    } = app.globalData;
-    formData.userAddress += ' ' + formData.detailAddress;
-    delete formData.detailAddress;
-    console.log(arguments)
-    utils.request('http://192.168.3.29:8867/memberservice/userinfo',{
-      id: userInfo.id,
+    } = this.data;
+    formData.userSex = formData.userSex == '男' ? 1 : 0; 
+    utils.request(`${httpAjax}/memberservice/userinfo/${userInfo.id}`,{
       ...formData
     },'PUT').then((res) => {
       wx.showToast({

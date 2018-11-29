@@ -6,9 +6,9 @@
         <i class="icon-add icon-size"></i>
         <text class="add-tips">添加发票抬头</text>
       </view>
-      <view class="header-wrap-right" bindtap="openScanCode">
+      <!-- <view class="header-wrap-right" bindtap="openScanCode">
         <i class="icon-scan icon-size"></i>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="content">
@@ -21,7 +21,6 @@
       </view>
       <view class="invoice-wrap-right" bindtap="openScanCode">
         <i class="icon-scan icon-size"></i>
-        <!-- <image class="add-icon" src="../../images/invoiceTitle/scan.png"></image> -->
       </view>
     </view>
     <!-- 发票抬头列表 -->

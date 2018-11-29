@@ -33,15 +33,43 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.checkAuthorizeLocation()
+    this.setData({
+      memberInfo: app.globalData.memberInfo,
+    })
+    this.checkAuthorizeLocation();
+
+    // const OrderId = '0HXPLWYCQdu8ztIepZ8noQ';
+    // const { openId } = app.globalData;
+    // const url = `${httpAjax}/payservice/pay/smallprogram/${OrderId}/${openId}`;
+    // utils.request(url, {}, 'POST').then((res) => {
+    //   const info = JSON.parse(res);
+    // wx.requestPayment(
+    //   {
+    //     'signType': 'MD5',
+    //     'nonceStr': info.nonceStr,
+    //     'package': info.package,
+    //     'paySign': info.paySign,
+    //     'timeStamp': info.timeStamp,
+    //     'success': function (res) { 
+    //     },
+    //     'fail': function (res) {
+        
+    //      },
+    //     'complete': function (res) {
+    //      }
+    //   })
+    // });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getWxUserInfo();
-    this.getMemberInfo();
+    const {
+      memberInfo
+    } = this.data;
     this.initOilType();
+    this.createQRCode('canvas', memberInfo.id, 50, 50);
+    this.createQRCode('bigCanvas', memberInfo.id, 200, 200);
   },
   /**
    * 检测用户是否授权获取地理位置信息
@@ -181,7 +209,7 @@ Page({
       oilStationId,
     } = app.globalData;
     const data = {
-      oilStationId:'1234a',
+      oilStationId,
       unionId,
       // openId,
     };

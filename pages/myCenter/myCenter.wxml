@@ -15,17 +15,17 @@
     <view class="userinfo-detail">
       <navigator class="userinfo-detail-item" url="/pages/recharge/recharge" open-type="navigate">
         <image class="header-nav-img" src="../../images/recharge.png" />
-        <text class="text-number">3000.00</text>
+        <text class="text-number">{{accountInfo.totalAmount}}</text>
         <text class="text-describe">充值</text>
       </navigator>
-      <view class="userinfo-detail-item">
-      <image class="header-nav-img" src="../../images/accumulation.png" />
+      <navigator class="userinfo-detail-item" url="/pages/memberCard/memberCard" open-type="navigate">
+        <image class="header-nav-img" src="../../images/accumulation.png" />
         <text class="text-number">300</text>
         <text class="text-describe">积分兑换</text>
-      </view>
+      </navigator>
       <view class="userinfo-detail-item">
       <image class="header-nav-img" src="../../images/points.png" />
-        <text class="text-number">300.00</text>
+        <text class="text-number">{{accumulateInfo.discountNum?accumulateInfo.discountNum:'暂无数据'}}</text>
         <text class="text-describe">累计节省</text>
       </view>
     </view>
@@ -52,7 +52,7 @@
           <span class="modify-input-label">昵称</span>
         </view>
         <view class="modify-input-text-wrap">
-          <input name="name" class="modify-input" type="text" value="小花" />
+          <input name="name" class="modify-input" type="text" value="{{userInfo.name}}" />
         </view>
       </view>
       <view class="modify-input-wrap">
@@ -72,7 +72,12 @@
           <label for="sex" class="modify-input-label">性别</label>
         </view>
         <view class="modify-input-text-wrap">
-          <input id="userSex" name="userSex" class="modify-input" type="text" value="女" />
+            <picker bindchange="bindSexChange" value="{{sexIndex}}" range="{{sexData}}" range-key="name">
+              <view class="picker">
+                <input id="userSex" name="userSex" class="modify-input" type="text" value="{{sexData[sexIndex].name}}" disabled/>
+                <i class="icon-drop drop-down"></i>
+              </view>
+            </picker>
         </view>
       </view>
 
@@ -81,12 +86,18 @@
           <label for="born" class="modify-input-label">出生日期</label>
         </view>
         <view class="modify-input-text-wrap">
-          <input
-            id="userBirthday"
-            name="userBirthday"
-            class="modify-input"
-            type="number"
-            value="1992-07-12" />
+          <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+            <view class="picker">
+              <input
+                id="userBirthday"
+                name="userBirthday"
+                class="modify-input"
+                type="number"
+                disabled
+                value="{{born}}" />
+              <i class="icon-drop drop-down"></i>
+            </view>
+          </picker>
         </view>
       </view>
 
@@ -98,7 +109,7 @@
           <picker
             mode="region"
             bindchange="bindRegionChange"
-            value="{{region}}"
+            value="{{userInfo.userAddress}}"
           >
             <view class="picker">
               <input
@@ -107,7 +118,7 @@
                 class="modify-input picker-input"
                 type="text"
                 disabled
-                value="{{region[0]}} {{region[1]}} {{region[2]}}" />
+                value="{{userInfo.userAddress[0]}} {{userInfo.userAddress[1]}} {{userInfo.userAddress[2]}}" />
               <i class="icon-drop drop-down"></i>
             </view>
             </picker>
@@ -116,15 +127,15 @@
 
       <view class="modify-input-wrap">
         <view class="modify-input-label-wrap">
-          <label for="adress" class="modify-input-label">地址详情</label>
+          <label for="adressDetail" class="modify-input-label">地址详情</label>
         </view>
         <view class="modify-input-text-wrap">
           <input
-            id="detailAddress"
-            name="detailAddress"
+            id="adressDetail"
+            name="adressDetail"
             class="modify-input"
             type="text"
-            value="千佛山路" />
+            value="{{userInfo.addressDetail}}" />
         </view>
       </view>
       <view class="button-wrap">

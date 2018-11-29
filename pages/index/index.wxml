@@ -15,7 +15,7 @@
       <view class="card-info-wrap">
         <view class="card-info-left">
           <view class="avatar-wrap">
-            <image class="avatar" src="{{userInfo.avatarUrl}}" bindtap="navToOrder"></image>
+            <image class="avatar" src="{{memberInfo.headimgurl}}" bindtap="navToOrder"></image>
           </view>
           <view class="userinfo">
             <view class="userinfo-first">

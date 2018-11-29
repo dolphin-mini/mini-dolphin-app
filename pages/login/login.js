@@ -106,7 +106,7 @@ Page({
       mobilePhone,
     } = this.data;
     const {
-      userInfoJSON,
+      userInfo,
       oilStationId
     } = app.globalData;
     const phoneRegExp = /^1[34578]\d{9}$/;
@@ -217,11 +217,9 @@ Page({
     } = this.data;
     const {
       code,
+      weChatUserInfo,
       oilStationId,
     } = app.globalData;
-    let { userInfoJSON } = app.globalData;
-    userInfoJSON = JSON.parse(userInfoJSON);
-    delete userInfoJSON.watermark;
     
     const url = `${httpAjax}/memberservice/check`,
       method = "POST",
@@ -229,20 +227,17 @@ Page({
           phone: mobilePhone,
           phoneCode: secorityCode,
           oilStationId,
-          // prefixPhone,
-        userInfoJSON: userInfoJSON,
+        weChatUserInfo: weChatUserInfo,
       };
     utils.request(url, data, 'POST').then((res) => {
-      if(res.code === 1000) {
-        app.globalData.memberInfo = res.memberInfo;
-        app.globalData.userInfo = res.userInfo;
-        app.globalData.weChatUserInfo = res.weChatUserInfo;
+      if(res.code === 10000) {
+        app.globalData.memberInfo = res.data;
         wx.switchTab({
           url: '../index/index',
         });
       } else {
         wx.showToast({
-          title: 'res.message',
+          title: res.message,
           icon: 'none',
         });
       }

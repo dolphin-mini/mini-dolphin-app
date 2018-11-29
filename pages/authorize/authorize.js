@@ -1,6 +1,9 @@
 // pages/authorize/authorize.js
 const app = getApp();
 const utils = require('../../utils/util.js');
+const {
+  httpAjax,
+} = utils;
 
 Page({
 
@@ -24,6 +27,7 @@ Page({
 
   },
   getUserInfoAuthorize: function () {
+    const _this = this;
     const { code, oilStationId } = app.globalData;
     wx.getUserInfo({
       success (res) {
@@ -34,29 +38,51 @@ Page({
           iv: res.iv,
           encryptedData: res.encryptedData,
         }
-        utils.request('http://192.168.3.29:8867/memberservice/decodeUserInfo', data, 'POST').then((res) => {
-          if (res && res.code === 1001) {
-            app.globalData.memberInfo = res.memberInfo;
-            app.globalData.weChatUserInfo = res.weChatUserInfo;
-            app.globalData.iv = res.iv;
-            app.globalData.encryptedData = res.encryptedData;
-            app.globalData.userInfoJSON = res.userInfoJSON;
-            // 授权过并且未注册跳转注册页面
-            _this.timer = setTimeout(() => {
-              wx.redirectTo({
-                url: '../login/login',
-              });
-            }, 2000);
-          } else if (res && res.code === 1000) {
-            // 授权过并且注册过跳转首页
-            _this.timer = setTimeout(() => {
-              wx.switchTab({
-                url: '../index/index',
-              });
-            }, 2000);
+        // 获取code 请求用户信息与微信信息
+        utils.login().then((res) => {
+          if (res.code) {
+
+            const data = {
+              code: res.code,
+              oilStationId,
+            };
+            wx.getUserInfo({
+              success(res) {
+                data.iv = res.iv;
+                data.encryptedData = res.encryptedData;
+                app.globalData.iv = res.iv;
+                app.globalData.encryptedData = res.encryptedData;
+                utils.request(`${httpAjax}/memberservice/getwechatuserinfo`, data, 'POST').then((res) => {
+                  if (res.code == 10000) {
+                    app.globalData.openId = res.data.openId;
+                    app.globalData.unionId = res.data.unionId;
+                    app.globalData.weChatUserInfo = res.data;
+
+                    utils.request(`${httpAjax}/memberservice/memberlogin/${res.data.unionId}/${oilStationId}`).then((res) => {
+                      if (res.code == 10000) {
+                        app.globalData.memberInfo = res.data;
+                        // 授权过并且注册过跳转首页
+                        _this.timer = setTimeout(() => {
+                          wx.switchTab({
+                            url: '../index/index',
+                          });
+                        }, 300);
+                      } else if (res.code == 10022) {
+                        // 授权过并且未注册跳转注册页面
+                        _this.timer = setTimeout(() => {
+                          wx.redirectTo({
+                            url: '../login/login',
+                          });
+                        }, 300);
+                      }
+                    }).catch((err) => {
+                      console.log(err)
+                    });;
+                  }
+                });
+              }
+            });
           }
-        }).catch((err) => {
-          console.log(err)
         });
         
       },

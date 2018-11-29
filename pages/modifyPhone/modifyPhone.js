@@ -2,6 +2,9 @@
 const { COUNTRY_JSON } = require('../../utils/countryJSON.js');
 const utils = require('../../utils/util.js');
 const app = getApp();
+const {
+  httpAjax,
+} = utils;
 
 Page({
 
@@ -77,7 +80,7 @@ Page({
     const {
       phone,
     } = this.data;
-    utils.request('http://192.168.3.29:8867/memberservice/sendMessage',{
+    utils.request(`${httpAjax}/memberservice/sendMessage`,{
       oilStationId,
       phone,
     },'POST').then((res) => {

@@ -1,6 +1,9 @@
 // pages/submitPhone/submitPhone.js\
 const utils = require('../../utils/util.js');
 const app = getApp();
+const {
+  httpAjax,
+} = utils;
 
 Page({
 
@@ -15,7 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    debugger
     if(options.detail) {
       this.setData({
         phone: options.detail,
@@ -63,7 +65,6 @@ Page({
    * 提交
    */
   submitCode: function () {
-    debugger
     const {
       oilStationId,
       memberInfo,
@@ -73,7 +74,7 @@ Page({
       phone,
       phoneCode
     } = this.data;
-    utils.request('http://192.168.3.29:8867/memberservice/updatephone', {
+    utils.request(`${httpAjax}/memberservice/updatephone`, {
       oilStationId,
       phone,
       phoneCode,

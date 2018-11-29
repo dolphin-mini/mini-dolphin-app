@@ -43,7 +43,7 @@ Page({
           // 获取code 请求用户信息与微信信息
           utils.login().then((res) => {
             if (res.code) {
-              app.globalData.code = res.code;
+
               const data = {
                 code: res.code,
                 oilStationId,
@@ -55,7 +55,32 @@ Page({
                   app.globalData.iv = res.iv;
                   app.globalData.encryptedData = res.encryptedData;
                   utils.request(`${httpAjax}/memberservice/getwechatuserinfo`, data, 'POST').then((res) => {
+                    if(res.code == 10000) {
+                      app.globalData.openId = res.data.openId;
+                      app.globalData.unionId = res.data.unionId;
+                      app.globalData.weChatUserInfo = res.data;
 
+                      utils.request(`${httpAjax}/memberservice/memberlogin/${res.data.unionId}/${oilStationId}`).then((res) => {
+                        if(res.code == 10000) {
+                          app.globalData.memberInfo = res.data;
+                          // 授权过并且注册过跳转首页
+                          _this.timer = setTimeout(() => {
+                            wx.switchTab({
+                              url: '../index/index',
+                            });
+                          }, 300);
+                        } else if(res.code == 10022) {
+                          // 授权过并且未注册跳转注册页面
+                          _this.timer = setTimeout(() => {
+                            wx.redirectTo({
+                              url: '../login/login',
+                            });
+                          }, 300);
+                        }
+                      }).catch((err) => {
+                        console.log(err)
+                      });;
+                    }
                   });
                 }
               });
@@ -63,30 +88,6 @@ Page({
           });
         }
       }
-    });
-  },
-  test: function () {
-    utils.request(`${httpAjax}/memberservice/decodeUserInfo`, data, 'POST').then((res) => {
-      app.globalData.memberInfo = res.memberInfo;
-      app.globalData.userInfoJSON = res.userInfoJSON;
-      app.globalData.userInfo = JSON.parse(res.userInfoJSON);
-      if (res && res.code === 1001) {
-        // 授权过并且未注册跳转注册页面
-        _this.timer = setTimeout(() => {
-          wx.redirectTo({
-            url: '../login/login',
-          });
-        }, 2000);
-      } else if (res && res.code === 1000) {
-        // 授权过并且注册过跳转首页
-        _this.timer = setTimeout(() => {
-          wx.switchTab({
-            url: '../index/index',
-          });
-        }, 300);
-      }
-    }).catch((err) => {
-      console.log(err)
     });
   },
  
