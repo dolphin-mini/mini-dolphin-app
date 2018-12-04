@@ -35,7 +35,7 @@ page {
   font-family: miniDolphin;
 }
 .login {
-  margin-top: 204rpx;
+  margin-top: 117rpx;
 }
 .loginTitle {
   margin-left: 30rpx;
