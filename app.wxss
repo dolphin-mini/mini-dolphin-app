@@ -7,9 +7,13 @@
   height: 0;
   color: transparent;
 }
+@font-face {
+  font-family: miniDolphin;
+  src: url('http://meatball.org.cn/assest/font/RTWSYueGoTrial-Regular-cn.otf');
+}
 page {
   background: #F2F3F5;
-  font-family: PingFangSC-Regular,Roboto-Regular;
+  font-family: miniDolphin;
 }
 .container {
   box-sizing: border-box;

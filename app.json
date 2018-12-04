@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/start/start",
     "pages/orderDetail/orderDetail",
     "pages/index/index",
@@ -15,7 +16,6 @@
     "pages/rechargeCard/rechargeCard",
     "pages/authorize/authorize",
     "pages/modifyPhone/modifyPhone",
-    "pages/login/login",
     "pages/invoiceDetail/invoiceDetail",
     "pages/maps/maps"
   ],

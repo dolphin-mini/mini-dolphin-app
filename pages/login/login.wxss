@@ -1,9 +1,10 @@
 /* pages/login/login.wxss */
+
 page {
   box-sizing: border-box;
   padding-top: 93rpx;
   height: 100%;
-  background:url(http://meatball.org.cn:10000/images/login_bg.png);
+  background:url(http://meatball.org.cn/assest/images/login_bg.png);
   background-size: 100%;
 }
 .loginWrap {
@@ -31,6 +32,7 @@ page {
 .greetText {
   color: #257CE1;
   font-size: 36rpx;
+  font-family: miniDolphin;
 }
 .login {
   margin-top: 204rpx;
