@@ -165,6 +165,10 @@
 .weui-cell_switch::before {
   display: none;
 }
+.price-calc {
+  color: #257CE1;
+}
+
 
 .submit-wrap {
   display: flex;

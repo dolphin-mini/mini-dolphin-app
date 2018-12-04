@@ -1,15 +1,15 @@
 {
   "pages": [
     "pages/start/start",
+    "pages/orderDetail/orderDetail",
+    "pages/index/index",
     "pages/myCenter/myCenter",
     "pages/paymentMethod/paymentMethod",
-    "pages/orderDetail/orderDetail",
     "pages/saveManage/setPayPassword/setPayPassword",
     "pages/recharge/recharge",
     "pages/rechargeDetail/rechargeDetail",
     "pages/order/order",
     "pages/invoiceTitle/invoiceTitle",
-    "pages/index/index",
     "pages/memberCard/memberCard",
     "pages/submitPhone/submitPhone",
     "pages/rechargeCard/rechargeCard",

@@ -1,6 +1,6 @@
 <!--pages/newIndex/newIndex.wxml-->
 <view class="container">
-
+  <view class="position-mask" hidden="{{isshowCIty}}" bindtap="checkAuthorizeLocation"></view>
   <view class="tools-wrap" bindtap="checkAuthorizeLocation">
     <image class="tools-icon" src="../../images/position.png" bindtap="openMap"></image>
     <text class="tools-title">{{positionState?here:'定位失败，点击刷新'}}</text>
@@ -56,22 +56,11 @@
       >
         {{item.name}}
       </view>
-      <view 
-        wx:for="{{oilTypeData}}"
-        class="{{item.checked?'oil-type-item oil-type-checked':'oil-type-item'}}"
-        data-id="{{item.id}}"
-        data-name="{{item.name}}"
-        key="{{item.id}}"
-        bindtap="oilTypeChange"
-      >
-        {{item.name}}
-      </view>
     </view>
     <view class="oilgun-type">
       <view
-        class="{{currentGunType.value==item.oilGunNum?'oilgun-type-item oilgun-checked':'oilgun-type-item'}}"
+        class="{{currentGunType.name==item.name?'oilgun-type-item oilgun-checked':'oilgun-type-item'}}"
         wx:for="{{oilGunData}}"
-        data-gun="{{item.oilGunNum}}"
         data-name="{{item.name}}"
         key="{{item.id}}"
         bindtap="changeGun"
@@ -100,10 +89,10 @@
     <view class="submit-wrap">
       <button 
         id="op"
-        class="{{price&&currentOilType.value&&currentGunType.value?'dolphin-button-default':'dolphin-button-disabled'}}" 
+        class="{{price&&currentOilType.value&&currentGunType.name?'dolphin-button-default':'dolphin-button-disabled'}}" 
         type="primary" 
         bindtap="navToOrderDetail"
-        disabled='{{!(price&&currentOilType.value&&currentGunType.value)}}'
+        disabled='{{!(price&&currentOilType.value&&currentGunType.name)}}'
       >下一步</button>
     </view>
   </view>

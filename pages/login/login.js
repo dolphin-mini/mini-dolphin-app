@@ -125,7 +125,7 @@ Page({
       return
     }
     const _this = this;
-    const url = `${httpAjax}/memberservice/sendMessage `;
+    const url = `${httpAjax}/memberservice/authcode/sendmessage`;
     const data = {
       phone: mobilePhone,
       oilStationId,
@@ -221,13 +221,13 @@ Page({
       oilStationId,
     } = app.globalData;
     
-    const url = `${httpAjax}/memberservice/check`,
+    const url = `${httpAjax}/mini-dolphin-member-server/memberservice/memberinfo/registeruser`,
       method = "POST",
       data = {
           phone: mobilePhone,
           phoneCode: secorityCode,
           oilStationId,
-        weChatUserInfo: weChatUserInfo,
+          weChatUserInfo: weChatUserInfo,
       };
     utils.request(url, data, 'POST').then((res) => {
       if(res.code === 10000) {

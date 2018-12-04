@@ -22,7 +22,7 @@ Page({
       name: '男',
       value: 1,
     }],
-    sexIndex: 0,
+    sexIndex: null,
     born: null,
   },
 
@@ -44,11 +44,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    
+  }, 
+  onShow: function () {
     this.getWxChartUserrInfo();
     this.getAccountInfo();
     this.getAccumulateInfo();
     this.getIntegralInfo();
-  }, 
+  },
   /**
    * 获取用户信息
    */

@@ -13,6 +13,7 @@ Page({
    */
   data: {
     visible: true,
+    selectCoupon: '请选择',
   },
 
   /**
@@ -23,7 +24,7 @@ Page({
     const currentOilType = JSON.parse(options.currentOilType);
     const currentGunType = JSON.parse(options.currentGunType);
     const price = JSON.parse(options.price);
-
+    console.log(options)
     this.setData({
       currentOilType,
       currentGunType,
@@ -36,20 +37,6 @@ Page({
    */
   onReady: function () {
     this.getDiscountInfo();
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
   },
 
   /**
@@ -69,34 +56,74 @@ Page({
       price,
     } = this.data;
     const {
-      memberInfo
+      memberInfo,
+      oilStationId,
     } = app.globalData;
     const url = `${httpAjax}/discountservice/discount/select`;
 
     request(url,{
-      member: {
-        "memberCompanyGroupId": "1111",
-        "memberCompanyId": "111",
-        "memberGroupId": "111",
-        "memberId": "111",
-        "memberRankId": "111"
-      },
+      member: memberInfo,
       oil: {
-        oilId: currentOilType,
+        oilStationId,
+        amount: price,
+        id: currentOilType.value,
+        name: currentOilType.name,
         quantity: null,
-        totalAmount: price,
-        unitPrice: currentUnitPrice,
+        sellingPrice: currentOilType.settingPrice,
       },
+      products: [],
     },'POST').then((res) => {
-
+      if(res.code == 10000) {
+        const discountInfo = res.data;
+        let selectCoupon = '暂无优惠券';
+        discountInfo.canUseDiscount.forEach((item, index) => {
+          if(index == 0) {
+            item.checked = true;
+            selectCoupon = item.disCouponName;
+          } else {
+            item.checked = false;
+          }
+        });
+        this.setData({
+          discountInfo,
+          selectCoupon,
+        });
+      }
     });
   },
-
+  /**
+   * 打开优惠信息列表
+   */
   openPicker: function () {
     this.setData({
       visible: false,
     });
   },
+  /**
+   * 选择优惠券
+   */
+  checkDiscountCoupon: function (e) {
+    console.log(e)
+    const id = e.currentTarget.dataset.id;
+    const { discountInfo } = this.data;
+    let selectCoupon = null;
+    discountInfo.canUseDiscount.forEach((item) => {
+      if(id == item.id) {
+        item.checked = true;
+        selectCoupon = item.disCouponName;
+      } else {
+        item.checked = false;
+      }
+    });
+    this.setData({
+      discountInfo,
+      selectCoupon,
+    });
+  },
+
+  /**
+   * 提交订单
+   */
   submitOrder: function () {
     const {
       currentGunType,
@@ -105,23 +132,20 @@ Page({
       price,
     } = this.data;
     const {
-      memberInfo
+      memberInfo,
+      oilStationId,
     } = app.globalData;
     const url = `${httpAjax}/orderservice/blanketorder/ordersubmmit`;
 
     request(url,{
-      member: {
-        "memberCompanyGroupId": "1111",
-        "memberCompanyId": "111",
-        "memberGroupId": "111",
-        "memberId": "111",
-        "memberRankId": "111"
-      },
+      member: memberInfo,
       oil: {
-        oilId: currentOilType,
+        oilStationId,
+        amount: price,
+        oilId: currentOilType.value,
+        name: currentOilType.name,
         quantity: null,
-        totalAmount: price,
-        unitPrice: currentUnitPrice,
+        sellingPrice: currentOilType.settingPrice,
       },
       disCouponIds:[1],
       isJoinDiscount : 1,

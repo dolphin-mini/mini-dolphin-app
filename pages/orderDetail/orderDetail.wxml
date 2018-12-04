@@ -21,7 +21,7 @@
             </view>
             <view class="list-item-right-center">
               <text class="oil-gun">{{currentGunType.name}}</text>
-              <text class="oil-integral">满200减100</text>
+              <text class="oil-integral" hidden="{{!discountInfo.discountAmount}}">满{{discountInfo.oilStationDiscounts[0].minCharge}}减{{discountInfo.discountAmount}}</text>
             </view>
           </view>
           <view class="list-item-right-bottom">
@@ -42,41 +42,19 @@
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__bd">优惠信息</view>
         <view class="weui-cell__ft">
-            <view class="weui-select" bindtap="openPicker">全商品减5元</view>
+            <view class="weui-select" bindtap="openPicker">{{selectCoupon}}</view>
             <my-picker visible="{{visible}}" bindmyevent='myevent'>
               <scroll-view scroll-y="{{true}}" style="height:100%">
-              <view class="message-list-item">
-                <text>全商品减1元</text>
-                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
-              </view>
-              <view class="message-list-item">
-                <text>全商品减2元</text>
-                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
-              </view>
-              <view class="message-list-item">
-                <text>全商品减3元</text>
-                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
-              </view>
-              <view class="message-list-item">
-                <text>全商品减5元</text>
-                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
-              </view>
-              <view class="message-list-item">
-                <text>全商品减5元</text>
-                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
-              </view>
-              <view class="message-list-item">
-                <text>全商品减5元</text>
-                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
-              </view>
-               <view class="message-list-item">
-                <text>全商品减5元</text>
-                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
-              </view>
-               <view class="message-list-item">
-                <text>全商品减5元</text>
-                <image src="../../images/0.png" style="width: 35rpx;height: 35rpx;" />
-              </view>
+                <view
+                  wx:for="{{discountInfo.canUseDiscount}}"
+                  key="{{item.id}}"
+                  class="message-list-item"
+                  data-id="{{item.id}}"
+                  bindtap='checkDiscountCoupon'
+                >
+                  <text>{{item.disCouponName}}</text>
+                  <image src="../../images/{{item.checked?'list_select':'list_unselect'}}.png" style="width: 35rpx;height: 35rpx;" />
+                </view>
               </scroll-view>
             </my-picker>
         </view>
@@ -114,21 +92,21 @@
         <view class="weui-cell__bd">
           总金额
         </view>
-        <view class="weui-cell__ft">
-            ￥200
+        <view class="weui-cell__ft price-calc">
+            ￥{{discountInfo.totalAmount}}
         </view>
       </view>
       <view class="weui-cell" style="padding-top:10rpx;">
         <view class="weui-cell__bd">
         </view>
-        <view class="weui-cell__ft">
-            -￥10
+        <view class="weui-cell__ft price-calc" hidden="{{!discountInfo.totalDisCount}}">
+            -￥{{discountInfo.totalDisCount}}
         </view>
       </view>
     </view>
     <view class="submit-wrap">
       <view class="submit-wrap-left">
-        实付金额: <text class="RMB">￥</text> <text class="realPay">183</text>
+        实付金额: <text class="RMB">￥</text> <text class="realPay">{{discountInfo.actualAmount}}</text>
       </view>
       <view class="submit-wrap-right">
         <button type='primary' class="dolphin-button-default" bindtap='submitOrder'>提交订单</button>

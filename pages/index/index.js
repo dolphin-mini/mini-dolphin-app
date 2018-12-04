@@ -33,9 +33,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const memberInfo = app.globalData.memberInfo;
+    const memberNum = [];
+    const index = [0, 3, 6, 9];
+    index.forEach((item) => {
+      const arr = [];
+      [0, 1, 2].forEach((key) => {
+        arr.push(memberInfo.memberNum.substr(item, 3)[key])
+      });
+      memberNum.push(arr);
+    });
     this.setData({
-      memberInfo: app.globalData.memberInfo,
-    })
+      memberInfo,
+      memberNum,
+    });
     this.checkAuthorizeLocation();
 
     // const OrderId = '0HXPLWYCQdu8ztIepZ8noQ';
@@ -53,7 +64,7 @@ Page({
     //     'success': function (res) { 
     //     },
     //     'fail': function (res) {
-        
+    //     debugger
     //      },
     //     'complete': function (res) {
     //      }
@@ -96,6 +107,9 @@ Page({
                 wx.openSetting({
                   success: function (dataAu) {
                     if (dataAu.authSetting["scope.userLocation"] == true) {
+                      that.setData({
+                        isshowCIty: true
+                      })
                       wx.showToast({
                         title: '授权成功',
                         icon: 'success',
@@ -104,6 +118,9 @@ Page({
                       //再次授权，调用getLocationt的API
                       getLocation(that);
                     } else {
+                      that.setData({
+                        isshowCIty: false
+                      })
                       wx.showToast({
                         title: '授权失败',
                         icon: 'success',
@@ -129,6 +146,7 @@ Page({
    * 获取地理信息
    */
   getLocation: function () {
+    const that = this;
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
@@ -136,8 +154,14 @@ Page({
         var latitude = res.latitude
         var longitude = res.longitude
         var aK = that.data.aK
+        that.setData({
+          isshowCIty: true
+        })
       },
       fail: function () {
+        that.setData({
+          isshowCIty: false
+        });
         wx.showToast({
           title: '授权失败',
           icon: 'success',
@@ -312,9 +336,9 @@ Page({
         item.checked = false;
       }
     });
-
+    // 请求油枪数据
     utils.request(url, {
-      oilsId:`${cur}@7`,
+      oilsId: cur,
     },'GET').then((res) => {
       if(res.code == 10000) {
         const oilGunData = res.data;
@@ -345,12 +369,10 @@ Page({
    * 油枪切换
    */
   changeGun: function (e) {
-    const value = e.currentTarget.dataset.gun;
     const name = e.currentTarget.dataset.name;
     this.setData({
       currentGunType: {
         name,
-        value,
       },
     });
   },

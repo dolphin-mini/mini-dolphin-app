@@ -54,11 +54,13 @@ Page({
                   data.encryptedData = res.encryptedData;
                   app.globalData.iv = res.iv;
                   app.globalData.encryptedData = res.encryptedData;
-                  utils.request(`${httpAjax}/memberservice/getwechatuserinfo`, data, 'POST').then((res) => {
+                  // 发送code换取unionID等用户信息
+                  utils.request(`${httpAjax}/mini-dolphin-member-server/memberservice/wechatuserinfo/getwechatuserinfo`, data, 'POST').then((res) => {
                     if(res.code == 10000) {
                       app.globalData.openId = res.data.openId;
                       app.globalData.unionId = res.data.unionId;
                       app.globalData.weChatUserInfo = res.data;
+                      // 校验用户是否注册过
 
                       utils.request(`${httpAjax}/memberservice/memberlogin/${res.data.unionId}/${oilStationId}`).then((res) => {
                         if(res.code == 10000) {
@@ -69,7 +71,7 @@ Page({
                               url: '../index/index',
                             });
                           }, 300);
-                        } else if(res.code == 10022) {
+                        } else if(res.code == 11002) {
                           // 授权过并且未注册跳转注册页面
                           _this.timer = setTimeout(() => {
                             wx.redirectTo({
