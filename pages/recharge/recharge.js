@@ -1,4 +1,8 @@
 // pages/recharge/recharge.js
+const utils = require('../../utils/util.js');
+const app = getApp();
+const { httpAjax } = utils;
+
 Page({
 
   /**
@@ -24,20 +28,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
@@ -51,19 +41,6 @@ Page({
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   /**
    * 输入金额
    */
@@ -91,15 +68,64 @@ Page({
     //   }
     // });
   },
+  /**
+   * 确认充值调用支付接口
+   */
   closeModal: function () {
     this.setData({
       isHidden: true,
     });
-    wx.navigateTo({
-      url: '../rechargeDetail/rechargeDetail',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  }
+
+    const {
+      money,
+    } = this.data;
+
+    const {
+      memberInfo,
+      oilStationId,
+    } = app.globalData;
+
+    const url = `${httpAjax}/mini-dolphin-recharge-server/payinfoservice/payinfo`;
+    const data = {
+      memberId: memberInfo.id,
+      name: memberInfo.name,
+      oilStationId,
+      rechargeMoney: money,
+    };
+    utils.request(url,data,'POST').then((res) => {
+      if(res.code == 10000) {
+        const OrderId = 'sPB-pvPnQn-WEVYIUpUcHQ';
+        const { openId } = app.globalData;
+        const url = `${httpAjax}/payservice/pay/smallprogram/${OrderId}/${openId}`;
+        utils.request(url, {}, 'POST').then((res) => {
+          const info = JSON.parse(res);
+          wx.requestPayment(
+            {
+              'signType': 'MD5',
+              'nonceStr': info.nonceStr,
+              'package': info.package,
+              'paySign': info.paySign,
+              'timeStamp': info.timeStamp,
+              'success': function (res) {
+                wx.navigateTo({
+                  url: '../rechargeDetail/rechargeDetail',
+                  success: function(res) {},
+                  fail: function(res) {},
+                  complete: function(res) {},
+                })
+              },
+              'fail': function (res) {
+                debugger
+              },
+              'complete': function (res) {
+              }
+            });
+          });
+        }
+      });
+    
+    
+  },
+  
+
 })

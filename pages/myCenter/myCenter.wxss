@@ -6,7 +6,7 @@
   height:100vh;
 }
 .header {
-  background: url(http://meatball.org.cn:10000/images/header_bg.png) -85rpx -15rpx;
+  background: url(http://meatball.org.cn/assest/images/header_bg.png) -85rpx -15rpx;
   background-size: 120% 120%;
   height: 375rpx;
 }

@@ -48,28 +48,6 @@ Page({
       memberNum,
     });
     this.checkAuthorizeLocation();
-
-    // const OrderId = '0HXPLWYCQdu8ztIepZ8noQ';
-    // const { openId } = app.globalData;
-    // const url = `${httpAjax}/payservice/pay/smallprogram/${OrderId}/${openId}`;
-    // utils.request(url, {}, 'POST').then((res) => {
-    //   const info = JSON.parse(res);
-    // wx.requestPayment(
-    //   {
-    //     'signType': 'MD5',
-    //     'nonceStr': info.nonceStr,
-    //     'package': info.package,
-    //     'paySign': info.paySign,
-    //     'timeStamp': info.timeStamp,
-    //     'success': function (res) { 
-    //     },
-    //     'fail': function (res) {
-    //     debugger
-    //      },
-    //     'complete': function (res) {
-    //      }
-    //   })
-    // });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -28,7 +28,7 @@ page {
 .card-wrap {
   width: 100%;
   height: 455rpx;
-  background: url('http://meatball.org.cn:10000/images/card_bg.png') -15rpx -20rpx;
+  background: url('http://meatball.org.cn/assest/images/card_bg.png') -15rpx -20rpx;
   background-size: 102% 100%;
 
 }
@@ -73,7 +73,7 @@ page {
   height: 114rpx;
   margin-left: 62rpx;
   margin-right: 34rpx;  
-  background: url('http://meatball.org.cn:10000/images/avatar.png');
+  /* background: url('http://meatball.org.cn/assest/images/avatar.png'); */
   background-size: 100%;
 }
 .avatar {
@@ -96,21 +96,25 @@ page {
 
 }
 .userinfo-first {
+  position: relative;
   margin-top: 26rpx;
   font-size: 30rpx;
   line-height: 30rpx;
   color: #000;
 }
 .fix-name {
-  width: 21rpx;
-  height: 21rpx;
+  position: absolute;
+  /* right: -35rpx; */
+  width: 37rpx;
+  height: 32rpx;
 }
 .vip-icon {
   margin-left: 10rpx;
-  width: 18rpx;
-  height: 18rpx;
+  width: 37rpx;
+  height: 32rpx;
 }
 .userinfo-second {
+  position: relative;
   display: flex;
   margin-top: 26rpx;
   font-size:  26rpx;
@@ -118,6 +122,8 @@ page {
   color: #333;
 }
 .certification {
+  position: absolute;
+  right: -35rpx;
   margin-left: 24rpx;
   font-size: 20rpx;
   color: #ccc;
@@ -177,7 +183,7 @@ page {
 }
 .oil-type-checked {
   border: none;
-  background:url('http://meatball.org.cn:10000/images/check_button_bg.png');
+  background:url('http://meatball.org.cn/assest/images/check_button_bg.png');
   background-size: 100%;
 }
 .oil-type-item:last-child {
@@ -257,7 +263,7 @@ page {
 .price-card-checked {
   border: none;
   box-shadow:0rpx 10rpx 19rpx 2rpx rgba(37,124,225,0.47);
-  background:url('http://meatball.org.cn:10000/images/check_button_2xbg.png');
+  background:url('http://meatball.org.cn/assest/images/check_button_2xbg.png');
   background-size: 100%;
 }
 .submit-wrap {

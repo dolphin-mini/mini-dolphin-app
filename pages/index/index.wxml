@@ -8,8 +8,8 @@
 
   <view class="card-wrap">
     <view class="card-type">
-      签到积分：<text class="card-type-L3">{{cardType}}</text>
-      <image class="card-tips" src="../../images/tips.png"></image>
+      会员级别：<text class="card-type-L3">{{cardType}}</text>
+      <!-- <image class="card-tips" src="../../images/tips.png"></image> -->
     </view>
     <view class='card-info'>
       <view class="card-info-wrap">
@@ -28,12 +28,12 @@
             </view>
           </view>
         </view>
-        <view class="card-info-right">
+        <!-- <view class="card-info-right">
           <canvas class='QRCode' canvas-id='canvas' bindtap="lookatQRCode"></canvas>
           <view hidden="{{!lookatQRCode}}" class="mask" bindtap="hideQRCode">
             <canvas class='bigQRCode' canvas-id='bigCanvas'></canvas>
           </view>
-        </view>
+        </view> -->
       </view>
     </view>
     <view class="member-ID">
@@ -43,7 +43,18 @@
     </view>
   </view>
 
-  <view class="content-wrap">
+<view class="content-wrap">
+  <view class="card-info-right">
+    <!-- <canvas class='QRCode' canvas-id='canvas' bindtap="lookatQRCode"></canvas> -->
+    <canvas class='bigQRCode' canvas-id='bigCanvas'></canvas>
+    <view hidden="{{!lookatQRCode}}" class="mask" bindtap="hideQRCode">
+      <canvas class='bigQRCode' canvas-id='bigCanvas'></canvas>
+    </view>
+  </view>
+</view>
+
+<!-- 油枪选择 -->
+  <!-- <view class="content-wrap">
     <view class="content-title">请选择油枪</view>
     <view class='oil-type'>
       <view 
@@ -95,7 +106,8 @@
         disabled='{{!(price&&currentOilType.value&&currentGunType.name)}}'
       >下一步</button>
     </view>
-  </view>
+  </view> -->
+
   <!-- 弹层 -->
   <!-- <view class="modal-box" hidden="{{!visible}}">
     <view class="modal-body">

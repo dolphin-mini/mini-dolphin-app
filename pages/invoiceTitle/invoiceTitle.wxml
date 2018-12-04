@@ -40,15 +40,13 @@
         </view>
       </view>
     </view>
-   <view class="section-caption">已开票订单</view>
-    <!-- 订单列表 -->
+   <!-- <view class="section-caption">已开票订单</view>
     <view class="order-item-wrap">
       <view class="order-item-title">
         <text>订单编号：293840238490</text>
       </view>
       <view class="order-item-content">
         <view class="order-image">
-          <!-- <image class="order-image-check" src="../../images/unselected.png"></image> -->
         </view>
         <view class="order-detail">
           <text class="oil-type">98#油品</text>
@@ -62,7 +60,7 @@
         <text>2019-2032-32 12:32:32</text>
         <text>西城小海豚加油站</text>
       </view>
-    </view>
+    </view> -->
   </view>
   <!-- <view class="footer-wrap">
     <button 

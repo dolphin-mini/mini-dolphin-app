@@ -7,7 +7,7 @@
   box-sizing: border-box;
   width: 100%;
   height: 270rpx;
-  background: url('http://meatball.org.cn:10000/images/order_bg.png') no-repeat;
+  background: url('http://meatball.org.cn/assest/images/order_bg.png') no-repeat;
   background-position: -65rpx -20rpx;
   background-size: 110% 100%;
 }
@@ -39,7 +39,7 @@
   margin-right: 29rpx;
   width: 96rpx;
   height: 119rpx;
-  background: url("http://meatball.org.cn:10000/images/avatar.png") no-repeat;
+  background: url("http://meatball.org.cn/assest/images/avatar.png") no-repeat;
   background-size: 100% 100%;
 }
 .userinfo-avatar {
@@ -186,7 +186,7 @@
   width: 150rpx;
   height: 150rpx;
   border: 1rpx solid #ccc;
-  background: url('http://meatball.org.cn:10000/images/order_list_bg.png') 50% 50% no-repeat;
+  background: url('http://meatball.org.cn/assest/images/order_list_bg.png') 50% 50% no-repeat;
   background-size: 95rpx 115rpx;
   color: #fff;
   font-size: 37rpx;

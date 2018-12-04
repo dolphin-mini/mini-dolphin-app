@@ -66,7 +66,7 @@ page {
   color: #257CE1;
 }
 .btnWrap {
-  margin-top: 40rpx;
+  margin-top: 90rpx;
   padding: 0rpx 18rpx 0 19rpx;
 }
 

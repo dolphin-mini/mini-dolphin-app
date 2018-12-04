@@ -7,7 +7,7 @@ page {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: url(http://meatball.org.cn:10000/images/header_bg.png) -85rpx -15rpx;
+  background: url(http://meatball.org.cn/assest/images/header_bg.png) -85rpx -15rpx;
   background-size: 120% 130%;
 }
 .header-wrap {
