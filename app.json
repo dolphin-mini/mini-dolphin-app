@@ -2,8 +2,8 @@
   "pages": [
     "pages/start/start",
     "pages/login/login",
-    "pages/orderDetail/orderDetail",
     "pages/index/index",
+    "pages/orderDetail/orderDetail",
     "pages/myCenter/myCenter",
     "pages/paymentMethod/paymentMethod",
     "pages/saveManage/setPayPassword/setPayPassword",
