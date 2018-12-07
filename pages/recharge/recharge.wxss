@@ -4,8 +4,8 @@ page {
 }
 .card {
   margin: 30rpx;
-  
-  height: 669rpx;
+  padding-bottom: 11rpx;
+  min-height: 669rpx;
   background:#fff;
   box-shadow:0rpx 10rpx 19rpx 2rpx rgba(204,204,204,0.47);
   border-radius:10rpx;
@@ -56,6 +56,7 @@ page {
 }
 .money, .moneySymbol {
   font-size: 60rpx;
+  font-weight: bold;
 }
 .money {
   width: 100%;
@@ -65,11 +66,8 @@ page {
   color: #257CE1;
 }
 .btnWrap {
-  margin-top: 40rpx;
+  margin-top: 90rpx;
   padding: 0rpx 18rpx 0 19rpx;
-}
-.btn {
-  background: linear-gradient(to right, #4D9BFD , #496AF2);
 }
 
 /* modal */
@@ -79,33 +77,54 @@ page {
   width:100%;
   height:100%;
   top:0px;
-  background:rgba(0,0,0,0.4);
+  background:rgba(0,0,0,0.35);
   overflow: hidden;
   z-index: 99999999;
   }
 
 .modal-body{
-  margin: 42rpx;
-  padding: 20rpx;
+  margin: 0 42rpx;
+  padding: 20rpx 44rpx 20rpx 39rpx;
   position:relative;
-  background: #fff;
-  border-radius: 30rpx;
+  top: 50%;
+  transform: translateY(-65%);
+  /* height:520rpx; */
+  background:rgba(255,255,255,1);
+  border-radius:30rpx;
 }
 
 .modal-head {
   padding-bottom: 13rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.modal-head::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
   border-bottom: 1px solid #ccc;
+  color: #e5e5e5;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+
 }
 .modal-close {
   position: absolute;
+  top: 38rpx;
+  font-size:30rpx;
+
 }
 .modal-title {
+ 
   text-align: center;  
   font-size: 40rpx;
+  
 }
 
 .modal-content{
-  margin:38rpx;
+  margin:48rpx 22rpx 42rpx 22rpx;
   border-radius: 10rpx;
 }
 
@@ -118,13 +137,15 @@ page {
 }
 .tips {
   font-size: 30rpx;
+  line-height: 30rpx;
 }
 .tipsMoney {
-  margin-top: 34rpx;
-  margin-bottom: 50rpx;
-  font-size: 80rpx;
+  margin-top: 57rpx;
+  margin-bottom: 66rpx;
+  font-size: 60rpx;
   color: #333;
   font-weight: bold;
+  line-height: 60rpx;
 }
 .modal-content .fenxiang{
   width: 100%;

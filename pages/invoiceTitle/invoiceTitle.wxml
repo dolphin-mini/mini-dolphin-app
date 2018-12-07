@@ -1,26 +1,14 @@
 <!--pages/invoiceTitle/invoiceTitle.wxml-->
-<view class="page">
+<view class="page" bindtap="clearSwiper">
   <view class="header">
-    <view wx:if="{{true}}" class="header-wrap">
+    <view class="header-wrap">
       <view class="header-wrap-left" bindtap='openModal'>
         <i class="icon-add icon-size"></i>
         <text class="add-tips">添加发票抬头</text>
       </view>
-      <view class="header-wrap-right" bindtap="openScanCode">
+      <!-- <view class="header-wrap-right" bindtap="openScanCode">
         <i class="icon-scan icon-size"></i>
-      </view>
-    </view>
-    <view wx:else class="header-list-wrap">
-      <view class="header-list-item">
-        <view class='header-list-item-image'>
-          <i class="icon-add icon-size"></i>
-        </view>
-        <view class='header-list-item-content'>
-          <text class="item-title">山东洗车机下次y偶限公司</text>
-          <text class="item-text">税号：23094803284</text>
-        </view>
-      </view>
-
+      </view> -->
     </view>
   </view>
   <view class="content">
@@ -33,18 +21,32 @@
       </view>
       <view class="invoice-wrap-right" bindtap="openScanCode">
         <i class="icon-scan icon-size"></i>
-        <!-- <image class="add-icon" src="../../images/invoiceTitle/scan.png"></image> -->
       </view>
     </view>
-    <!-- 订单列表 -->
+    <!-- 发票抬头列表 -->
+    <view class="invoice-list">
+      <view class="header-list-wrap" wx:for="{{invoiceInfo}}" wx:key="{{index}}" bindtap='invoiceTitleChange' data-id="{{item.id}}">
+        <view class="header-list-item {{item.swiper?'swiper':''}}" data-id="{{item.id}}" bindtouchstart="swiperStart" bindtouchmove="swiperMove">
+          <view class='header-list-item-image'>
+            <image class="invoice-item-left-img" src="{{item.checked?'../../images/selected.png':'../../images/unselected.png'}}" />
+          </view>
+          <view class='header-list-item-content'>
+            <text class="item-title">{{item.address}}</text>
+            <text class="item-text">税号：{{item.duty}}</text>
+          </view>
+        </view>
+        <view class="header-list-item-delete">
+          <view class="delete-btn" bindtap="removeInvoiceTitle" data-id="{{item.id}}">删除</view>
+        </view>
+      </view>
+    </view>
+   <!-- <view class="section-caption">已开票订单</view>
     <view class="order-item-wrap">
       <view class="order-item-title">
-        <label>订单编号：</label>
-        <text>293840238490</text>
+        <text>订单编号：293840238490</text>
       </view>
       <view class="order-item-content">
         <view class="order-image">
-          <image class="order-image-check" src="../../images/invoiceTitle/check_order.png"></image>
         </view>
         <view class="order-detail">
           <text class="oil-type">98#油品</text>
@@ -58,19 +60,21 @@
         <text>2019-2032-32 12:32:32</text>
         <text>西城小海豚加油站</text>
       </view>
-    </view>
+    </view> -->
   </view>
-  <view class="footer-wrap">
-    <button wx:if="{{isSelected}}" class="footer-btn" type='primary'>开票请求</button>
-    <button wx:else class="footer-disable-btn" type='primary' disabled>开票请求</button>
-  </view>
+  <!-- <view class="footer-wrap">
+    <button 
+      class="{{isSelected?'dolphin-button-default':'dolphin-button-disabled'}}"
+      type='primary'
+      bindtap="submitInvoice"
+      disabled='{{!isSelected}}'>开票请求</button>
+  </view> -->
 
   <!-- 弹层 -->
   <view class="modal-box" hidden="{{isHiddenModal}}">
     <view class="modal-body">
       <view class="modal-head">
-        <!-- <icon class="modal-close" type="clear" bindtap="closeModal" /> -->
-        <image class="modal-close" src="../../images/invoiceTitle/close.png" bindtap="closeModal"></image>
+        <i class="icon-close modal-close" bindtap="closeModal"></i>
         <view class="modal-title">
           填写抬头
         </view>
@@ -86,7 +90,75 @@
             bindtap="changeTitle"
             data-id="personal">个人/非企业</text>
         </view>
-        <button class="footer-btn" type="primary" bindtap="saveModal">保存</button>
+        <form wx:if="{{isActive==='company'}}" class="invoice-list-wrap" bindsubmit="formSubmitCompany">
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">名称</label>
+            </view>
+            <view class="modify-input-text-wrap">
+              <input
+                name="name"
+                class="modify-input"
+                type="text"
+              />
+            </view>
+          </view>
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">税号</label>
+            </view>
+            <view class="modify-input-text-wrap">
+              <input
+                id="duty"
+                name="dutyNum"
+                class="modify-input"
+                type="text"
+              />
+            </view>
+          </view>
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">单位地址</label>
+            </view>
+            <view class="modify-textarea-wrap">
+              <textarea name="unitAddress" class="modify-textarea" placeholder="请输入文本" style="height: 3.3em" />
+            </view>
+          </view>
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">电话号码</label>
+            </view>
+            <view class="modify-input-text-wrap">
+              <input
+                name="phone"
+                class="modify-input"
+                type="text"
+              />
+            </view>
+          </view>
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">开户银行</label>
+            </view>
+            <view class="modify-textarea-wrap">
+              <textarea name="openingBank" class="modify-textarea" placeholder="请输入文本" style="height: 3.3em" />
+            </view>
+          </view>
+          <view class="modify-input-wrap">
+            <view class="modify-input-label-wrap">
+              <label for="adress" class="modify-input-label">银行账户</label>
+            </view>
+            <view class="modify-input-text-wrap">
+              <input
+                name="bankAccount"
+                class="modify-input"
+                type="text"
+              />
+            </view>
+          </view>
+          <button class="dolphin-button-default" type="primary" formType='submit'>保存</button>
+        </form>
+        <button wx:if="{{isActive!=='company'}}" class="dolphin-button-default" type="primary" bindtap="formSubmitPerson">保存</button>
      </view>
     </view>
   </view>

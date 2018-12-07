@@ -1,4 +1,3 @@
 <!--pages/start/start.wxml-->
 <view class="loginWrap">
-  <image class="loginImg" src="../../images/login.png" />
 </view>

@@ -1,21 +1,73 @@
 // pages/invoiceTitle/invoiceTitle.js
+const utils = require('../../utils/util.js');
+const app = getApp();
+const {
+  httpAjax,
+} = utils;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isSelected: false,
-    isActive: null,
+    swiper: false,
+    swiperStartPoint: null,
+    isSelected: true,
+    isActive: 'company',
     isHiddenModal: true,
-    titleType: null,
+    titleType: 'company',
+    invoiceInfo: [
+      {
+        id: 1,
+        duty: '12837xx891273',
+        address: '山东xxxx',
+        checked: true,
+        swiper: false,
+      },
+      {
+        id: 2,
+        duty: '2131289371289',
+        address: 'xxxxxx',
+        checked: false,
+        swiper: false,
+      },
+      {
+        id: 2,
+        duty: '2131289371289',
+        address: 'xxxxxx',
+        checked: false,
+        swiper: false,
+      },
+      {
+        id: 2,
+        duty: '2131289371289',
+        address: 'xxxxxx',
+        checked: false,
+        swiper: false,
+      },
+      {
+        id: 2,
+        duty: '2131289371289',
+        address: 'xxxxxx',
+        checked: false,
+        swiper: false,
+      },
+      {
+        id: 2,
+        duty: '2131289371289',
+        address: 'xxxxxx',
+        checked: false,
+        swiper: false,
+      },
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -25,46 +77,23 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
 
   /**
-   * 生命周期函数--监听页面隐藏
+   * 切换抬头类型
    */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  invoiceTitleChange: function (e) {
+    let { id } = e.currentTarget.dataset;
+    const {invoiceInfo} = this.data;
+    invoiceInfo.forEach((item) => {
+      if(item.id === id) {
+        item.checked = true;
+      } else {
+        item.checked = false;
+      }
+    });
+    this.setData({
+      invoiceInfo,
+    });
   },
   /**
    * 更改发票抬头
@@ -78,6 +107,7 @@ Page({
     }
     this.setData({
       isActive: id,
+      titleType: id,
     });
   },
   /**
@@ -101,14 +131,72 @@ Page({
     });
   },
   /**
-   * 保存modal
+   * 初始化发票抬头列表
    */
-  saveModal: function () {
+  initInvoiceList: function () {
+    const {
+      userInfo,
+    } = app.globalData;
+    utils.request(`${httpAjax}/memberservice/invoicetitleinfo/list`,{
+      userId: userInfo.id,
+    },'GET').then((res) => {
+      if(res === 10000) {
+        res.data.forEach((item) => {
+          item.checkd = false;
+        });
+      }
+    });
+  },
+  /**
+   * 新增公司发票抬头
+   */
+  formSubmitCompany: function (e) {
+    console.log(e)
+    const invoiceInfo = e.detail.value;
     const { isActive } = this.data;
+    utils.request(`${httpAjax}/memberservice/invoicetitleinfo`,{
+      ...invoiceInfo,
+      status: 1,
+    },'POST').then((res) => {
+      wx.showToast({
+        title: res.message,
+        icon: 'none',
+      });
+    });
+
     this.setData({
       isHiddenModal: true,
       titleType: isActive,
-    })
+    });
+  },
+  /**
+   * 新增个人发票抬头
+   */
+  formSubmitPerson: function (e) {
+    utils.request(`${httpAjax}memberservice/invoicetitleinfo`, {
+      status: 2,
+    }, 'POST').then((res) => {
+      wx.showToast({
+        title: res.message,
+        icon: 'none',
+      });
+    });
+    this.setData({
+      isHiddenModal: true,
+      titleType: isActive,
+    });
+  },
+  /**
+   * 删除发票抬头
+   */
+  removeInvoiceTitle: function (e) {
+    console.log(e)
+    const id = e.currentTarget.dataset.id;
+    utils.request(`${httpAjax}/memberservice/invoicetitleinfo/${id}`,{},'GET').then((res) => {
+      if(res.code) {
+        this.initInvoiceList();
+      }
+    });
   },
   /**
    * 扫一扫
@@ -118,6 +206,64 @@ Page({
       success(res) {
         console.log(res)
       }
+    });
+    // var _this = this;
+    // wx.requestPayment({
+    //   'timeStamp': '',
+    //   'nonceStr': '',
+    //   'package': '',
+    //   'signType': 'MD5',
+    //   'paySign': '',
+    //   'success': function (res) {
+    //     console.log(res)
+    //   },
+    //   'fail': function (res) {
+    //     console.log(res)
+    //   }
+    // })
+  },
+  swiperStart: function (e){
+    this.setData({
+      swiperStartPoint: e.touches[0],
+    });
+  },
+  swiperMove: function (e) {
+    const {
+      swiperStartPoint,
+      invoiceInfo,
+    } = this.data;
+    const endX = e.touches[0].clientX;
+    const  listId = e.currentTarget.dataset.id;
+    if(swiperStartPoint.clientX -endX > 5) {
+      invoiceInfo.forEach((item) => {
+        if(listId === item.id) {
+          item.swiper = true;
+        } else {
+          item.swiper = false;
+        }
+      });
+      this.setData({
+        invoiceInfo,
+      });      
+    }
+  },
+  clearSwiper: function (e) {
+    const {
+      invoiceInfo,
+    } = this.data;
+    invoiceInfo.forEach((item) => {
+      item.swiper = false;
     })
+    this.setData({
+      invoiceInfo,
+    });
+  },
+  /**
+   * 提交请求
+   */
+  submitInvoice: function () {
+    wx.navigateTo({
+      url: '../invoiceDetail/invoiceDetail',
+    });
   }
 })

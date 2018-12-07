@@ -79,5 +79,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  orderComplete: function () {
+    wx.navigateTo({
+      url: '../index/index',
+    });
   }
 })

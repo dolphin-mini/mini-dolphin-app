@@ -5,6 +5,7 @@
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
   "usingComponents": {
-    "card": "/components/card/card"
+    "card": "/components/card/card",
+    "detail-input": "../../components/detailInput/detailInput"
   }
 }

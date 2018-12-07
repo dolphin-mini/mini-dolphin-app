@@ -1,0 +1,45 @@
+/* pages/invioceDetail/invioceDetail.wxss */
+.content-wrap {
+  margin: 30rpx 30rpx;
+  padding: 75rpx 36rpx 0 36rpx;
+  background: url(http://meatball.org.cn:10000/images/invoice_bg.png);
+  background-size: 100% 100%;
+  min-height: 837rpx;
+}
+.invoice-content {
+  position: relative;
+  padding-left: 24rpx;
+  padding-top: 44rpx;
+}
+.invoice-content::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #ccc;
+  color: #e5e5e5;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+}
+.content-title {
+  margin: 0rpx 0 45rpx 0;
+  text-align: center;
+  font-size: 30rpx;
+  color:#5EA2F2;
+}
+.label {
+  margin-bottom: 15rpx !important; 
+}
+
+.footer-wrap {
+  position: absolute;
+  bottom: 70rpx;
+  padding: 0 30rpx;
+  width: calc(100% - 60rpx);
+}
+
+.mini-btn{
+  margin-right: 5px;
+}

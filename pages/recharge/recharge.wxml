@@ -3,15 +3,15 @@
   <view class="card">
     <view class="logoWrap">
       <image class="logo" src="../../images/recharge/recharge_logo.png" />
-      <text class="logoText">小海豚加油站J</text>
+      <text class="logoText">小海豚加油站</text>
     </view>
     <view class="content">
       <text class="title">充值金额</text>
       <view class="payWrap">
         <text class="moneySymbol">￥</text>
-        <input class="weui-input money" type="number" placeholder='请输入金额' bindinput="moneyChange" />
+        <input class="weui-input money" type="number" placeholder='请输入金额' placeholder-style="font-weight:normal;" bindinput="moneyChange" />
       </view>
-      <navigator url="../rechargeCard/rechargeCard" class="weui-agree__link cards">储蓄卡充值</navigator>
+      <!-- <navigator url="../rechargeCard/rechargeCard" class="weui-agree__link cards">储蓄卡充值</navigator> -->
     </view>
     <view class="btnWrap">
       <button class="dolphin-button-default" type="primary" bindtap="openModal">立即充值</button>
@@ -21,8 +21,7 @@
   <view class="modal-box" hidden="{{isHidden}}">
     <view class="modal-body">
       <view class="modal-head">
-        <!-- <icon class="modal-close" type="clear" bindtap="closeModal" /> -->
-        <text class="modal-close" bindtap="closeModal">x</text>
+        <i class="icon-close modal-close" bindtap="closeModal"></i>
         <view class="modal-title">
           提示
         </view>
@@ -32,7 +31,7 @@
           <text class="tips">请您再次确认充值金额</text>
           <text class="tipsMoney">￥{{money}}</text>
         </view>
-        <button type="primary" bindtap="closeModal">是</button>
+        <button class="dolphin-button-default" type="primary" bindtap="closeModal">是</button>
      </view>
     </view>
   </view>

@@ -1,0 +1,10 @@
+<!--components/detailInput/detailInput.wxml-->
+<detail-input class='detail-input-wrap'>
+  <view class='detail-label-item {{labelWrapClass}}'>
+    <text class="detail-label label-class" style="{{labelStyle}}">{{label}}</text>
+  </view>
+  <view class='detail-input-item input-wrap'>
+    <input wx:if="{{type=='input'}}" class="detail-input input-class" style="{{inputStyle}}" placeholder='{{placeholder}}' disabled='{{disabled}}' value='{{value}}' />
+    <text wx:else class="detail-input input-class" style="{{inputStyle}}" disabled='{{disabled}}'>{{value}}</text>
+  </view>
+</detail-input>

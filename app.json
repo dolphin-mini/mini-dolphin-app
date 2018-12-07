@@ -1,16 +1,23 @@
 {
   "pages": [
-    "pages/recharge/recharge",
-    "pages/myCenter/myCenter",
+    "pages/start/start",
     "pages/login/login",
     "pages/index/index",
+    "pages/orderDetail/orderDetail",
+    "pages/myCenter/myCenter",
+    "pages/paymentMethod/paymentMethod",
+    "pages/saveManage/setPayPassword/setPayPassword",
+    "pages/recharge/recharge",
+    "pages/rechargeDetail/rechargeDetail",
     "pages/order/order",
     "pages/invoiceTitle/invoiceTitle",
-    "pages/invioceDetail/invioceDetail",
-    "pages/start/start",
-    "pages/rechargeDetail/rechargeDetail",
-    "pages/logs/logs",
-    "pages/rechargeCard/rechargeCard"
+    "pages/memberCard/memberCard",
+    "pages/submitPhone/submitPhone",
+    "pages/rechargeCard/rechargeCard",
+    "pages/authorize/authorize",
+    "pages/modifyPhone/modifyPhone",
+    "pages/invoiceDetail/invoiceDetail",
+    "pages/maps/maps"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -19,5 +26,28 @@
     "navigationBarTextStyle": "black",
     "backgroundColor": "#c1c1c1"
   },
-  "debug": true
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./images/home_unselected.png",
+        "selectedIconPath": "./images/home_selected.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "./images/order_unselected.png",
+        "selectedIconPath": "./images/order_selected.png"
+      },
+      {
+        "pagePath": "pages/myCenter/myCenter",
+        "text": "我的",
+        "iconPath": "./images/owner_unselected.png",
+        "selectedIconPath": "./images/owner_selected.png"
+      }
+    ]
+  },
+  "debug": true,
+  "enablePullDownRefresh": true
 }

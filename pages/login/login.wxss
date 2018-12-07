@@ -1,4 +1,12 @@
 /* pages/login/login.wxss */
+
+page {
+  box-sizing: border-box;
+  padding-top: 93rpx;
+  height: 100%;
+  background:url(http://meatball.org.cn/assest/images/login_bg.png);
+  background-size: 100%;
+}
 .loginWrap {
   
 }
@@ -6,7 +14,6 @@
   display: flex;
   align-items: center;
   justify-content: center;  
-  margin-top: 93rpx;
 }
 .logoImg {
   width: 200rpx;
@@ -25,9 +32,10 @@
 .greetText {
   color: #257CE1;
   font-size: 36rpx;
+  font-family: miniDolphin;
 }
 .login {
-  margin-top: 100rpx;
+  margin-top: 117rpx;
 }
 .loginTitle {
   margin-left: 30rpx;
@@ -38,10 +46,9 @@
 .loginPhone {
   display: flex;
   margin: 30rpx;
-  padding: 16rpx 0 14rpx 2rpx;
-  border: 1px solid #fff;
   box-shadow:0rpx 10rpx 19rpx 2rpx rgba(153,153,153,0.47);
   border-radius:10rpx;  
+  height: 90rpx;
 }
 .country {
   flex: 1;
@@ -75,8 +82,8 @@
 }
 .securityCodeWrap {
   display: flex;
-  margin: 30rpx 30rpx 0 30rpx;
-  padding: 16rpx 0 14rpx 2rpx;
+  margin: 30rpx 30rpx 31rpx 30rpx;
+  height: 90rpx;
 }
 .securityCode {
   flex: 3;
@@ -126,8 +133,11 @@
   font-size: 26rpx;
   color: #666;
 }
-.submitWrap {
-  margin: 100rpx 30rpx 0 30rpx;
+.submit-wrap {
+  margin: 0 30rpx;
+  position: absolute;
+  width: calc(100% - 60rpx);
+  bottom: 71rpx;
 }
 .getBtn {
   width: 190rpx;

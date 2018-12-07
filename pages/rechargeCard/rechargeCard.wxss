@@ -1,26 +1,25 @@
 /* pages/rechargeCard/rechargeCard.wxss */
-page {
-  background-color:#f2f3f5;
-}
+
 .card {
   margin: 30rpx;
-  border: 1px solid #c1c1c1;
-  border-radius: 5px;
   background: #fff;
+  box-shadow:0rpx 10rpx 19rpx 2rpx rgba(204,204,204,0.47);
+  border-radius:10rpx;
 }
 .logoWrap {
   display: flex;
   padding-top: 28rpx;
+  padding-bottom: 20rpx;
   flex-direction: column;
   align-items: center;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background: #f2f2f2;
+  background:rgba(193,193,193,.1);
 }
 .logo {
   margin-bottom: 10rpx;
-  width: 110rpx;
-  height: 110rpx;
+  width: 116rpx;
+  height: 116rpx;
 }
 .logoText {
   color: #257CE1;
@@ -28,24 +27,25 @@ page {
   font-size:32rpx;
 }
 .content {
-  padding: 30rpx;
+  padding: 26rpx 30rpx 50rpx 30rpx;
 }
 .title {
   font-size: 32rpx;
+  line-height: 30rpx;
   color: #666;
 }
 .btn-wrap {
   margin-top: 24rpx;
 }
-.btn {
-  background: linear-gradient(to right, #4D9BFD , #496AF2);
-}
+
 /* weui样式覆盖 */
 .weui-cell {
   background-color: #f2f2f2;
   font-size: 14px;
   margin-top: 20rpx;
+  height: 80rpx;
 }
 .weui-label {
   color: #999;
+  width: 170rpx;
 }

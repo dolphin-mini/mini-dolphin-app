@@ -1,3 +1,4 @@
+const httpAjax = 'http://192.168.3.200/api';
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -12,6 +13,27 @@ const formatTime = date => {
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
+}
+/**
+ * 调用微信登录
+ */
+function login() {
+  return new Promise(function (resolve, reject) {
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          //登录远程服务器
+          console.log(res)
+          resolve(res);
+        } else {
+          reject(res);
+        }
+      },
+      fail: function (err) {
+        reject(err);
+      }
+    });
+  });
 }
 /**
  * 封装loading
@@ -32,43 +54,80 @@ const hideLoading = () => {
 /**
  * 请求
  */
-const request = (config) => {
-  const DEFAUTL_CONFIG = {
-    root: "",
-    utl: "",
-    method: "POST",
-    header: {
-      "content-type": "application/x-www-form-urlencoded;charset=utf-8"
-    },
-    data: {},
-    loading: false,
-  };
-  config = Object.assign({}, DEFAUTL_CONFIG, config);
-  return new Promise(function(resolve, reject){
-    if(config.loading) {
-      loading()
-    }
+function request(url, data = {}, method = "GET") {
+  return new Promise(function (resolve, reject) {
     wx.request({
-      url: config.root + config.url,
-      method: config.method,
-      data: config.data,
-      header: config.header,
+      url: url,
+      data: data,
+      method: method,
+      header: {
+        'Content-Type': 'application/json',
+        'X-Nideshop-Token': wx.getStorageSync('token')
+      },
       success: function (res) {
-        resolve(res);
+        console.log("success");
+
+        if (res.statusCode == 200) {
+
+          if (res.data.errno == 401) {
+            //需要登录后才可以操作
+            wx.showModal({
+              title: '',
+              content: '请先登录',
+              success: function (res) {
+                if (res.confirm) {
+                  wx.removeStorageSync("userInfo");
+                  wx.removeStorageSync("token");
+
+                  wx.switchTab({
+                    url: '/pages/ucenter/index/index'
+                  });
+                }
+              }
+            });
+          } else {
+            resolve(res.data);
+          }
+        } else {
+          reject(res.errMsg);
+        }
+
       },
-      fail: function (res) {
-        reject(res);
-      },
-      complete() {
-        hideLoading()
+      fail: function (err) {
+        reject(err)
+        console.log("failed")
       }
-    });
+    })
+  });
+}
+/**
+ * 检查微信会话是否过期
+ */
+function checkSession() {
+  return new Promise(function (resolve, reject) {
+    wx.checkSession({
+      success: function () {
+        resolve(true);
+      },
+      fail: function () {
+        reject(false);
+      }
+    })
   });
 }
 
+function showErrorToast(msg) {
+  wx.showToast({
+    title: msg,
+    image: '/static/images/icon_error.png'
+  })
+}
+
 module.exports = {
-  formatTime: formatTime,
-  loading: loading,
-  hideLoading: hideLoading,
-  request: request,
+  formatTime,
+  loading,
+  hideLoading,
+  request,
+  login,
+  httpAjax,
 }

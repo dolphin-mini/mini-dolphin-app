@@ -1,0 +1,112 @@
+/* pages/memberCard/memberCard.wxss */
+.member-card-wrap {
+  box-sizing: border-box;
+  padding: 30rpx 30rpx 0 30rpx;
+}
+.header {
+  padding: 40rpx;
+  height: 360rpx;
+  background: url('http://meatball.org.cn:10000/images/member_bg.png');
+  /* background: blue; */
+}
+.title {
+  color: #fff;
+  font-size: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+}
+.text1 {
+  display: flex;
+  align-items: center;
+  margin-top: 36rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #fff;
+}
+.point {
+  display: inline-block;
+  margin-right: 10rpx;
+  width: 7rpx;
+  height: 7rpx;
+  background: #fff;
+  border-radius: 50%;
+}
+.text2 {
+  display: flex;
+  align-items: center;
+  margin-top: 32rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #fff;
+}
+.methods {
+  display: flex;
+  flex-direction: column;
+  margin-top: 26rpx;
+  padding-left: 17rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #eee;
+}
+
+.recharge-card {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 23rpx;
+}
+.card-item {
+  position: relative;
+  height: 180rpx;
+  width: 327rpx;
+  background: url('http://meatball.org.cn:10000/images/ticket_bg.png');
+  background-size: 100% 100%;
+}
+.card-item-right {
+  position: absolute;
+  top: 30rpx;
+  right: 39rpx;
+  width: 21rpx;
+  color: #FACB3D;
+  font-size: 22rpx;
+  line-height: 27rpx;
+}
+.card-item-right-arrow {
+  position: absolute;
+  top: 112rpx;
+  right: -7rpx;
+  transform: rotate(90deg);
+}
+.card-type {
+  position: absolute;
+  top: 124rpx;
+  left: 30rpx;
+  font-size: 22rpx;
+  background: #fff;
+  padding: 3rpx 43rpx 3rpx 43rpx;
+}
+.card-price-tip {
+  position: absolute;
+  left: 15rpx;
+  top: 6rpx;
+  font-size: 32rpx;
+}
+.price-icon {
+  font-size: 25rpx;
+}
+.card-price {
+  margin-right: 5rpx;
+  letter-spacing: -4px;
+  font-size: 80rpx;
+  color: #FACB3D;
+}
+.rule-title {
+  margin: 50rpx 0;
+  font-size: 36rpx;
+  color: #333;
+  text-align: center;
+}
+.rule-list {
+  font-size: 24rpx;
+  color: #666;
+  line-heihgt: 36rpx;
+}

@@ -1,4 +1,11 @@
 // pages/start/start.js
+const app = getApp();
+const utils = require('../../utils/util.js');
+const {
+  httpAjax,
+  request,
+} = utils;
+
 Page({
 
   /**
@@ -12,59 +19,84 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    setTimeout(function () {
-      wx.redirectTo({
-        url: '../index/index',
-      });
-    }, 2000);
+    //判断是否授权用户信息
+    // 判断是否授权
+    const _this = this;
+    const { oilStationId } = app.globalData;
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          //未授权跳转授权页面
+          _this.timer = setTimeout(() => {
+            wx.redirectTo({
+              url: '../authorize/authorize',
+            });
+          }, 2000);
+        } else {
+          // 获取code 请求用户信息与微信信息
+          utils.login().then((res) => {
+            if (res.code) {
+
+              const data = {
+                code: res.code,
+                oilStationId,
+              };
+              wx.getUserInfo({
+                success (res) {
+                  data.iv = res.iv;
+                  data.encryptedData = res.encryptedData;
+                  app.globalData.iv = res.iv;
+                  app.globalData.encryptedData = res.encryptedData;
+                  // 发送code换取unionID等用户信息
+                  utils.request(`${httpAjax}/mini-dolphin-member-server/memberservice/wechatuserinfo/getwechatuserinfo`, data, 'POST').then((res) => {
+                    if(res.code == 10000) {
+                      app.globalData.openId = res.data.openId;
+                      app.globalData.unionId = res.data.unionId;
+                      app.globalData.weChatUserInfo = res.data;
+                      // 校验用户是否注册过
+
+                      utils.request(`${httpAjax}/memberservice/memberlogin/${res.data.unionId}/${oilStationId}`).then((res) => {
+                        if(res.code == 10000) {
+                          app.globalData.memberInfo = res.data;
+                          // 授权过并且注册过跳转首页
+                          _this.timer = setTimeout(() => {
+                            wx.switchTab({
+                              url: '../index/index',
+                            });
+                          }, 300);
+                        } else if(res.code == 11002) {
+                          // 授权过并且未注册跳转注册页面
+                          _this.timer = setTimeout(() => {
+                            wx.redirectTo({
+                              url: '../login/login',
+                            });
+                          }, 300);
+                        }
+                      }).catch((err) => {
+                        console.log(err)
+                      });;
+                    }
+                  });
+                }
+              });
+            }
+          });
+        }
+      }
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+ 
+  onUnload() {
+    if(this.timer) {
+      clearTimeout(this.timer);
+    }
   }
+ 
 })

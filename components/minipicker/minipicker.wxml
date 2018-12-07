@@ -1,0 +1,19 @@
+<!--components/minipicker/minipicker.wxml-->
+<view class="mini-picler-wrap">
+  <view
+    class="mini-picker-mask  {{visible&&mask?'':'mini-picker-mask-show'}}"  
+     style="{{visible?'':'opacity:0.7;pointer-events:all;'}}"  
+    bindtap="hidePicker"></view>
+  <view class='mini-picker {{visible?"":"mini-picker-show"}}'>
+    <view class='mini-picker-header'>
+      <!-- <view class="tool-wrap"></view> -->
+      <view class="caption">{{title}}</view>
+    </view>
+    <view class='mini-picker-content'>
+      <slot></slot>
+    </view>
+    <view class='mini-picker-footer' hidden='{{!showClose}}'>
+      <button class='mini-picker-close' type='primary' bindtap="hidePicker">{{closeTitle}}</button>
+    </view>
+  </view>
+</view>

@@ -1,14 +1,15 @@
 /* pages/order/order.wxss */
-page {
-  background: #F2F3F5;
-}
+
+
 .userinfo-wrap {
+  position: relative;
   padding: 29rpx 31rpx 0 37rpx;
   box-sizing: border-box;
   width: 100%;
-  height: 516rpx;
-  background-position: 0 0;
-  background-size: 100% 100%;
+  height: 270rpx;
+  background: url('http://meatball.org.cn/assest/images/order_bg.png') no-repeat;
+  background-position: -65rpx -20rpx;
+  background-size: 110% 100%;
 }
 
 .user-member-wrap {
@@ -38,7 +39,13 @@ page {
   margin-right: 29rpx;
   width: 96rpx;
   height: 119rpx;
-  background: #0f0;
+  background: url("http://meatball.org.cn/assest/images/avatar.png") no-repeat;
+  background-size: 100% 100%;
+}
+.userinfo-avatar {
+  width: 96rpx;
+  height: 119rpx;
+  border-radius: 100%;
 }
 .detailWrap {
   font-size: 30rpx;
@@ -65,7 +72,7 @@ page {
 .userinfo-detail {
   display: flex;
   justify-content: space-around;
-  margin-top: 50rpx;
+  margin-top: 83rpx;
 }
 .userinfo-detail-item {
   display: flex;
@@ -73,21 +80,25 @@ page {
   align-items: center;
 }
 .text-number {
-  font-size: 40rpx;
+  font-size: 30rpx;
   color: #fff;
+  line-height: 30rpx;
 }
 .text-describe {
-  margin-top: 10rpx;
-  font-size: 28rpx;
+  margin-top: 24rpx;
+  font-size: 26rpx;
   color: #ccc;
+  line-height: 26rpx;
 }
 /* 导航 */
 .order-nav-wrap {
-  position: relative;
-  top: -80px;
-  margin: 0 30rpx;
-  background: rgba(255,255,255,0.8);
+  position: absolute;
+  left: 30rpx;
+  right: 30rpx;
+  bottom: -50rpx;
+  background: rgba(255,255,255,0.9);
   height: 160rpx;
+  box-shadow:0px 10px 19px 2px rgba(204,204,204,0.47);
   border-radius: 20rpx;
   display: flex;
   justify-content: space-around;
@@ -125,13 +136,14 @@ page {
 /* 订单信息 */
 .order-list-wrap {
   position: relative;
-  top: -150rpx;
+  margin-top: 80rpx;
+  margin-bottom: 30rpx;
   padding: 0 30rpx;
 }
 .order-list-item {
   position: relative;
   margin-top: 20rpx;
-  border: 1px solid #ccc;
+  box-shadow:0px 0rpx 19rpx 2rpx rgba(204,204,204,0.47);
   border-radius: 20rpx;
 }
 .order-list-item-header{
@@ -139,8 +151,9 @@ page {
   display: flex;
   align-items: center;
   padding: 19rpx 10rpx 17rpx 10rpx;
+  border-bottom: 1rpx solid #ccc;
 }
-.order-list-item-header::after {
+/* .order-list-item-header::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -151,7 +164,7 @@ page {
   color: #e5e5e5;
   transform-origin: 0 100%;
   transform: scaleY(0.5);
-}
+} */
 .header-text {
   font-size: 24rpx;
   color: #333;
@@ -167,9 +180,16 @@ page {
   padding: 20rpx 30rpx;
 }
 .item-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 150rpx;
   height: 150rpx;
   border: 1rpx solid #ccc;
+  background: url('http://meatball.org.cn/assest/images/order_list_bg.png') 50% 50% no-repeat;
+  background-size: 95rpx 115rpx;
+  color: #fff;
+  font-size: 37rpx;
 }
 .order-list-item-content-right {
   display: flex;
@@ -215,9 +235,10 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18rpx 30rpx 14rpx 10rpx;
+  padding: 10rpx 30rpx 14rpx 10rpx;
+  border-top: 1px solid #ccc;
 }
-.order-list-item-footer::before {
+/* .order-list-item-footer::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -228,7 +249,7 @@ page {
   color: #e5e5e5;
   transform-origin: 0 100%;
   transform: scaleY(0.5);
-}
+} */
 .footer-time {
   line-height: 24rpx;
   font-size: 24rpx;

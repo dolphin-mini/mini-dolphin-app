@@ -3,7 +3,7 @@
   <view class="card">
     <view class="logoWrap">
       <image class="logo" src="../../images/recharge/recharge_logo.png" />
-      <text class="logoText">小海豚加油站J</text>
+      <text class="logoText">小海豚加油站</text>
     </view>
 
     <view class="content">
@@ -11,7 +11,7 @@
       <view class="weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
-            <view class="weui-label">卡号：</view>
+            <view class="weui-label">请输入卡号：</view>
           </view>
           <view class="weui-cell__bd">
             <input class="weui-input" placeholder="请输入充值卡卡号"/>
@@ -22,7 +22,7 @@
        <view class="weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view>
-            <view class="weui-label">密码：</view>
+            <view class="weui-label">请输入密码：</view>
           </view>
           <view>
             <input class="weui-input" type="password" placeholder="请输入充值卡密码"/>
@@ -30,7 +30,7 @@
         </view>
       </view>
       <view class="btn-wrap">
-        <button class="btn" type="primary" bindtap="openModal">立即充值</button>
+        <button class="dolphin-button-default" type="primary" bindtap="openModal">立即充值</button>
       </view>
     </view>
 

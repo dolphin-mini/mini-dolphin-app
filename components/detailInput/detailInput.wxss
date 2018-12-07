@@ -1,0 +1,34 @@
+/* components/detailInput/deatilInput.wxss */
+.detail-input-wrap {
+  display: flex;
+  line-height: 40rpx;
+  margin-bottom: 15rpx;
+  flex-grow: 1;
+}
+.detail-label-item {
+  position: relative;
+  box-sizing: border-box;
+}
+.detail-input-item {
+  position: relative;
+  box-sizing: border-box;
+  padding-left: 54rpx;
+}
+.input-wrap {
+  flex: 1;
+  padding-left: 53rpx;
+}
+.detail-label {
+  display: inline-block;
+  width: 120rpx;
+  font-size:30rpx;
+  line-height: 30rpx;
+  color: #333;
+  text-align: justify;
+  text-align-last: justify;
+}
+.detail-input {
+  font-size: 26rpx;
+  line-height: 26rpx;
+  color:#666;
+}

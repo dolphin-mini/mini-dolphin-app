@@ -1,0 +1,70 @@
+/* components/minipicker/minipicker.wxss */
+.mini-picler-wrap {
+
+}
+.mini-picker-mask {
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 21;
+  background: rgba(0, 0, 0,0.5);
+  pointer-events:none;
+  opacity: 0;
+  transition:opacity .4s ease;
+}
+/* .mini-picker-mask-show {
+  opacity: 0.7;
+  display: block;
+} */
+.mini-picker {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50%;
+  z-index: 22;
+  background: #fff;
+  transform: translateY(150%);
+  transition: all 0.4s ease;
+}
+.mini-picker-show {
+  transform: translateY(0%);
+}
+.mini-picker-header {
+  box-sizing: border-box;
+  padding: 30rpx 20rpx 20rpx 20rpx;
+}
+.mini-picker-header .caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 36rpx;
+  color: #333;
+  line-height: 36rpx;
+}
+.mini-picker-content {
+  box-sizing: border-box;
+  padding: 30rpx 30rpx 0 30rpx;
+  height: calc(100% - 213rpx);
+}
+.mini-picker-footer {
+  height: 127rpx;
+}
+.mini-picker-close {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  height: 127rpx;
+  border-radius: 0;
+  background-color:#257CE1 !important;
+}

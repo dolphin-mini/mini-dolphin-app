@@ -37,7 +37,7 @@
             class="secorityCodeText"
             type="number"
             placeholder="输入验证码"
-            bindinput="phoneChange"
+            bindinput="secorityCodeChange"
           />
         </view>
       </view>
@@ -61,13 +61,13 @@
     </view>
 
     <!-- 立即验证 -->
-    <view class="submitWrap">
+    <view class="submit-wrap">
        <button
-          class="dolphin-button-default"
+          class="{{mobilePhone&&secorityCode&&isRead?'dolphin-button-default':'dolphin-button-disabled'}}"
           type="primary"
           bindtap="login"
+          disabled="{{!(mobilePhone&&secorityCode&&isRead)}}"
         >立即验证</button>
     </view>
-
   </view>
 </view>

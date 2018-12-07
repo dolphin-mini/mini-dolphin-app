@@ -5,6 +5,9 @@
   left: 0;
   bottom: 0;
   right: 0;
+  overflow-y: hidden; 
+  background:url('http://meatball.org.cn/assest/images/login.png');
+  background-size: 100% 100%;
 }
 .loginImg {
   height: 100%;
